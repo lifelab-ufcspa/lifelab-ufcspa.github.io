@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LIFE Lab | Laboratório Integrado de Fenótipos Comportamentais — UFCSPA</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        life: {
+                            navy: '#0b132b',
+                            blue: '#1c2541',
+                            card: '#16223d',
+                            accent: '#4a729b',
+                            purple: '#7b5c8f',
+                            gold: '#d4af37',
+                            light: '#f1f5f9',
+                            muted: '#94a3b8'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        serif: ['Playfair Display', 'Georgia', 'serif']
+                    },
+                    animation: {
+                        'float': 'float 6s ease-in-out infinite',
+                        'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0px)' },
+                            '50%': { transform: 'translateY(-10px)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .glass-card {
+            background: rgba(22, 34, 61, 0.65);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .glass-card:hover {
+            border-color: rgba(74, 114, 155, 0.5);
+            transform: translateY(-4px);
+            box-shadow: 0 25px 50px -12px rgba(11, 19, 43, 0.7);
+        }
+        .hero-glow {
+            background: radial-gradient(circle, rgba(74, 114, 155, 0.2) 0%, rgba(123, 92, 143, 0.12) 45%, transparent 75%);
+        }
+    </style>
+</head>
+<body class="bg-life-navy text-gray-100 font-sans antialiased selection:bg-life-accent selection:text-white">
+
+    <!-- Header / Navbar -->
+    <header class="fixed top-0 left-0 right-0 z-50 bg-life-navy/85 backdrop-blur-xl border-b border-white/10 transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-6 h-24 flex items-center justify-between">
+            <a href="#" class="flex items-center gap-4 group">
+                <div class="h-12 flex items-center">
+                    <img src="lglogogo.png" alt="LIFE Lab Logo" class="h-11 w-auto object-contain brightness-125 transition-transform group-hover:scale-105" onerror="this.style.display='none'; document.getElementById('logo-fallback').style.display='flex';">
+                    <div id="logo-fallback" class="hidden items-center gap-3">
+                        <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-life-accent to-life-purple flex items-center justify-center text-white font-bold text-xl shadow-lg">L</div>
+                        <span class="font-serif text-xl font-bold text-white tracking-wide">LIFE LAB</span>
+                    </div>
+                </div>
+            </a>
+            
+            <nav class="hidden lg:flex items-center gap-10 text-sm font-medium tracking-wide text-gray-300">
+                <a href="#about" class="hover:text-life-accent transition-colors flex items-center gap-1.5"><span class="text-life-accent font-mono text-xs">01</span> Sobre</a>
+                <a href="#research" class="hover:text-life-accent transition-colors flex items-center gap-1.5"><span class="text-life-accent font-mono text-xs">02</span> Pesquisa</a>
+                <a href="#team" class="hover:text-life-accent transition-colors flex items-center gap-1.5"><span class="text-life-accent font-mono text-xs">03</span> Equipe</a>
+                <a href="#contact" class="hover:text-life-accent transition-colors flex items-center gap-1.5"><span class="text-life-accent font-mono text-xs">04</span> Contato</a>
+            </nav>
+
+            <div class="hidden lg:flex items-center gap-4">
+                <a href="https://github.com/" target="_blank" class="px-5 py-2.5 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 text-sm font-medium transition-all flex items-center gap-2.5 text-gray-200 hover:border-life-accent">
+                    <i class="fab fa-github text-lg"></i> GitHub
+                </a>
+            </div>
+
+            <!-- Mobile Menu Button -->
+            <button id="menu-btn" class="lg:hidden text-gray-300 hover:text-white focus:outline-none text-2xl p-2">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden lg:hidden bg-life-blue/95 backdrop-blur-2xl border-b border-white/10 px-6 py-6 space-y-4 shadow-2xl">
+            <a href="#about" class="block text-gray-200 hover:text-life-accent text-lg font-medium py-1">01. Sobre</a>
+            <a href="#research" class="block text-gray-200 hover:text-life-accent text-lg font-medium py-1">02. Pesquisa</a>
+            <a href="#team" class="block text-gray-200 hover:text-life-accent text-lg font-medium py-1">03. Equipe</a>
+            <a href="#contact" class="block text-gray-200 hover:text-life-accent text-lg font-medium py-1">04. Contato</a>
+            <div class="pt-4 border-t border-white/10">
+                <a href="https://github.com/" target="_blank" class="w-full py-3 rounded-xl bg-white/10 text-center font-medium flex items-center justify-center gap-2">
+                    <i class="fab fa-github"></i> Repositório GitHub
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="relative pt-44 pb-32 lg:pt-56 lg:pb-40 overflow-hidden flex items-center min-h-[92vh]">
+        <!-- Ambient Animated Glows -->
+        <div class="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[700px] hero-glow rounded-full blur-[140px] pointer-events-none animate-pulse-slow"></div>
+        <div class="absolute bottom-10 left-10 w-[350px] h-[350px] bg-life-purple/15 rounded-full blur-[100px] pointer-events-none animate-float"></div>
+
+        <div class="max-w-7xl mx-auto px-6 relative z-10 w-full">
+            <div class="max-w-4xl">
+                <div class="inline-flex items-center gap-3 px-4 py-2 rounded-full bg-life-accent/10 border border-life-accent/30 text-life-accent text-xs font-semibold tracking-widest uppercase mb-8 shadow-sm backdrop-blur-md">
+                    <span class="w-2.5 h-2.5 rounded-full bg-life-accent animate-ping"></span> UFCSPA • Laboratório Integrado de Fenótipos Comportamentais
+                </div>
+                
+                <h1 class="text-5xl sm:text-6xl lg:text-7xl font-serif font-bold text-white tracking-tight leading-[1.08] mb-8">
+                    Decoding behavior, <br>
+                    <span class="italic font-normal text-transparent bg-clip-text bg-gradient-to-r from-life-accent via-purple-300 to-life-gold">mapping phenotypes.</span>
+                </h1>
+                
+                <p class="text-lg sm:text-xl text-gray-300 font-light leading-relaxed max-w-2xl mb-12">
+                    Investigação translacional de ponta integrando transtornos do neurodesenvolvimento, psiquiatria computacional, impacto de eventos climáticos extremos e inovação metodológica em saúde mental.
+                </p>
+
+                <div class="flex flex-wrap items-center gap-5">
+                    <a href="#research" class="px-8 py-4 rounded-xl bg-gradient-to-r from-life-accent to-blue-600 text-white font-semibold hover:opacity-95 transition-all shadow-xl shadow-life-accent/20 flex items-center gap-3 group">
+                        <span>Explorar Eixos de Pesquisa</span>
+                        <i class="fas fa-arrow-right group-hover:translate-x-1.5 transition-transform"></i>
+                    </a>
+                    <a href="#about" class="px-8 py-4 rounded-xl glass-card text-white font-semibold hover:bg-white/10 transition-all flex items-center gap-2.5">
+                        <i class="fas fa-flask text-life-accent"></i> Sobre o Lab
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Floating Scroll Indicator -->
+        <div class="absolute bottom-6 left-1/2 -translate-x-1/2 hidden md:flex flex-col items-center gap-2 text-gray-400 text-xs tracking-widest uppercase">
+            <span>Role para descobrir</span>
+            <i class="fas fa-chevron-down animate-bounce text-life-accent"></i>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-28 bg-life-blue/30 border-t border-white/5 relative overflow-hidden">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid lg:grid-cols-12 gap-12 items-center">
+                <div class="lg:col-span-5">
+                    <div class="text-xs font-bold uppercase tracking-widest text-life-accent mb-3 flex items-center gap-2">
+                        <span class="font-mono">[ 01 ]</span> Sobre a Instituição
+                    </div>
+                    <h2 class="text-3xl sm:text-4xl font-serif font-bold text-white mb-6 leading-tight">
+                        Ciência viva, rigor metodológico e impacto real
+                    </h2>
+                    <p class="text-gray-300 font-light leading-relaxed mb-6">
+                        O <strong class="text-white font-medium">LIFE Lab (Laboratório Integrado de Fenótipos Comportamentais)</strong>, vinculado à Universidade Federal de Ciências da Saúde de Porto Alegre (UFCSPA), é um espaço dinâmico de investigação que conecta a neuropsiquiatria, a epidemiologia e a tecnologia.
+                    </p>
+                    <p class="text-gray-300 font-light leading-relaxed mb-8">
+                        Sob a liderança do <strong class="text-white font-medium">Prof. Dr. Flávio Shansis</strong> e direção de pesquisa de <strong class="text-white font-medium">Felipe Passos</strong>, nossa equipe articula mestrandos, doutorandos e bolsistas em investigações de vanguarda sobre saúde mental, neurodesenvolvimento e resiliência em desastres.
+                    </p>
+                </div>
+                
+                <div class="lg:col-span-7 grid sm:grid-cols-2 gap-6">
+                    <div class="glass-card p-8 rounded-2xl relative overflow-hidden group">
+                        <div class="absolute -top-10 -right-10 w-32 h-32 bg-life-accent/15 rounded-full blur-xl group-hover:scale-125 transition-transform"></div>
+                        <div class="text-life-accent text-3xl mb-4 font-serif font-bold">01</div>
+                        <h3 class="text-lg font-bold text-white mb-2">Abordagem Translacional</h3>
+                        <p class="text-sm text-gray-400 font-light leading-relaxed">Unindo achados biológicos, ambientais e comportamentais para transformar o cuidado clínico.</p>
+                    </div>
+
+                    <div class="glass-card p-8 rounded-2xl relative overflow-hidden group">
+                        <div class="absolute -top-10 -right-10 w-32 h-32 bg-life-purple/15 rounded-full blur-xl group-hover:scale-125 transition-transform"></div>
+                        <div class="text-life-purple text-3xl mb-4 font-serif font-bold">02</div>
+                        <h3 class="text-lg font-bold text-white mb-2">Inovação Digital & Protótipos</h3>
+                        <p class="text-sm text-gray-400 font-light leading-relaxed">Criação de ferramentas de triagem baseadas em protocolos internacionais de urgência (NEWS2).</p>
+                    </div>
+
+                    <div class="glass-card p-8 rounded-2xl relative overflow-hidden group sm:col-span-2">
+                        <div class="absolute -top-10 -right-10 w-40 h-40 bg-life-gold/15 rounded-full blur-xl group-hover:scale-125 transition-transform"></div>
+                        <div class="text-life-gold text-3xl mb-4 font-serif font-bold">03</div>
+                        <h3 class="text-lg font-bold text-white mb-2">Resiliência Climática & Social</h3>
+                        <p class="text-sm text-gray-400 font-light leading-relaxed">Estudos aprofundados sobre o impacto psicológico de eventos hidrológicos extremos no Rio Grande do Sul, ideação suicida e vulnerabilidades.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Research Lines / Eixos de Pesquisa -->
+    <section id="research" class="py-28 relative border-t border-white/5">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="flex flex-col md:flex-row md:items-end justify-between mb-16">
+                <div>
+                    <span class="text-xs font-bold uppercase tracking-widest text-life-accent mb-3 block"><span class="font-mono">[ 02 ]</span> Linhas de Investigação</span>
+                    <h2 class="text-4xl font-serif font-bold text-white">Eixos de Pesquisa</h2>
+                </div>
+                <p class="text-gray-400 max-w-md mt-4 md:mt-0 font-light">
+                    Nossa estrutura investigativa articula diferentes frentes em saúde mental, simulação e epidemiologia.
+                </p>
+            </div>
+
+            <!-- Grid of Research Axes -->
+            <div class="grid lg:grid-cols-3 gap-8">
+                
+                <!-- Eixo 1: Educação Médica -->
+                <div class="glass-card p-8 rounded-2xl flex flex-col justify-between group">
+                    <div>
+                        <div class="flex items-center justify-between mb-6">
+                            <span class="px-3.5 py-1 rounded-full bg-life-accent/10 text-life-accent text-xs font-bold tracking-wider uppercase border border-life-accent/20">Eixo 01</span>
+                            <div class="w-10 h-10 rounded-xl bg-life-accent/10 flex items-center justify-center text-life-accent text-lg">
+                                <i class="fas fa-graduation-cap"></i>
+                            </div>
+                        </div>
+                        <h3 class="text-2xl font-serif font-bold text-white mb-3">Educação Médica</h3>
+                        <p class="text-sm text-gray-300 font-light mb-6">Inovações metodológicas, validação de instrumentos e simulação realística no ensino médico.</p>
+                        
+                        <div class="space-y-4 pt-6 border-t border-white/10 text-sm">
+                            <div class="bg-white/[0.03] p-4 rounded-xl border border-white/5">
+                                <span class="font-semibold text-white block mb-1">Projeto AVATAR</span>
+                                <p class="text-xs text-gray-400 mb-2">Validação de Escala (Daniel Pasini - Mestrando | Cristiane Mondadori, Vitório Serafim) & Ambientes Virtuais (Vinicius Soares - Doutorando | Bruno Costa, Nicholas Storch).</p>
+                            </div>
+                            <div class="bg-white/[0.03] p-4 rounded-xl border border-white/5">
+                                <span class="font-semibold text-white block mb-1">Simulação Realística</span>
+                                <p class="text-xs text-gray-400">Vitório Serafim, Luiza Schiroky, Gabriel Guilioti.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Eixo 2: Eventos Climáticos Extremos -->
+                <div class="glass-card p-8 rounded-2xl flex flex-col justify-between group">
+                    <div>
+                        <div class="flex items-center justify-between mb-6">
+                            <span class="px-3.5 py-1 rounded-full bg-life-purple/10 text-life-purple text-xs font-bold tracking-wider uppercase border border-life-purple/20">Eixo 02</span>
+                            <div class="w-10 h-10 rounded-xl bg-life-purple/10 flex items-center justify-center text-life-purple text-lg">
+                                <i class="fas fa-cloud-showers-heavy"></i>
+                            </div>
+                        </div>
+                        <h3 class="text-2xl font-serif font-bold text-white mb-3">Eventos Climáticos Extremos</h3>
+                        <p class="text-sm text-gray-300 font-light mb-6">Avaliação epidemiológica de TEPT, desastres hidrológicos e impactos na saúde mental da população.</p>
+                        
+                        <div class="space-y-4 pt-6 border-t border-white/10 text-sm">
+                            <div class="bg-white/[0.03] p-4 rounded-xl border border-white/5">
+                                <span class="font-semibold text-white block mb-1">RS: TEPT e Eventos Hidrológicos</span>
+                                <p class="text-xs text-gray-400">Daniel Dallavalle (Mestrando | Italo Abrão, Guilherme Escobar).</p>
+                            </div>
+                            <div class="bg-white/[0.03] p-4 rounded-xl border border-white/5">
+                                <span class="font-semibold text-white block mb-1">Impacto dos Eventos no RS</span>
+                                <p class="text-xs text-gray-400">Marcos Cima (Doutorando | David Nusbaum, Guilherme Andary).</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Eixo 3: TDAH -->
+                <div class="glass-card p-8 rounded-2xl flex flex-col justify-between group">
+                    <div>
+                        <div class="flex items-center justify-between mb-6">
+                            <span class="px-3.5 py-1 rounded-full bg-life-gold/10 text-life-gold text-xs font-bold tracking-wider uppercase border border-life-gold/20">Eixo 03</span>
+                            <div class="w-10 h-10 rounded-xl bg-life-gold/10 flex items-center justify-center text-life-gold text-lg">
+                                <i class="fas fa-brain"></i>
+                            </div>
+                        </div>
+                        <h3 class="text-2xl font-serif font-bold text-white mb-3">TDAH & Fenótipos</h3>
+                        <p class="text-sm text-gray-300 font-light mb-6">Investigação aprofundada de TDAH, ideação suicida, impacto do ambiente construído e terapia hormonal.</p>
+                        
+                        <div class="space-y-3 pt-6 border-t border-white/10 text-sm">
+                            <div class="bg-white/[0.03] p-3 rounded-xl border border-white/5">
+                                <span class="font-semibold text-white block mb-0.5">RS: TDAH e Suicídio</span>
+                                <p class="text-xs text-gray-400">Gabriel Rocha (Mestrando | Pedro Dytz, Enrico Villeti).</p>
+                            </div>
+                            <div class="bg-white/[0.03] p-3 rounded-xl border border-white/5">
+                                <span class="font-semibold text-white block mb-0.5">RS: TDAH e Ambientes Construídos</span>
+                                <p class="text-xs text-gray-400">Arthur Canhada (Mestrando | Ana Paula, Felipe Passos).</p>
+                            </div>
+                            <div class="bg-white/[0.03] p-3 rounded-xl border border-white/5">
+                                <span class="font-semibold text-white block mb-0.5">TDAH e TH & Climma</span>
+                                <p class="text-xs text-gray-400">Marcelo Bizzi (Pesq. Associado).</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Eixo 4: Suicídio -->
+                <div class="glass-card p-8 rounded-2xl flex flex-col justify-between group lg:col-span-1.5">
+                    <div>
+                        <div class="flex items-center justify-between mb-6">
+                            <span class="px-3.5 py-1 rounded-full bg-red-500/10 text-red-400 text-xs font-bold tracking-wider uppercase border border-red-500/20">Eixo 04</span>
+                            <div class="w-10 h-10 rounded-xl bg-red-500/10 flex items-center justify-center text-red-400 text-lg">
+                                <i class="fas fa-heart-pulse"></i>
+                            </div>
+                        </div>
+                        <h3 class="text-2xl font-serif font-bold text-white mb-3">Suicídio & Prevenção</h3>
+                        <p class="text-sm text-gray-300 font-light mb-6">Estudos epidemiológicos direcionados à prevenção e intervenção comunitária no suicídio.</p>
+                        
+                        <div class="space-y-4 pt-6 border-t border-white/10 text-sm">
+                            <div class="bg-white/[0.03] p-4 rounded-xl border border-white/5">
+                                <span class="font-semibold text-white block mb-1">Projeto Vale a Vida</span>
+                                <p class="text-xs text-gray-400">Luiza Prolla (IC Voluntário).</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Eixo 5: Outros Projetos -->
+                <div class="glass-card p-8 rounded-2xl flex flex-col justify-between group lg:col-span-1.5">
+                    <div>
+                        <div class="flex items-center justify-between mb-6">
+                            <span class="px-3.5 py-1 rounded-full bg-emerald-500/10 text-emerald-400 text-xs font-bold tracking-wider uppercase border border-emerald-500/20">Eixo 05</span>
+                            <div class="w-10 h-10 rounded-xl bg-emerald-500/10 flex items-center justify-center text-emerald-400 text-lg">
+                                <i class="fas fa-folder-tree"></i>
+                            </div>
+                        </div>
+                        <h3 class="text-2xl font-serif font-bold text-white mb-3">Outros Projetos & Saúde Mental</h3>
+                        <p class="text-sm text-gray-300 font-light mb-6">Iniciativas transversais em saúde mental de profissionais de saúde e protótipos digitais.</p>
+                        
+                        <div class="grid sm:grid-cols-2 gap-3 pt-6 border-t border-white/10 text-sm">
+                            <div class="bg-white/[0.03] p-3 rounded-xl border border-white/5">
+                                <span class="font-semibold text-white block mb-0.5">Saúde Mental dos Infectologistas</span>
+                                <p class="text-xs text-gray-400">Carolina Marolli, Ana Laura.</p>
+                            </div>
+                            <div class="bg-white/[0.03] p-3 rounded-xl border border-white/5">
+                                <span class="font-semibold text-white block mb-0.5">PROPESTH</span>
+                                <p class="text-xs text-gray-400">Karina Bastos, Matheus Otten.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Team Section -->
+    <section id="team" class="py-28 bg-life-blue/30 border-t border-white/5">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="flex flex-col md:flex-row md:items-end justify-between mb-16">
+                <div>
+                    <span class="text-xs font-bold uppercase tracking-widest text-life-accent mb-3 block"><span class="font-mono">[ 03 ]</span> Governança e Membros</span>
+                    <h2 class="text-4xl font-serif font-bold text-white">Nossa Equipe</h2>
+                </div>
+                <p class="text-gray-400 max-w-md mt-4 md:mt-0 font-light">
+                    Pesquisadores seniores, pós-graduandos e estudantes unidos pelo rigor científico.
+                </p>
+            </div>
+
+            <!-- Team Cards -->
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+                
+                <!-- Leadership 1 -->
+                <div class="glass-card p-8 rounded-2xl text-center group">
+                    <div class="w-24 h-24 mx-auto rounded-2xl bg-gradient-to-br from-life-accent to-blue-900 flex items-center justify-center text-white text-3xl font-serif font-bold mb-6 shadow-xl group-hover:scale-105 transition-transform duration-300">
+                        FS
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-1">Prof. Dr. Flávio Shansis</h3>
+                    <span class="text-xs text-life-accent font-semibold uppercase tracking-widest block mb-4">Principal Investigator</span>
+                    <p class="text-xs text-gray-400 font-light leading-relaxed">Direção geral e supervisão científica em psiquiatria e neurodesenvolvimento.</p>
+                </div>
+
+                <!-- Leadership 2 -->
+                <div class="glass-card p-8 rounded-2xl text-center group">
+                    <div class="w-24 h-24 mx-auto rounded-2xl bg-gradient-to-br from-life-purple to-pink-900 flex items-center justify-center text-white text-3xl font-serif font-bold mb-6 shadow-xl group-hover:scale-105 transition-transform duration-300">
+                        FP
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-1">Felipe Passos</h3>
+                    <span class="text-xs text-life-purple font-semibold uppercase tracking-widest block mb-4">Dirigente de Pesquisa</span>
+                    <p class="text-xs text-gray-400 font-light leading-relaxed">Coordenação executiva dos eixos e condução de investigações em TDAH e educação.</p>
+                </div>
+
+                <!-- Post-grad / Mestrandos -->
+                <div class="glass-card p-8 rounded-2xl text-center group">
+                    <div class="w-24 h-24 mx-auto rounded-2xl bg-gradient-to-br from-life-gold to-yellow-800 flex items-center justify-center text-white text-3xl font-serif font-bold mb-6 shadow-xl group-hover:scale-105 transition-transform duration-300">
+                        PG
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-1">Pós-Graduação</h3>
+                    <span class="text-xs text-life-gold font-semibold uppercase tracking-widest block mb-4">Mestrandos & Doutorandos</span>
+                    <p class="text-xs text-gray-400 font-light leading-relaxed">Vinicius Soares, Daniel Pasini, Daniel Dallavalle, Marcos Cima, Gabriel Rocha, Arthur Canhada.</p>
+                </div>
+
+                <!-- Researchers & ICs -->
+                <div class="glass-card p-8 rounded-2xl text-center group">
+                    <div class="w-24 h-24 mx-auto rounded-2xl bg-gradient-to-br from-emerald-600 to-teal-900 flex items-center justify-center text-white text-3xl font-serif font-bold mb-6 shadow-xl group-hover:scale-105 transition-transform duration-300">
+                        EQ
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-1">Pesquisadores & Bolsistas</h3>
+                    <span class="text-xs text-emerald-400 font-semibold uppercase tracking-widest block mb-4">PIBIC, PIBIT & ICs</span>
+                    <p class="text-xs text-gray-400 font-light leading-relaxed">Equipe associada e bolsistas dedicados à execução dos protocolos e análises de dados.</p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contact" class="bg-life-navy border-t border-white/10 py-20">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid md:grid-cols-2 gap-12 items-center mb-16">
+                <div>
+                    <h2 class="text-2xl font-serif font-bold text-white mb-3">LIFE Lab • UFCSPA</h2>
+                    <p class="text-gray-400 text-sm max-w-md font-light">
+                        Laboratório Integrado de Fenótipos Comportamentais — Universidade Federal de Ciências da Saúde de Porto Alegre.
+                    </p>
+                </div>
+                <div class="flex md:justify-end gap-4">
+                    <a href="https://github.com/" target="_blank" class="w-14 h-14 rounded-2xl glass-card flex items-center justify-center text-white hover:border-life-accent transition-all text-xl">
+                        <i class="fab fa-github"></i>
+                    </a>
+                    <a href="mailto:contato@lifelab.ufcspa.edu.br" class="w-14 h-14 rounded-2xl glass-card flex items-center justify-center text-white hover:border-life-accent transition-all text-xl">
+                        <i class="fas fa-envelope"></i>
+                    </a>
+                </div>
+            </div>
+            <div class="pt-8 border-t border-white/5 flex flex-col md:flex-row items-center justify-between text-xs text-gray-500">
+                <p>&copy; 2026 LIFE Lab - UFCSPA. Todos os direitos reservados.</p>
+                <p class="mt-4 md:mt-0 font-mono tracking-wider">HOSPEDADO VIA GITHUB PAGES</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Mobile Menu Script -->
+    <script>
+        const btn = document.getElementById('menu-btn');
+        const menu = document.getElementById('mobile-menu');
+        btn.addEventListener('click', () => {
+            menu.classList.toggle('hidden');
+        });
+    </script>
+</body>
+</html>
