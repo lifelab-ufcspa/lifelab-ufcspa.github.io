@@ -1,0 +1,1139 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth" style="scroll-padding-top: 85px;">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LIFE Lab | Laboratório Integrado de Fenótipos Comportamentais — UFCSPA</title>
+  <meta name="description" content="Laboratório Integrado de Fenótipos Comportamentais da UFCSPA. Pesquisas translacionais em psiquiatria, educação médica, eventos climáticos e fenótipos comportamentais.">
+  
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="./logo-white.png">
+  
+  <!-- FONTE INTER -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  
+  <!-- Tailwind CSS via CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              navy: '#0B1424',
+              dark: '#070D18',
+              surface: '#111F36',
+              card: '#162846',
+              slate: '#1C3D5C',
+              lilac: '#7D70AE',
+              'lilac-hover': '#6B5E9D',
+              'lilac-light': '#F3F0F9',
+              blue: '#7BA2C7',
+              'blue-light': '#EDF4FA',
+              cream: '#F9F9F7',
+              'cream-dark': '#EFEFEA',
+            }
+          },
+          fontFamily: {
+            sans: ['"Inter"', '-apple-system', 'BlinkMacSystemFont', 'sans-serif'],
+          },
+          letterSpacing: {
+            'tightest': '-0.04em',
+            'tighter': '-0.03em',
+            'tight': '-0.02em',
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    * {
+      font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif !important;
+    }
+    
+    ::selection {
+      background-color: #7D70AE;
+      color: #ffffff;
+    }
+
+    .glass-nav {
+      background: rgba(11, 20, 36, 0.94);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    /* Purple poster eixos */
+    .eixos-poster {
+      background: #7D70AE;
+      border-radius: 20px;
+      overflow: hidden;
+      position: relative;
+    }
+
+    /* Vertical text: "EIXOS DE PESQUISA" */
+    .vertical-label {
+      writing-mode: vertical-rl;
+      text-orientation: mixed;
+      transform: rotate(180deg);
+      white-space: nowrap;
+      font-weight: 900;
+      text-transform: uppercase;
+      color: #0B1424;
+      font-size: clamp(2.8rem, 7vw, 5.5rem);
+      line-height: 1;
+      letter-spacing: -0.03em;
+    }
+
+    .poster-axis-btn {
+      display: block;
+      width: 100%;
+      text-align: left;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 0.55rem 0;
+      border-bottom: 1px solid rgba(11, 20, 36, 0.2);
+      transition: opacity 0.2s;
+      color: white;
+    }
+    .poster-axis-btn:last-child {
+      border-bottom: none;
+    }
+    .poster-axis-btn:hover {
+      opacity: 0.75;
+    }
+    .poster-axis-btn.active-axis .axis-plus {
+      transform: rotate(45deg);
+    }
+    .axis-plus {
+      display: inline-block;
+      transition: transform 0.25s ease;
+      font-style: normal;
+    }
+
+    .axis-panel {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.45s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.35s ease;
+      opacity: 0;
+    }
+    .axis-panel.open {
+      max-height: 900px;
+      opacity: 1;
+    }
+
+    .modal-backdrop {
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.25s ease;
+    }
+    .modal-backdrop.open {
+      opacity: 1;
+      pointer-events: auto;
+    }
+    .modal-box {
+      transform: scale(0.95) translateY(10px);
+      transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .modal-backdrop.open .modal-box {
+      transform: scale(1) translateY(0);
+    }
+  </style>
+</head>
+<body class="bg-brand-cream text-slate-800 font-sans antialiased selection:bg-brand-lilac selection:text-white">
+
+  <!-- ========================================================================= -->
+  <!-- NAVBAR FIXA -->
+  <!-- ========================================================================= -->
+  <header class="fixed top-0 left-0 right-0 z-50 transition-all duration-300" id="main-header">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-3 pb-3">
+      <nav class="glass-nav rounded-full px-6 py-2.5 flex items-center justify-between shadow-xl transition-all duration-300">
+        
+        <!-- Logo do LIFE Lab -->
+        <a href="#inicio" class="flex items-center gap-2.5 group focus:outline-none" aria-label="LIFE Lab Início">
+          <img src="./logo-white.png" alt="LIFE Lab" class="h-8 w-auto object-contain transition-transform group-hover:scale-105 duration-200" onerror="this.onerror=null;this.src='./logo-main.png';">
+        </a>
+
+        <!-- Desktop Navigation Links -->
+        <div class="hidden md:flex items-center gap-1.5">
+          <a href="#sobre" data-i18n="nav_about" class="text-xs font-medium text-slate-300 hover:text-white px-4 py-1.5 rounded-full hover:bg-white/10 transition-all">Sobre</a>
+          <a href="#eixos" data-i18n="nav_axes" class="text-xs font-medium text-slate-300 hover:text-white px-4 py-1.5 rounded-full hover:bg-white/10 transition-all">Eixos de Pesquisa</a>
+          <a href="#equipe" data-i18n="nav_team" class="text-xs font-medium text-slate-300 hover:text-white px-4 py-1.5 rounded-full hover:bg-white/10 transition-all">Equipe</a>
+          <a href="#onde-estamos" data-i18n="nav_location" class="text-xs font-medium text-slate-300 hover:text-white px-4 py-1.5 rounded-full hover:bg-white/10 transition-all">Localização</a>
+        </div>
+
+        <!-- Language Toggle + Action Button -->
+        <div class="flex items-center gap-3">
+          <div class="flex items-center bg-white/10 p-0.5 rounded-full border border-white/15 text-[11px] font-semibold" id="lang-switch-container">
+            <button id="btn-lang-pt" type="button" class="px-2.5 py-1 rounded-full bg-brand-lilac text-white font-bold shadow-sm transition-all" aria-label="Português">PT</button>
+            <button id="btn-lang-en" type="button" class="px-2.5 py-1 rounded-full text-slate-300 hover:text-white font-medium transition-all" aria-label="English">EN</button>
+          </div>
+
+          <a href="#contato" data-i18n="nav_contact" class="hidden sm:inline-flex items-center gap-1.5 bg-brand-lilac hover:bg-brand-lilac-hover text-white font-bold text-xs px-4 py-2 rounded-full transition-all shadow-sm">
+            <span>Contato</span>
+            <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
+            </svg>
+          </a>
+
+          <!-- Mobile Hamburger -->
+          <button id="mobile-menu-btn" type="button" class="md:hidden text-slate-200 hover:text-white p-1.5 rounded-full hover:bg-white/10" aria-label="Menu">
+            <svg id="hamburger-icon" class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"/>
+            </svg>
+            <svg id="close-icon" class="w-5 h-5 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+            </svg>
+          </button>
+        </div>
+
+      </nav>
+
+      <!-- Mobile Menu -->
+      <div id="mobile-menu" class="hidden md:hidden mt-2 glass-nav rounded-2xl p-4 shadow-xl border border-white/10 flex flex-col gap-2 text-left">
+        <a href="#sobre" data-i18n="nav_about" class="text-xs font-semibold text-slate-200 hover:text-brand-lilac py-1.5 border-b border-white/5">Sobre</a>
+        <a href="#eixos" data-i18n="nav_axes" class="text-xs font-semibold text-slate-200 hover:text-brand-lilac py-1.5 border-b border-white/5">Eixos de Pesquisa</a>
+        <a href="#equipe" data-i18n="nav_team" class="text-xs font-semibold text-slate-200 hover:text-brand-lilac py-1.5 border-b border-white/5">Equipe</a>
+        <a href="#onde-estamos" data-i18n="nav_location" class="text-xs font-semibold text-slate-200 hover:text-brand-lilac py-1.5 border-b border-white/5">Localização</a>
+        <a href="#contato" data-i18n="nav_contact" class="text-xs font-bold text-white bg-brand-lilac text-center py-2 rounded-full mt-1">Contato</a>
+      </div>
+    </div>
+  </header>
+
+
+  <!-- ========================================================================= -->
+  <!-- HERO SECTION (Nome do laboratório como foco principal) -->
+  <!-- ========================================================================= -->
+  <section id="inicio" class="relative bg-brand-navy text-white pt-40 pb-24 lg:pt-48 lg:pb-32 border-b border-white/10">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-left">
+      
+      <!-- Overline Institucional -->
+      <div class="flex items-center gap-2 mb-4">
+        <span class="w-2 h-2 rounded-full bg-brand-lilac"></span>
+        <span class="text-xs font-bold tracking-widest text-brand-lilac uppercase" data-i18n="hero_subtitle_tag">
+          Universidade Federal de Ciências da Saúde de Porto Alegre · UFCSPA
+        </span>
+      </div>
+
+      <!-- Nome do Laboratório como Foco Principal (H1) -->
+      <h1 class="text-3xl sm:text-5xl lg:text-6xl font-black tracking-tightest text-white uppercase leading-[1.08] mb-6 max-w-5xl" data-i18n="hero_main_title">
+        LIFE Lab — Laboratório Integrado de Fenótipos Comportamentais
+      </h1>
+
+      <!-- Subtítulo / Frase de Impacto -->
+      <p class="text-base sm:text-xl text-brand-blue font-medium tracking-tight mb-6">
+        Onde a pesquisa encontra a prática clínica.
+      </p>
+
+      <!-- Parágrafo descritivo -->
+      <p class="text-sm sm:text-base text-slate-300 font-normal leading-relaxed max-w-3xl mb-10" data-i18n="hero_lead">
+        Reunimos pesquisadores dedicados a investigar a intersecção entre biologia, ambiente e expressão comportamental, unindo psiquiatria computacional, modelagem preditiva e investigações epidemiológicas de grande impacto populacional.
+      </p>
+
+      <!-- Botões de Ação -->
+      <div class="flex flex-wrap items-center gap-3 mb-16">
+        <a href="#eixos" class="inline-flex items-center gap-2 bg-brand-lilac hover:bg-brand-lilac-hover text-white font-bold text-xs sm:text-sm px-6 py-3.5 rounded-full transition-all shadow-sm">
+          <span data-i18n="hero_btn_axes">Explorar Eixos de Pesquisa</span>
+          <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 14l-7 7m0 0l-7-7m7 7V3"/></svg>
+        </a>
+        <a href="#equipe" class="inline-flex items-center gap-2 bg-white/10 hover:bg-white/15 text-white font-semibold text-xs sm:text-sm px-6 py-3.5 rounded-full border border-white/20 transition-all">
+          <span data-i18n="hero_btn_team">Ver Equipe</span>
+        </a>
+      </div>
+
+      <!-- Resumo Estrutural Minimalista -->
+      <div class="grid grid-cols-2 sm:grid-cols-4 gap-6 pt-8 border-t border-white/10 max-w-5xl">
+        <div>
+          <div class="text-2xl lg:text-3xl font-extrabold text-white tracking-tight">05</div>
+          <div class="text-xs text-slate-400 mt-1 font-medium" data-i18n="stat_axes">Eixos Temáticos</div>
+        </div>
+        <div>
+          <div class="text-2xl lg:text-3xl font-extrabold text-white tracking-tight">27</div>
+          <div class="text-xs text-slate-400 mt-1 font-medium" data-i18n="stat_team">Integrantes Ativos</div>
+        </div>
+        <div>
+          <div class="text-2xl lg:text-3xl font-extrabold text-white tracking-tight">100%</div>
+          <div class="text-xs text-slate-400 mt-1 font-medium" data-i18n="stat_translational">Pesquisa Translacional</div>
+        </div>
+        <div>
+          <div class="text-2xl lg:text-3xl font-extrabold text-white tracking-tight">UFCSPA</div>
+          <div class="text-xs text-slate-400 mt-1 font-medium" data-i18n="stat_location">Porto Alegre / RS</div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ========================================================================= -->
+  <!-- SOBRE O LAB & LIDERANÇA (Com foto do Prof. Flávio e texto ajustado) -->
+  <!-- ========================================================================= -->
+  <section id="sobre" class="py-24 bg-brand-cream border-b border-slate-200">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="max-w-3xl text-left mb-14">
+        <span class="text-xs font-bold tracking-widest text-brand-slate uppercase block mb-2" data-i18n="about_tag">
+          01 · Sobre o Laboratório
+        </span>
+        <h2 class="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-brand-navy tracking-tight uppercase leading-tight" data-i18n="about_title">
+          Investigação translacional em saúde mental e comportamento.
+        </h2>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+        
+        <!-- Manifesto -->
+        <div class="lg:col-span-7 space-y-5 text-left">
+          <p class="text-base sm:text-lg text-slate-800 leading-relaxed font-medium" data-i18n="about_p1">
+            O <strong>LIFE Lab</strong> está sediado na Universidade Federal de Ciências da Saúde de Porto Alegre (UFCSPA) e reúne pesquisadores dedicados a investigar a intersecção complexa entre <strong>biologia, ambiente e expressão comportamental</strong>.
+          </p>
+          <p class="text-sm sm:text-base text-slate-600 leading-relaxed font-normal" data-i18n="about_p2">
+            Sob a supervisão principal do <strong>Prof. Dr. Flávio Shansis</strong>, nosso grupo desenvolve investigações translacionais de ponta, unindo revisões sistemáticas, <strong>psiquiatria computacional, modelagem de dados</strong>, triagem digital baseada em protocolos e estudos epidemiológicos de grande impacto em saúde mental.
+          </p>
+        </div>
+
+        <!-- Card de Liderança com a foto real do Prof. Flávio -->
+        <div class="lg:col-span-5 flex flex-col gap-4">
+          <div class="bg-white rounded-3xl p-6 sm:p-8 border border-slate-200 shadow-sm text-left">
+            <div class="flex items-center gap-4 mb-5">
+              <div class="w-16 h-16 rounded-2xl bg-brand-navy text-white font-bold text-lg flex items-center justify-center shrink-0 overflow-hidden shadow-inner">
+                <img src="./flavio.jpeg" alt="Prof. Dr. Flávio Shansis" class="w-full h-full object-cover" onerror="this.onerror=null;this.src='';">
+              </div>
+              <div class="overflow-hidden">
+                <span class="text-[10px] font-extrabold text-brand-lilac uppercase tracking-wider block" data-i18n="leader1_tag">Supervisão Principal · PI</span>
+                <h3 class="text-base font-black text-brand-navy truncate">Prof. Dr. Flávio Shansis</h3>
+                <p class="text-xs text-slate-500 truncate" data-i18n="leader1_role">Direção Geral & Pesquisa em Psiquiatria</p>
+              </div>
+            </div>
+            
+            <p class="text-xs text-slate-600 leading-relaxed mb-5">
+              Docente e pesquisador sênior em psiquiatria e neurodesenvolvimento na UFCSPA, liderando a diretoria científica e a supervisão geral dos eixos de pesquisa do LIFE Lab.
+            </p>
+
+            <div class="pt-4 border-t border-slate-100 flex items-center justify-between text-xs">
+              <span class="text-slate-400 font-medium">UFCSPA</span>
+              <a href="http://lattes.cnpq.br/" target="_blank" rel="noopener noreferrer" class="font-bold text-brand-lilac hover:underline">Currículo Lattes ↗</a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ========================================================================= -->
+  <!-- EIXOS DE PESQUISA -->
+  <!-- ========================================================================= -->
+  <section id="eixos" class="py-24 bg-brand-cream border-b border-slate-200">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+      <div class="mb-10 text-left">
+        <span class="text-xs font-bold tracking-widest text-brand-slate uppercase" data-i18n="axes_tag">02 · Eixos de Pesquisa</span>
+      </div>
+
+      <!-- PURPLE POSTER BLOCK -->
+      <div class="eixos-poster">
+        <div class="grid" style="grid-template-columns: auto 1fr;">
+
+          <div class="flex items-center justify-center px-6 py-10 sm:px-10" style="border-right: 1px solid rgba(11,20,36,0.25);">
+            <span class="vertical-label select-none">EIXOS DE<br>PESQUISA</span>
+          </div>
+
+          <div class="flex flex-col">
+            <div class="p-8 sm:p-10" style="border-bottom: 1px solid rgba(11,20,36,0.25);">
+              <div class="flex items-center gap-3 mb-4">
+                <svg width="32" height="32" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                  <path d="M4 4L24 24M24 24V10M24 24H10" stroke="#0B1424" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                <svg width="32" height="32" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                  <path d="M4 4L24 24M24 24V10M24 24H10" stroke="#0B1424" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </div>
+              <p class="text-base sm:text-lg font-normal leading-snug" style="color:#0B1424;">
+                O LIFE LAB ESTÁ<br>ORGANIZADO EM
+                <strong class="font-black" style="color:#0B1424;"> CINCO<br>EIXOS</strong>
+                DE PESQUISA
+              </p>
+            </div>
+
+            <div class="p-8 sm:p-10">
+              <div id="poster-axis-list">
+                <button type="button" class="poster-axis-btn" data-axis="0">
+                  <span class="text-base sm:text-lg font-black uppercase italic tracking-tight" style="color:white;">
+                    <span class="axis-plus" style="color:#0B1424; font-weight:900;">+&nbsp;</span>EDUCAÇÃO MÉDICA
+                  </span>
+                </button>
+                <button type="button" class="poster-axis-btn" data-axis="1">
+                  <span class="text-base sm:text-lg font-black uppercase tracking-tight" style="color:white;">
+                    <span class="axis-plus" style="color:#0B1424; font-weight:900;">+&nbsp;</span>EVENTOS CLIMÁTICOS EXTREMOS
+                  </span>
+                </button>
+                <button type="button" class="poster-axis-btn" data-axis="2">
+                  <span class="text-base sm:text-lg font-black uppercase italic tracking-tight" style="color:white;">
+                    <span class="axis-plus" style="color:#0B1424; font-weight:900;">+&nbsp;</span>TDAH
+                  </span>
+                </button>
+                <button type="button" class="poster-axis-btn" data-axis="3">
+                  <span class="text-base sm:text-lg font-black uppercase italic tracking-tight" style="color:white;">
+                    <span class="axis-plus" style="color:#0B1424; font-weight:900;">+&nbsp;</span>SUICÍDIO
+                  </span>
+                </button>
+                <button type="button" class="poster-axis-btn" data-axis="4">
+                  <span class="text-base sm:text-lg font-black uppercase italic tracking-tight" style="color:white;">
+                    <span class="axis-plus" style="color:#0B1424; font-weight:900;">+&nbsp;</span>OUTROS
+                  </span>
+                </button>
+              </div>
+            </div>
+
+            <div class="px-8 sm:px-10 py-4" style="border-top: 1px solid rgba(11,20,36,0.25); background: rgba(11,20,36,0.12);">
+              <p class="text-xs sm:text-sm font-bold uppercase tracking-widest" style="color:#0B1424;">
+                NOSSA ATUAÇÃO EM PESQUISA É MULTIDISCIPLINAR E CONJUNTA
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- EXPANDED PANELS -->
+      <div class="axis-panel mt-0" id="axis-panel-0">
+        <div class="mt-4 bg-brand-navy rounded-3xl p-8 text-white text-left">
+          <div class="flex items-center gap-2 mb-4">
+            <span class="text-xs font-bold px-3 py-1 rounded-full bg-brand-lilac/30 text-white uppercase">Eixo 01</span>
+            <span class="font-black text-base sm:text-lg uppercase tracking-tight" data-i18n="axis1_name">EDUCAÇÃO MÉDICA</span>
+          </div>
+          <p class="text-sm text-slate-300 mb-6" data-i18n="axis1_focus_desc">Inovações metodológicas, validação de instrumentos psicométricos e simulação realística aplicada ao ensino médico e à formação em saúde.</p>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div class="bg-white/5 p-4 rounded-2xl border border-white/8">
+              <span class="text-[10px] font-bold text-brand-lilac uppercase block" data-i18n="axis_proj_label">Projeto Vigente</span>
+              <strong class="text-sm text-white block mt-0.5">Projeto AVATAR</strong>
+              <p class="text-xs text-slate-300 mt-1" data-i18n="axis1_p1_desc">Validação de escalas psicométricas e desenvolvimento de ambientes virtuais aplicados à prática clínica.</p>
+              <span class="text-[11px] text-slate-400 block mt-3">Daniel Pasini, Vinicius Soares, Cristiane Mondadori, Bruno Costa, Nicholas Storch.</span>
+            </div>
+            <div class="bg-white/5 p-4 rounded-2xl border border-white/8">
+              <span class="text-[10px] font-bold text-brand-lilac uppercase block" data-i18n="axis_proj_label">Projeto Vigente</span>
+              <strong class="text-sm text-white block mt-0.5">Simulação Realística</strong>
+              <p class="text-xs text-slate-300 mt-1" data-i18n="axis1_p2_desc">Implementação e avaliação de cenários imersivos no ensino médico e semiologia psiquiátrica.</p>
+              <span class="text-[11px] text-slate-400 block mt-3">Vitório Serafim, Luiza Schiroky, Gabriel Guilioti.</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="axis-panel mt-0" id="axis-panel-1">
+        <div class="mt-4 bg-brand-navy rounded-3xl p-8 text-white text-left">
+          <div class="flex items-center gap-2 mb-4">
+            <span class="text-xs font-bold px-3 py-1 rounded-full bg-brand-blue/20 text-brand-blue uppercase">Eixo 02</span>
+            <span class="font-black text-base sm:text-lg uppercase tracking-tight" data-i18n="axis2_name">EVENTOS CLIMÁTICOS EXTREMOS</span>
+          </div>
+          <p class="text-sm text-slate-300 mb-6" data-i18n="axis2_focus_desc">Avaliação epidemiológica rigorosa dos impactos de desastres hidrológicos e climáticos na saúde mental da população, com ênfase em transtorno de estresse pós-traumático (TEPT).</p>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div class="bg-white/5 p-4 rounded-2xl border border-white/8">
+              <span class="text-[10px] font-bold text-brand-lilac uppercase block" data-i18n="axis_proj_label">Projeto Vigente</span>
+              <strong class="text-sm text-white block mt-0.5">RS — TEPT e Eventos Hidrológicos</strong>
+              <p class="text-xs text-slate-300 mt-1" data-i18n="axis2_p1_desc">Investigação dos desdobramentos psiquiátricos pós-desastres no Rio Grande do Sul.</p>
+              <span class="text-[11px] text-slate-400 block mt-3">Daniel Dallavalle, Italo Abrão, Guilherme Escobar.</span>
+            </div>
+            <div class="bg-white/5 p-4 rounded-2xl border border-white/8">
+              <span class="text-[10px] font-bold text-brand-lilac uppercase block" data-i18n="axis_proj_label">Projeto Vigente</span>
+              <strong class="text-sm text-white block mt-0.5">Impacto dos Eventos no RS</strong>
+              <p class="text-xs text-slate-300 mt-1" data-i18n="axis2_p2_desc">Análise populacional aprofundada de vulnerabilidades e repercussões psicológicas.</p>
+              <span class="text-[11px] text-slate-400 block mt-3">Marcos Cima, David Nusbaum, Guilherme Andary.</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="axis-panel mt-0" id="axis-panel-2">
+        <div class="mt-4 bg-brand-navy rounded-3xl p-8 text-white text-left">
+          <div class="flex items-center gap-2 mb-4">
+            <span class="text-xs font-bold px-3 py-1 rounded-full bg-brand-slate/30 text-slate-200 uppercase">Eixo 03</span>
+            <span class="font-black text-base sm:text-lg uppercase tracking-tight" data-i18n="axis3_name">TDAH &amp; FENÓTIPOS COMPORTAMENTAIS</span>
+          </div>
+          <p class="text-sm text-slate-300 mb-6" data-i18n="axis3_focus_desc">Investigação aprofundada do TDAH, ideação suicida, influência do ambiente construído e terapia hormonal.</p>
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+            <div class="bg-white/5 p-4 rounded-2xl border border-white/8">
+              <span class="text-[10px] font-bold text-brand-lilac uppercase block" data-i18n="axis_proj_label">Projeto Vigente</span>
+              <strong class="text-sm text-white block mt-0.5">RS — TDAH e Suicídio</strong>
+              <p class="text-xs text-slate-300 mt-1" data-i18n="axis3_p1_desc">Estudo correlacional de coorte investigando o risco e a intersecção fenotípica.</p>
+              <span class="text-[11px] text-slate-400 block mt-3">Gabriel Rocha, Pedro Dytz, Enrico Villeti.</span>
+            </div>
+            <div class="bg-white/5 p-4 rounded-2xl border border-white/8">
+              <span class="text-[10px] font-bold text-brand-lilac uppercase block" data-i18n="axis_proj_label">Projeto Vigente</span>
+              <strong class="text-sm text-white block mt-0.5">Ambientes Construídos</strong>
+              <p class="text-xs text-slate-300 mt-1" data-i18n="axis3_p2_desc">Impacto do design arquitetônico e ambiente sensorial em adultos com TDAH.</p>
+              <span class="text-[11px] text-slate-400 block mt-3">Arthur Canhada, Ana Paula, Felipe Passos.</span>
+            </div>
+            <div class="bg-white/5 p-4 rounded-2xl border border-white/8">
+              <span class="text-[10px] font-bold text-brand-lilac uppercase block" data-i18n="axis_proj_label">Projeto Vigente</span>
+              <strong class="text-sm text-white block mt-0.5">TDAH e TH &amp; Climma</strong>
+              <p class="text-xs text-slate-300 mt-1" data-i18n="axis3_p3_desc">Investigação sobre terapia hormonal e modulações fenotípicas.</p>
+              <span class="text-[11px] text-slate-400 block mt-3">Marcelo Bizzi.</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="axis-panel mt-0" id="axis-panel-3">
+        <div class="mt-4 bg-brand-navy rounded-3xl p-8 text-white text-left">
+          <div class="flex items-center gap-2 mb-4">
+            <span class="text-xs font-bold px-3 py-1 rounded-full bg-emerald-500/20 text-emerald-300 uppercase">Eixo 04</span>
+            <span class="font-black text-base sm:text-lg uppercase tracking-tight" data-i18n="axis4_name">SUICÍDIO &amp; PREVENÇÃO</span>
+          </div>
+          <p class="text-sm text-slate-300 mb-6" data-i18n="axis4_focus_desc">Estudos epidemiológicos e intervenções voltadas à prevenção do suicídio e suporte comunitário.</p>
+          <div>
+            <div class="bg-white/5 p-4 rounded-2xl border border-white/8 max-w-md">
+              <span class="text-[10px] font-bold text-brand-lilac uppercase block" data-i18n="axis_proj_label">Projeto Vigente</span>
+              <strong class="text-sm text-white block mt-0.5">Projeto Vale a Vida</strong>
+              <p class="text-xs text-slate-300 mt-1" data-i18n="axis4_p1_desc">Iniciativa focada em estratégias de mitigação de risco e intervenção precoce.</p>
+              <span class="text-[11px] text-slate-400 block mt-3">Luiza Prolla (IC Voluntário).</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="axis-panel mt-0" id="axis-panel-4">
+        <div class="mt-4 bg-brand-navy rounded-3xl p-8 text-white text-left">
+          <div class="flex items-center gap-2 mb-4">
+            <span class="text-xs font-bold px-3 py-1 rounded-full bg-purple-500/20 text-purple-300 uppercase">Eixo 05</span>
+            <span class="font-black text-base sm:text-lg uppercase tracking-tight" data-i18n="axis5_name">OUTROS PROJETOS &amp; SAÚDE MENTAL TRANSVERSAL</span>
+          </div>
+          <p class="text-sm text-slate-300 mb-6" data-i18n="axis5_focus_desc">Investigação do bem-estar psiquiátrico em populações específicas de profissionais de saúde e desenvolvimento de protótipos digitais.</p>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div class="bg-white/5 p-4 rounded-2xl border border-white/8">
+              <span class="text-[10px] font-bold text-brand-lilac uppercase block" data-i18n="axis_proj_label">Projeto Vigente</span>
+              <strong class="text-sm text-white block mt-0.5">Saúde Mental dos Infectologistas</strong>
+              <p class="text-xs text-slate-300 mt-1" data-i18n="axis5_p1_desc">Avaliação do esgotamento e resiliência em médicos de linha de frente.</p>
+              <span class="text-[11px] text-slate-400 block mt-3">Carolina Marolli, Ana Laura.</span>
+            </div>
+            <div class="bg-white/5 p-4 rounded-2xl border border-white/8">
+              <span class="text-[10px] font-bold text-brand-lilac uppercase block" data-i18n="axis_proj_label">Projeto Vigente</span>
+              <strong class="text-sm text-white block mt-0.5">PROPESTH</strong>
+              <p class="text-xs text-slate-300 mt-1" data-i18n="axis5_p2_desc">Estudos especiais em saúde mental e suporte analítico de dados.</p>
+              <span class="text-[11px] text-slate-400 block mt-3">Karina Bastos, Matheus Otten.</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ========================================================================= -->
+  <!-- CORPO CIENTÍFICO (Cards com Slot de Foto / Avatar Limpo e Profissional) -->
+  <!-- ========================================================================= -->
+  <section id="equipe" class="py-24 bg-brand-cream border-b border-slate-200">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <!-- Section Header -->
+      <div class="flex flex-col sm:flex-row sm:items-end justify-between mb-10 text-left">
+        <div>
+          <span class="text-xs font-bold tracking-widest text-brand-slate uppercase block mb-2" data-i18n="team_tag">
+            03 · Corpo Científico
+          </span>
+          <h2 class="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-brand-navy tracking-tight uppercase leading-tight" data-i18n="team_title">
+            PESQUISADORES
+          </h2>
+        </div>
+        <p class="text-xs text-slate-500 font-medium mt-2 sm:mt-0" data-i18n="team_click_hint">
+          Toque em qualquer integrante para abrir o perfil acadêmico e projetos.
+        </p>
+      </div>
+
+      <!-- Controls: Categorias + Busca -->
+      <div class="flex flex-col sm:flex-row gap-4 items-stretch sm:items-center justify-between mb-8">
+        <div class="flex flex-wrap items-center gap-2 text-xs font-semibold" id="team-filters">
+          <button data-filter="all" class="filter-btn active bg-brand-navy text-white px-4 py-2 rounded-full transition-all" data-i18n="filter_all">Todos</button>
+          <button data-filter="lideranca" class="filter-btn bg-white hover:bg-slate-100 text-slate-700 px-4 py-2 rounded-full border border-slate-200 transition-all" data-i18n="filter_lead">Liderança</button>
+          <button data-filter="pos" class="filter-btn bg-white hover:bg-slate-100 text-slate-700 px-4 py-2 rounded-full border border-slate-200 transition-all" data-i18n="filter_grad">Pós-Graduação</button>
+          <button data-filter="associados" class="filter-btn bg-white hover:bg-slate-100 text-slate-700 px-4 py-2 rounded-full border border-slate-200 transition-all" data-i18n="filter_assoc">Associados</button>
+          <button data-filter="ic" class="filter-btn bg-white hover:bg-slate-100 text-slate-700 px-4 py-2 rounded-full border border-slate-200 transition-all" data-i18n="filter_undergrad">IC & Bolsistas</button>
+        </div>
+
+        <div class="relative w-full sm:w-72">
+          <input type="text" id="member-search" placeholder="Filtrar por nome ou projeto..." data-i18n-placeholder="search_placeholder" class="w-full text-xs font-medium bg-white border border-slate-200 rounded-full px-4 py-2.5 pl-9 text-slate-800 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-brand-lilac">
+          <svg class="w-4 h-4 text-slate-400 absolute left-3.5 top-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
+          </svg>
+        </div>
+      </div>
+
+      <!-- Directory Grid -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 text-left" id="team-grid"></div>
+
+      <!-- No results message -->
+      <div id="no-results" class="hidden text-center py-12">
+        <p class="text-slate-500 text-xs" data-i18n="search_no_results">Nenhum integrante encontrado para os termos buscados.</p>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ========================================================================= -->
+  <!-- ONDE ESTAMOS & CONTATO -->
+  <!-- ========================================================================= -->
+  <section id="onde-estamos" class="py-20 bg-brand-cream-dark border-b border-slate-200">
+    <div id="contato" class="scroll-mt-20"></div>
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="bg-white rounded-3xl p-8 sm:p-10 border border-slate-200 shadow-sm">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center text-left">
+          
+          <div class="lg:col-span-5 relative rounded-2xl overflow-hidden aspect-[4/3] bg-brand-navy shadow-inner group">
+            <img src="./img-UFCSPA-ochre.jpg" alt="Campus UFCSPA" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" onerror="this.onerror=null;this.src='./img-UFCSPA.jpg';">
+            <div class="absolute inset-0 bg-gradient-to-t from-brand-navy/90 via-transparent to-transparent"></div>
+            <div class="absolute bottom-4 left-4 right-4 text-white">
+              <span class="text-[10px] font-bold uppercase tracking-wider text-brand-lilac block" data-i18n="location_card_badge">Sede Institucional</span>
+              <span class="text-xs font-bold block">Campus Central UFCSPA</span>
+              <span class="text-[11px] text-slate-300 block">Centro Histórico · Porto Alegre / RS</span>
+            </div>
+          </div>
+
+          <div class="lg:col-span-7 space-y-5">
+            <div>
+              <span class="text-xs font-bold tracking-widest text-brand-slate uppercase block mb-1" data-i18n="location_tag">
+                04 · Localização & Contato
+              </span>
+              <h3 class="text-2xl sm:text-3xl font-black text-brand-navy tracking-tight uppercase" data-i18n="location_title">
+                ONDE ESTAMOS
+              </h3>
+            </div>
+
+            <p class="text-sm sm:text-base text-slate-600 leading-relaxed font-normal" data-i18n="location_desc">
+              O LIFE Lab está sediado no Departamento de Psiquiatria e Medicina Legal da UFCSPA, no Centro Histórico de Porto Alegre.
+            </p>
+
+            <div class="pt-2 space-y-1.5 text-xs sm:text-sm text-slate-700 font-medium">
+              <p><strong class="font-semibold text-brand-navy">Endereço:</strong> Rua Sarmento Leite, 245 — CEP 90050-170, Porto Alegre/RS</p>
+              <p><strong class="font-semibold text-brand-navy">E-mail:</strong> <a href="mailto:lifelab@ufcspa.edu.br" class="text-brand-lilac hover:underline font-bold">lifelab@ufcspa.edu.br</a></p>
+            </div>
+
+            <div class="pt-3 flex flex-wrap gap-3">
+              <a href="mailto:lifelab@ufcspa.edu.br" class="inline-flex items-center gap-2 bg-brand-navy text-white text-xs sm:text-sm font-bold px-5 py-2.5 rounded-full hover:bg-brand-surface transition-all">
+                <span data-i18n="btn_email">Enviar E-mail</span>
+                <span>↗</span>
+              </a>
+              <a href="https://www.ufcspa.edu.br" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 bg-slate-100 text-slate-700 text-xs sm:text-sm font-semibold px-5 py-2.5 rounded-full hover:bg-slate-200 transition-all">
+                <span>Portal UFCSPA</span>
+                <span>↗</span>
+              </a>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ========================================================================= -->
+  <!-- RODAPÉ -->
+  <!-- ========================================================================= -->
+  <footer class="bg-brand-dark text-slate-400 py-12 text-left">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6 pb-8 border-b border-white/10">
+        <div class="flex items-center gap-3">
+          <img src="./logo-white.png" alt="LIFE Lab" class="h-7 w-auto" onerror="this.onerror=null;this.src='./logo-main.png';">
+        </div>
+        <div class="text-xs text-slate-400">
+          Supervisão: <strong>Prof. Dr. Flávio Shansis</strong>
+        </div>
+      </div>
+
+      <div class="pt-6 flex flex-col sm:flex-row items-center justify-between text-xs text-slate-500 gap-3">
+        <div>© 2026 LIFE Lab — Laboratório Integrado de Fenótipos Comportamentais · UFCSPA</div>
+        <div class="flex items-center gap-4 text-xs font-medium">
+          <a href="#inicio" class="text-brand-lilac hover:underline" data-i18n="footer_top">Voltar ao Topo ↑</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+
+  <!-- ========================================================================= -->
+  <!-- MODAL DE PERFIL DO PESQUISADOR -->
+  <!-- ========================================================================= -->
+  <div id="member-modal" class="modal-backdrop fixed inset-0 z-50 flex items-center justify-center p-4 bg-brand-navy/70 backdrop-blur-sm" role="dialog" aria-modal="true">
+    <div class="modal-box bg-white rounded-3xl p-6 sm:p-8 max-w-lg w-full shadow-2xl border border-slate-200 text-left relative">
+      
+      <button type="button" id="modal-close-btn" class="absolute top-5 right-5 w-8 h-8 rounded-full bg-slate-100 hover:bg-slate-200 text-slate-600 flex items-center justify-center font-bold text-sm focus:outline-none" aria-label="Fechar">
+        ✕
+      </button>
+
+      <div class="flex items-start gap-4 mb-5">
+        <div id="modal-avatar" class="w-14 h-14 rounded-2xl bg-brand-navy text-brand-lilac font-black text-xl flex items-center justify-center shrink-0">
+          --
+        </div>
+        <div>
+          <span id="modal-role-badge" class="inline-block px-2.5 py-0.5 rounded-full bg-slate-100 text-slate-800 text-[10px] font-bold uppercase tracking-wider mb-1">
+            Cargo / Titulação
+          </span>
+          <h3 id="modal-name" class="text-lg sm:text-xl font-black text-brand-navy leading-tight">
+            Nome do Pesquisador
+          </h3>
+          <p id="modal-dept" class="text-xs text-slate-500 mt-0.5">
+            Universidade Federal de Ciências da Saúde de Porto Alegre
+          </p>
+        </div>
+      </div>
+
+      <div class="space-y-3 py-3 border-y border-slate-100 text-xs text-slate-700">
+        <div class="bg-slate-50 p-3 rounded-xl border border-slate-100">
+          <span class="text-[10px] font-bold text-slate-400 uppercase tracking-wider block" data-i18n="modal_project_label">Projeto Vinculado</span>
+          <span id="modal-project" class="text-xs font-bold text-brand-navy block mt-0.5">Nome do Projeto</span>
+        </div>
+        <div class="bg-slate-50 p-3 rounded-xl border border-slate-100">
+          <span class="text-[10px] font-bold text-slate-400 uppercase tracking-wider block" data-i18n="modal_axis_label">Eixo de Atuação</span>
+          <span id="modal-axis" class="text-xs font-medium text-slate-700 block mt-0.5">Eixo Temático</span>
+        </div>
+      </div>
+
+      <div class="mt-5 flex items-center justify-between text-xs">
+        <span class="text-slate-400 text-[11px]" data-i18n="modal_footer_label">LIFE Lab · UFCSPA</span>
+        <div class="flex items-center gap-2">
+          <a id="modal-lattes" href="http://lattes.cnpq.br/" target="_blank" rel="noopener noreferrer" class="font-bold text-brand-slate hover:text-brand-lilac bg-slate-100 px-3 py-1.5 rounded-full transition-colors">
+            Currículo Lattes ↗
+          </a>
+          <a id="modal-orcid" href="https://orcid.org/" target="_blank" rel="noopener noreferrer" class="font-bold text-emerald-700 hover:text-emerald-800 bg-emerald-50 px-3 py-1.5 rounded-full transition-colors">
+            ORCID ↗
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+
+  <!-- ========================================================================= -->
+  <!-- JAVASCRIPT -->
+  <!-- ========================================================================= -->
+  <script>
+    const teamMembers = [
+      { name: "Prof. Dr. Flávio Shansis", role: "Principal Investigator / Supervisão", category: "lideranca", project: "Direção Geral & Pesquisa em Psiquiatria", axis: "Direção Geral & Supervisão Geral" },
+      { name: "Felipe Passos", role: "Dirigente de Pesquisa", category: "lideranca", project: "Coordenação Geral & Eixo TDAH", axis: "Coordenação Geral de Pesquisa" },
+      { name: "Vinicius Soares", role: "Doutorando", category: "pos", project: "Eixo Educação Médica (Ambientes Virtuais)", axis: "Eixo 01 · Educação Médica" },
+      { name: "Daniel Pasini", role: "Mestrando", category: "pos", project: "Eixo Educação Médica (Validação de Escala)", axis: "Eixo 01 · Educação Médica" },
+      { name: "Daniel Dallavalle", role: "Mestrando", category: "pos", project: "Eixo Eventos Climáticos Extremos (TEPT)", axis: "Eixo 02 · Eventos Climáticos Extremos" },
+      { name: "Marcos Cima", role: "Doutorando", category: "pos", project: "Eixo Eventos Climáticos Extremos (Impacto RS)", axis: "Eixo 02 · Eventos Climáticos Extremos" },
+      { name: "Gabriel Rocha", role: "Mestrando", category: "pos", project: "Eixo TDAH (TDAH e Suicídio)", axis: "Eixo 03 · TDAH & Fenótipos Comportamentais" },
+      { name: "Arthur Canhada", role: "Mestrando", category: "pos", project: "Eixo TDAH (Ambientes Construídos)", axis: "Eixo 03 · TDAH & Fenótipos Comportamentais" },
+      { name: "Carolina Marolli", role: "Mestranda", category: "pos", project: "Saúde Mental dos Infectologistas", axis: "Eixo 05 · Outros Projetos & Saúde Transversal" },
+      { name: "Cristiane Mondadori", role: "Doutoranda", category: "pos", project: "Projeto AVATAR (Ambientes Virtuais)", axis: "Eixo 01 · Educação Médica" },
+      { name: "Marcelo Bizzi", role: "Pesquisador Associado", category: "associados", project: "Eixo TDAH (TDAH e TH & Climma)", axis: "Eixo 03 · TDAH & Fenótipos Comportamentais" },
+      { name: "Guilherme Andary", role: "Pesquisador Associado", category: "associados", project: "Eixo Eventos Climáticos Extremos", axis: "Eixo 02 · Eventos Climáticos Extremos" },
+      { name: "Vitório Serafim", role: "IC Voluntário / PIBID", category: "ic", project: "Simulação Realística (Ensino Médico)", axis: "Eixo 01 · Educação Médica" },
+      { name: "Luiza Schiroky", role: "IC Voluntário", category: "ic", project: "Simulação Realística (Ensino Médico)", axis: "Eixo 01 · Educação Médica" },
+      { name: "Gabriel Guilioti", role: "IC Voluntário", category: "ic", project: "Simulação Realística (Ensino Médico)", axis: "Eixo 01 · Educação Médica" },
+      { name: "Italo Abrão", role: "IC Voluntário", category: "ic", project: "Eventos Climáticos (TEPT RS)", axis: "Eixo 02 · Eventos Climáticos Extremos" },
+      { name: "Guilherme Escobar", role: "IC Voluntário", category: "ic", project: "Eventos Climáticos (TEPT RS)", axis: "Eixo 02 · Eventos Climáticos Extremos" },
+      { name: "David Nusbaum", role: "IC Voluntário", category: "ic", project: "Eventos Climáticos Extremos", axis: "Eixo 02 · Eventos Climáticos Extremos" },
+      { name: "Pedro Dytz", role: "IC Voluntário", category: "ic", project: "Eixo TDAH e Suicídio (Coorte RS)", axis: "Eixo 03 · TDAH & Fenótipos Comportamentais" },
+      { name: "Enrico Villeti", role: "IC Voluntário", category: "ic", project: "Eixo TDAH e Suicídio", axis: "Eixo 03 · TDAH & Fenótipos Comportamentais" },
+      { name: "Ana Paula", role: "IC Voluntário", category: "ic", project: "Eixo TDAH (Ambientes Construídos)", axis: "Eixo 03 · TDAH & Fenótipos Comportamentais" },
+      { name: "Luiza Prolla", role: "IC Voluntário", category: "ic", project: "Eixo Suicídio (Projeto Vale a Vida)", axis: "Eixo 04 · Suicídio & Prevenção" },
+      { name: "Ana Laura", role: "IC Voluntário", category: "ic", project: "Saúde Mental dos Infectologistas", axis: "Eixo 05 · Outros Projetos & Saúde Transversal" },
+      { name: "Karina Bastos", role: "IC Voluntário", category: "ic", project: "PROPESTH (Suporte Analítico)", axis: "Eixo 05 · Outros Projetos & Saúde Transversal" },
+      { name: "Matheus Otten", role: "IC Voluntário", category: "ic", project: "PROPESTH (Suporte Analítico)", axis: "Eixo 05 · Outros Projetos & Saúde Transversal" },
+      { name: "Bruno Costa", role: "Bolsista PIBIT", category: "ic", project: "Projeto AVATAR (Ambientes Virtuais)", axis: "Eixo 01 · Educação Médica" },
+      { name: "Nicholas Storch", role: "Bolsista PIBIC", category: "ic", project: "Projeto AVATAR (Ambientes Virtuais)", axis: "Eixo 01 · Educação Médica" }
+    ];
+
+    const translations = {
+      pt: {
+        nav_about: "Sobre",
+        nav_axes: "Eixos de Pesquisa",
+        nav_team: "Equipe",
+        nav_location: "Localização",
+        nav_contact: "Contato",
+        
+        hero_subtitle_tag: "Universidade Federal de Ciências da Saúde de Porto Alegre · UFCSPA",
+        hero_main_title: "LIFE Lab — Laboratório Integrado de Fenótipos Comportamentais",
+        hero_lead: "Reunimos pesquisadores dedicados a investigar a intersecção entre biologia, ambiente e expressão comportamental, unindo psiquiatria computacional, modelagem preditiva e investigações epidemiológicas de grande impacto populacional.",
+        hero_btn_axes: "Explorar Eixos de Pesquisa",
+        hero_btn_team: "Ver Equipe",
+        
+        stat_axes: "Eixos Temáticos",
+        stat_team: "Integrantes Ativos",
+        stat_translational: "Pesquisa Translacional",
+        stat_location: "Porto Alegre / RS",
+        
+        about_tag: "01 · Sobre o Laboratório",
+        about_title: "Investigação translacional em saúde mental e comportamento.",
+        about_p1: "O LIFE Lab está sediado na Universidade Federal de Ciências da Saúde de Porto Alegre (UFCSPA) e reúne pesquisadores dedicados a investigar a intersecção complexa entre biologia, ambiente e expressão comportamental.",
+        about_p2: "Sob a supervisão principal do Prof. Dr. Flávio Shansis, nosso grupo desenvolve investigações translacionais de ponta, unindo revisões sistemáticas, psiquiatria computacional, modelagem de dados, triagem digital baseada em protocolos e estudos epidemiológicos de grande impacto em saúde mental.",
+        
+        leader1_tag: "Supervisão Principal · PI",
+        leader1_role: "Direção Geral & Pesquisa em Psiquiatria",
+        
+        axes_tag: "02 · Eixos de Pesquisa",
+        
+        axis1_name: "EDUCAÇÃO MÉDICA",
+        axis2_name: "EVENTOS CLIMÁTICOS EXTREMOS",
+        axis3_name: "TDAH & FENÓTIPOS COMPORTAMENTAIS",
+        axis4_name: "SUICÍDIO & PREVENÇÃO",
+        axis5_name: "OUTROS PROJETOS & SAÚDE MENTAL TRANSVERSAL",
+        
+        axis_proj_label: "Projeto Vigente",
+        
+        axis1_focus_desc: "Inovações metodológicas, validação de instrumentos psicométricos e simulação realística aplicada ao ensino médico e à formação em saúde.",
+        axis1_p1_desc: "Validação de escalas psicométricas e desenvolvimento de ambientes virtuais aplicados à prática clínica.",
+        axis1_p2_desc: "Implementação e avaliação de cenários imersivos no ensino médico e semiologia psiquiátrica.",
+        
+        axis2_focus_desc: "Avaliação epidemiológica rigorosa dos impactos de desastres hidrológicos e climáticos na saúde mental da população, com ênfase em transtorno de estresse pós-traumático (TEPT).",
+        axis2_p1_desc: "Investigação dos desdobramentos psiquiátricos pós-desastres no Rio Grande do Sul.",
+        axis2_p2_desc: "Análise populacional aprofundada de vulnerabilidades e repercussões psicológicas.",
+        
+        axis3_focus_desc: "Investigação aprofundada do Transtorno do Déficit de Atenção com Hiperatividade (TDAH), ideação suicida, influência do ambiente construído e terapia hormonal.",
+        axis3_p1_desc: "Estudo correlacional de coorte investigando o risco e a intersecção fenotípica.",
+        axis3_p2_desc: "Impacto do design arquitetônico e ambiente sensorial em adultos com TDAH.",
+        axis3_p3_desc: "Investigação sobre terapia hormonal e modulações fenotípicas.",
+        
+        axis4_focus_desc: "Estudos epidemiológicos e intervenções voltadas à prevenção do suicídio e suporte comunitário.",
+        axis4_p1_desc: "Iniciativa focada em estratégias de mitigação de risco e intervenção precoce.",
+        
+        axis5_focus_desc: "Investigação do bem-estar psiquiátrico em populações específicas de profissionais de saúde e desenvolvimento de protótipos digitais.",
+        axis5_p1_desc: "Avaliação do esgotamento e resiliência em médicos de linha de frente.",
+        axis5_p2_desc: "Estudos especiais em saúde mental e suporte analítico de dados.",
+        
+        team_tag: "03 · Corpo Científico",
+        team_title: "PESQUISADORES",
+        team_click_hint: "Toque em qualquer integrante para abrir o perfil acadêmico e projetos.",
+        filter_all: "Todos",
+        filter_lead: "Liderança",
+        filter_grad: "Pós-Graduação",
+        filter_assoc: "Associados",
+        filter_undergrad: "IC & Bolsistas",
+        search_placeholder: "Filtrar por nome ou projeto...",
+        search_no_results: "Nenhum integrante encontrado para os termos buscados.",
+        
+        location_tag: "04 · Localização & Contato",
+        location_title: "ONDE ESTAMOS",
+        location_card_badge: "Sede Institucional",
+        location_desc: "O LIFE Lab está sediado no Departamento de Psiquiatria e Medicina Legal da UFCSPA, no Centro Histórico de Porto Alegre.",
+        btn_email: "Enviar E-mail",
+        footer_top: "Voltar ao Topo ↑",
+        
+        modal_project_label: "Projeto Vinculado",
+        modal_axis_label: "Eixo de Atuação",
+        modal_footer_label: "LIFE Lab · UFCSPA"
+      },
+      en: {
+        nav_about: "About",
+        nav_axes: "Research Axes",
+        nav_team: "Team",
+        nav_location: "Location",
+        nav_contact: "Contact",
+        
+        hero_subtitle_tag: "Federal University of Health Sciences of Porto Alegre · UFCSPA",
+        hero_main_title: "LIFE Lab — Integrated Laboratory of Behavioral Phenotypes",
+        hero_lead: "Gathering researchers dedicated to investigating the intersection between biology, environment, and behavioral expression through computational psychiatry, predictive modeling, and population-level epidemiological studies.",
+        hero_btn_axes: "Explore Research Axes",
+        hero_btn_team: "View Team",
+        
+        stat_axes: "Research Axes",
+        stat_team: "Active Members",
+        stat_translational: "Translational Science",
+        stat_location: "Porto Alegre / RS, Brazil",
+        
+        about_tag: "01 · About the Laboratory",
+        about_title: "Translational investigation in mental health and behavior.",
+        about_p1: "The LIFE Lab is based at the Federal University of Health Sciences of Porto Alegre (UFCSPA) and gathers researchers dedicated to investigating the intricate interplay between biology, environment, and behavioral phenotype expression.",
+        about_p2: "Under the principal supervision of Prof. Dr. Flávio Shansis, our group conducts leading-edge translational research, combining systematic reviews, computational psychiatry, data modeling, protocol-based digital screening, and high-impact epidemiological cohorts in mental health.",
+        
+        leader1_tag: "Principal Investigator · PI",
+        leader1_role: "General Direction & Psychiatry Research",
+        
+        axes_tag: "02 · Research Axes",
+        
+        axis1_name: "MEDICAL EDUCATION",
+        axis2_name: "EXTREME CLIMATE EVENTS",
+        axis3_name: "ADHD & BEHAVIORAL PHENOTYPES",
+        axis4_name: "SUICIDE & PREVENTION",
+        axis5_name: "SPECIAL PROJECTS & CROSS-CUTTING HEALTH",
+        
+        axis_proj_label: "Active Project",
+        
+        axis1_focus_desc: "Methodological innovations, psychometric scale validation, and realistic clinical simulation applied to medical training and health education.",
+        axis1_p1_desc: "Psychometric scale validation and development of virtual environments applied to clinical practice.",
+        axis1_p2_desc: "Implementation and evaluation of immersive scenarios in medical training and psychiatric semiology.",
+        
+        axis2_focus_desc: "Rigorous epidemiological assessment of the psychological aftermath of climate disasters, focusing on post-traumatic stress disorder (PTSD).",
+        axis2_p1_desc: "Investigation of psychiatric outcomes and post-disaster trauma in Rio Grande do Sul.",
+        axis2_p2_desc: "In-depth population analysis of biopsychosocial vulnerabilities.",
+        
+        axis3_focus_desc: "In-depth investigation of Attention Deficit Hyperactivity Disorder (ADHD), suicidal ideation, built-environment sensory design, and hormone therapy.",
+        axis3_p1_desc: "Correlational cohort study analyzing risk and phenotypic intersection.",
+        axis3_p2_desc: "Impact of architectural design and sensory environment on adults with ADHD.",
+        axis3_p3_desc: "Cross-sectional study on hormone therapy and phenotypic modulations.",
+        
+        axis4_focus_desc: "Translational epidemiological studies and evidence-based interventions aimed at early risk detection, suicide prevention, and community support.",
+        axis4_p1_desc: "Initiative focused on risk mitigation strategies and early clinical intervention.",
+        
+        axis5_focus_desc: "Investigation of psychiatric well-being in frontline medical professionals, digital screening prototypes, and multi-institutional data analytics.",
+        axis5_p1_desc: "Burnout, resilience, and stress assessment in frontline physicians.",
+        axis5_p2_desc: "Special studies in mental health and data analytical support.",
+        
+        team_tag: "03 · Scientific Staff",
+        team_title: "RESEARCHERS",
+        team_click_hint: "Click any member to open their academic profile and projects.",
+        filter_all: "All",
+        filter_lead: "Leadership",
+        filter_grad: "Graduate",
+        filter_assoc: "Associates",
+        filter_undergrad: "Undergraduate",
+        search_placeholder: "Filter by name or project...",
+        search_no_results: "No team members found matching your search.",
+        
+        location_tag: "04 · Location & Contact",
+        location_title: "WHERE WE ARE",
+        location_card_badge: "Institutional Campus",
+        location_desc: "The LIFE Lab is located in the Department of Psychiatry at UFCSPA, in the Historic Center of Porto Alegre, RS, Brazil.",
+        btn_email: "Send E-mail",
+        footer_top: "Back to Top ↑",
+        
+        modal_project_label: "Assigned Project",
+        modal_axis_label: "Research Axis",
+        modal_footer_label: "LIFE Lab · UFCSPA"
+      }
+    };
+
+    let currentLang = 'pt';
+
+    function setLanguage(lang) {
+      currentLang = lang;
+      const dict = translations[lang] || translations.pt;
+      
+      document.querySelectorAll('[data-i18n]').forEach(el => {
+        const key = el.getAttribute('data-i18n');
+        if (dict[key]) {
+          el.textContent = dict[key];
+        }
+      });
+
+      document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
+        const key = el.getAttribute('data-i18n-placeholder');
+        if (dict[key]) {
+          el.setAttribute('placeholder', dict[key]);
+        }
+      });
+
+      const btnPt = document.getElementById('btn-lang-pt');
+      const btnEn = document.getElementById('btn-lang-en');
+
+      if (lang === 'pt') {
+        btnPt.className = 'px-2.5 py-1 rounded-full bg-brand-lilac text-white font-bold shadow-sm transition-all';
+        btnEn.className = 'px-2.5 py-1 rounded-full text-slate-300 hover:text-white font-medium transition-all';
+        document.documentElement.lang = 'pt-BR';
+      } else {
+        btnEn.className = 'px-2.5 py-1 rounded-full bg-brand-lilac text-white font-bold shadow-sm transition-all';
+        btnPt.className = 'px-2.5 py-1 rounded-full text-slate-300 hover:text-white font-medium transition-all';
+        document.documentElement.lang = 'en';
+      }
+
+      localStorage.setItem('lifelab_lang', lang);
+    }
+
+    function normalizeStr(str) {
+      return (str || '')
+        .normalize("NFD")
+        .replace(/[\u0300-\u036f]/g, "")
+        .toLowerCase();
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      const btnPt = document.getElementById('btn-lang-pt');
+      const btnEn = document.getElementById('btn-lang-en');
+      if (btnPt) btnPt.addEventListener('click', () => setLanguage('pt'));
+      if (btnEn) btnEn.addEventListener('click', () => setLanguage('en'));
+
+      if (localStorage.getItem('lifelab_lang') === 'en') {
+        setLanguage('en');
+      }
+
+      const mobileBtn = document.getElementById('mobile-menu-btn');
+      const mobileMenu = document.getElementById('mobile-menu');
+      const hamburgerIcon = document.getElementById('hamburger-icon');
+      const closeIcon = document.getElementById('close-icon');
+
+      if (mobileBtn && mobileMenu) {
+        mobileBtn.addEventListener('click', () => {
+          const isOpen = !mobileMenu.classList.contains('hidden');
+          if (isOpen) {
+            mobileMenu.classList.add('hidden');
+            hamburgerIcon.classList.remove('hidden');
+            closeIcon.classList.add('hidden');
+          } else {
+            mobileMenu.classList.remove('hidden');
+            hamburgerIcon.classList.add('hidden');
+            closeIcon.classList.remove('hidden');
+          }
+        });
+
+        mobileMenu.querySelectorAll('a').forEach(link => {
+          link.addEventListener('click', () => {
+            mobileMenu.classList.add('hidden');
+            hamburgerIcon.classList.remove('hidden');
+            closeIcon.classList.add('hidden');
+          });
+        });
+      }
+
+      const posterAxisBtns = document.querySelectorAll('#poster-axis-list .poster-axis-btn');
+      const axisPanels = document.querySelectorAll('.axis-panel');
+
+      posterAxisBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+          const idx = btn.getAttribute('data-axis');
+          const panel = document.getElementById('axis-panel-' + idx);
+          const isOpen = panel && panel.classList.contains('open');
+
+          axisPanels.forEach(p => p.classList.remove('open'));
+          posterAxisBtns.forEach(b => b.classList.remove('active-axis'));
+
+          if (!isOpen && panel) {
+            panel.classList.add('open');
+            btn.classList.add('active-axis');
+            setTimeout(() => {
+              panel.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+            }, 50);
+          }
+        });
+      });
+
+      const teamGrid = document.getElementById('team-grid');
+      const noResults = document.getElementById('no-results');
+      const searchInput = document.getElementById('member-search');
+      const filterBtns = document.querySelectorAll('#team-filters .filter-btn');
+
+      let currentCategory = 'all';
+      let currentQuery = '';
+
+      function getInitials(name) {
+        const parts = name.replace('Prof. Dr. ', '').trim().split(' ');
+        if (parts.length >= 2) {
+          return (parts[0][0] + parts[parts.length - 1][0]).toUpperCase();
+        }
+        return name.substring(0, 2).toUpperCase();
+      }
+
+      function renderTeam() {
+        if (!teamGrid) return;
+        teamGrid.innerHTML = '';
+
+        const q = normalizeStr(currentQuery);
+        let visibleCount = 0;
+
+        teamMembers.forEach((member, index) => {
+          const matchesCategory = (currentCategory === 'all' || member.category === currentCategory);
+          const nameNorm = normalizeStr(member.name);
+          const projNorm = normalizeStr(member.project);
+          const roleNorm = normalizeStr(member.role);
+          const matchesQuery = (!q || nameNorm.includes(q) || projNorm.includes(q) || roleNorm.includes(q));
+
+          if (matchesCategory && matchesQuery) {
+            visibleCount++;
+
+            const card = document.createElement('div');
+            card.className = "group bg-white rounded-2xl p-4 border border-slate-200 shadow-sm hover:shadow-md hover:border-brand-navy transition-all cursor-pointer flex items-center justify-between";
+            card.setAttribute('data-index', index);
+
+            // Avatar profissional neutro (pronto para receber imagem ou iniciais consistentes)
+            card.innerHTML = `
+              <div class="flex items-center gap-3.5 overflow-hidden">
+                <div class="w-10 h-10 rounded-xl bg-brand-navy text-brand-lilac font-bold text-xs flex items-center justify-center shrink-0 shadow-inner">
+                  ${getInitials(member.name)}
+                </div>
+                <div class="overflow-hidden">
+                  <h4 class="text-xs font-bold text-brand-navy truncate group-hover:text-brand-lilac transition-colors">${member.name}</h4>
+                  <p class="text-[11px] text-slate-500 truncate">${member.role}</p>
+                </div>
+              </div>
+              <div class="w-6 h-6 rounded-full bg-slate-50 group-hover:bg-brand-navy group-hover:text-white text-slate-400 flex items-center justify-center text-xs shrink-0 transition-colors">
+                ↗
+              </div>
+            `;
+
+            card.addEventListener('click', () => openMemberModal(member));
+            teamGrid.appendChild(card);
+          }
+        });
+
+        if (noResults) {
+          if (visibleCount === 0) {
+            noResults.classList.remove('hidden');
+          } else {
+            noResults.classList.add('hidden');
+          }
+        }
+      }
+
+      filterBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+          filterBtns.forEach(b => {
+            b.classList.remove('bg-brand-navy', 'text-white');
+            b.classList.add('bg-white', 'text-slate-700', 'border', 'border-slate-200');
+          });
+          btn.classList.add('bg-brand-navy', 'text-white');
+          btn.classList.remove('bg-white', 'text-slate-700', 'border', 'border-slate-200');
+
+          currentCategory = btn.getAttribute('data-filter') || 'all';
+          renderTeam();
+        });
+      });
+
+      if (searchInput) {
+        searchInput.addEventListener('input', (e) => {
+          currentQuery = e.target.value.trim();
+          renderTeam();
+        });
+      }
+
+      renderTeam();
+
+      const modal = document.getElementById('member-modal');
+      const modalCloseBtn = document.getElementById('modal-close-btn');
+      const modalAvatar = document.getElementById('modal-avatar');
+      const modalName = document.getElementById('modal-name');
+      const modalRoleBadge = document.getElementById('modal-role-badge');
+      const modalProject = document.getElementById('modal-project');
+      const modalAxis = document.getElementById('modal-axis');
+
+      function openMemberModal(member) {
+        if (!modal) return;
+        modalAvatar.textContent = getInitials(member.name);
+        modalName.textContent = member.name;
+        modalRoleBadge.textContent = member.role;
+        modalProject.textContent = member.project;
+        modalAxis.textContent = member.axis;
+        modal.classList.add('open');
+      }
+
+      function closeModal() {
+        if (modal) modal.classList.remove('open');
+      }
+
+      if (modalCloseBtn) modalCloseBtn.addEventListener('click', closeModal);
+      if (modal) {
+        modal.addEventListener('click', (e) => {
+          if (e.target === modal) closeModal();
+        });
+      }
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') closeModal();
+      });
+
+    });
+  </script>
+
+</body>
+</html>
