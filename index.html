@@ -86,6 +86,25 @@
       background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 220 220' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
     }
 
+    /* Retrato P&B granulado (grainy) no modal do integrante */
+    .bw-grainy-portrait {
+      position: relative;
+      background: #070D18;
+      overflow: hidden;
+    }
+    .bw-grainy-portrait img {
+      filter: grayscale(100%) contrast(1.18) brightness(0.96);
+    }
+    .bw-grainy-portrait::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      opacity: 0.24;
+      mix-blend-mode: overlay;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.92' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23g)'/%3E%3C/svg%3E");
+    }
+
     .eixos-poster {
       background: #7D70AE;
       border-radius: 24px;
@@ -144,7 +163,6 @@
       opacity: 1;
     }
 
-    /* ABAS INTERATIVAS (PUBLICAÇÕES & EVENTOS) */
     .prod-tab-panel {
       display: none;
       animation: fadeSlideUp 0.35s cubic-bezier(0.16, 1, 0.3, 1);
@@ -184,9 +202,6 @@
 </head>
 <body class="bg-brand-cream text-slate-800 font-sans antialiased selection:bg-brand-lilac selection:text-white">
 
-  <!-- ========================================================================= -->
-  <!-- NAVBAR FIXA -->
-  <!-- ========================================================================= -->
   <header class="fixed top-0 left-0 right-0 z-50 transition-all duration-300" id="main-header">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-4 pb-2">
       <nav class="glass-nav rounded-full px-6 py-3 flex items-center justify-between shadow-2xl transition-all duration-300">
@@ -239,10 +254,6 @@
     </div>
   </header>
 
-
-  <!-- ========================================================================= -->
-  <!-- HERO SECTION                                                              -->
-  <!-- ========================================================================= -->
   <section id="inicio" class="relative hero-gradient text-white pt-28 pb-24 lg:pt-32 lg:pb-32 border-b border-white/10">
     <div class="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
       
@@ -286,7 +297,7 @@
           <div class="text-xs text-slate-400 mt-1 font-medium" data-i18n="stat_axes">Eixos Temáticos</div>
         </div>
         <div>
-          <div class="text-2xl lg:text-3xl font-extrabold text-white tracking-tight">27</div>
+          <div class="text-2xl lg:text-3xl font-extrabold text-white tracking-tight">37</div>
           <div class="text-xs text-slate-400 mt-1 font-medium" data-i18n="stat_team">Integrantes Ativos</div>
         </div>
         <div>
@@ -302,10 +313,6 @@
     </div>
   </section>
 
-
-  <!-- ========================================================================= -->
-  <!-- SOBRE O LAB & LIDERANÇA                                                   -->
-  <!-- ========================================================================= -->
   <section id="sobre" class="py-24 bg-brand-cream border-b border-slate-200">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       
@@ -372,10 +379,6 @@
     </div>
   </section>
 
-
-  <!-- ========================================================================= -->
-  <!-- EIXOS DE PESQUISA                                                         -->
-  <!-- ========================================================================= -->
   <section id="eixos" class="py-24 bg-brand-cream border-b border-slate-200">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
@@ -446,7 +449,6 @@
         </div>
       </div>
 
-      <!-- EXPANDED PANELS -->
       <div class="axis-panel mt-0" id="axis-panel-0">
         <div class="mt-4 bg-brand-surface rounded-3xl p-8 text-white text-left shadow-xl">
           <div class="flex items-center gap-2 mb-4">
@@ -570,10 +572,6 @@
     </div>
   </section>
 
-
-  <!-- ========================================================================= -->
-  <!-- PRODUÇÃO CIENTÍFICA (ABAS CLICÁVEIS: PUBLICAÇÕES & EVENTOS)               -->
-  <!-- ========================================================================= -->
   <section id="producao" class="py-24 bg-brand-cream-dark border-b border-slate-200">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
@@ -587,7 +585,6 @@
           </h2>
         </div>
 
-        <!-- Seletor de Abas Clicáveis -->
         <div class="inline-flex p-1.5 rounded-full bg-brand-navy shadow-lg self-start md:self-auto" role="tablist" aria-label="Produção Científica">
           <button
             type="button"
@@ -617,7 +614,6 @@
         </div>
       </div>
 
-      <!-- ABA 1: PUBLICAÇÕES -->
       <div id="tab-panel-publicacoes" role="tabpanel" aria-labelledby="tab-btn-publicacoes" class="prod-tab-panel active">
         <div class="bg-white rounded-3xl p-6 sm:p-8 border border-slate-200 shadow-sm text-left">
           <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 pb-6 mb-6 border-b border-slate-100">
@@ -638,7 +634,6 @@
         </div>
       </div>
 
-      <!-- ABA 2: PARTICIPAÇÃO EM EVENTOS -->
       <div id="tab-panel-eventos" role="tabpanel" aria-labelledby="tab-btn-eventos" class="prod-tab-panel">
         <div class="bg-white rounded-3xl p-6 sm:p-8 border border-slate-200 shadow-sm text-left">
           <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 pb-6 mb-6 border-b border-slate-100">
@@ -662,10 +657,6 @@
     </div>
   </section>
 
-
-  <!-- ========================================================================= -->
-  <!-- CORPO CIENTÍFICO                                                          -->
-  <!-- ========================================================================= -->
   <section id="equipe" class="py-24 bg-brand-cream border-b border-slate-200">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       
@@ -693,7 +684,7 @@
         </div>
 
         <div class="relative w-full sm:w-72">
-          <input type="text" id="member-search" placeholder="Filtrar por nome ou projeto..." data-i18n-placeholder="search_placeholder" class="w-full text-xs font-medium bg-white border border-slate-200 rounded-full px-4 py-2.5 pl-9 text-slate-800 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-brand-lilac">
+          <input type="text" id="member-search" placeholder="Filtrar por nome ou vínculo..." data-i18n-placeholder="search_placeholder" class="w-full text-xs font-medium bg-white border border-slate-200 rounded-full px-4 py-2.5 pl-9 text-slate-800 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-brand-lilac">
           <svg class="w-4 h-4 text-slate-400 absolute left-3.5 top-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
           </svg>
@@ -709,10 +700,6 @@
     </div>
   </section>
 
-
-  <!-- ========================================================================= -->
-  <!-- ONDE ESTAMOS & CONTATO                                                    -->
-  <!-- ========================================================================= -->
   <section id="onde-estamos" class="py-20 bg-brand-cream-dark border-b border-slate-200">
     <div id="contato" class="scroll-mt-20"></div>
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -767,10 +754,6 @@
     </div>
   </section>
 
-
-  <!-- ========================================================================= -->
-  <!-- RODAPÉ                                                                    -->
-  <!-- ========================================================================= -->
   <footer class="bg-brand-navy text-slate-400 py-12 text-left">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6 pb-8 border-b border-white/10">
@@ -791,22 +774,24 @@
     </div>
   </footer>
 
-
-  <!-- ========================================================================= -->
-  <!-- MODAL DE PERFIL                                                           -->
-  <!-- ========================================================================= -->
+  <!-- MODAL DE PERFIL COM FOTO P&B GRANULADA -->
   <div id="member-modal" class="modal-backdrop fixed inset-0 z-50 flex items-center justify-center p-4 bg-brand-navy/70 backdrop-blur-sm" role="dialog" aria-modal="true">
-    <div class="modal-box bg-white rounded-3xl p-6 sm:p-8 max-w-lg w-full shadow-2xl border border-slate-200 text-left relative">
+    <div class="modal-box bg-white rounded-3xl overflow-hidden max-w-lg w-full shadow-2xl border border-slate-200 text-left relative">
       
-      <button type="button" id="modal-close-btn" class="absolute top-5 right-5 w-8 h-8 rounded-full bg-slate-100 hover:bg-slate-200 text-slate-600 flex items-center justify-center font-bold text-sm focus:outline-none" aria-label="Fechar">
+      <button type="button" id="modal-close-btn" class="absolute top-4 right-4 z-10 w-8 h-8 rounded-full bg-brand-navy/80 hover:bg-brand-navy text-white flex items-center justify-center font-bold text-sm focus:outline-none" aria-label="Fechar">
         ✕
       </button>
 
-      <div class="flex items-start gap-4 mb-5">
-        <div id="modal-avatar" class="w-14 h-14 rounded-2xl bg-brand-surface text-brand-lilac font-black text-xl flex items-center justify-center shrink-0">
-          --
+      <div class="bw-grainy-portrait w-full h-56 flex items-center justify-center border-b border-slate-200">
+        <img id="modal-photo" src="" alt="" class="w-full h-full object-cover object-top">
+        <div id="modal-photo-fallback" class="hidden w-full h-full flex-col items-center justify-center bg-gradient-to-br from-brand-surface via-brand-navy to-brand-slate text-white p-6 text-center">
+          <span class="text-[11px] font-bold uppercase tracking-widest text-brand-lilac">Retrato P&amp;B · Arquivo pendente</span>
+          <span id="modal-photo-path" class="text-[11px] text-slate-400 mt-1"></span>
         </div>
-        <div>
+      </div>
+
+      <div class="p-6 sm:p-7">
+        <div class="mb-4">
           <span id="modal-role-badge" class="inline-block px-2.5 py-0.5 rounded-full bg-slate-100 text-slate-800 text-[10px] font-bold uppercase tracking-wider mb-1">
             Cargo / Titulação
           </span>
@@ -817,42 +802,35 @@
             Universidade Federal de Ciências da Saúde de Porto Alegre
           </p>
         </div>
-      </div>
 
-      <div class="space-y-3 py-3 border-y border-slate-100 text-xs text-slate-700">
-        <div class="bg-slate-50 p-3 rounded-xl border border-slate-100">
-          <span class="text-[10px] font-bold text-slate-400 uppercase tracking-wider block" data-i18n="modal_project_label">Projeto Vinculado</span>
-          <span id="modal-project" class="text-xs font-bold text-brand-navy block mt-0.5">Nome do Projeto</span>
+        <div class="space-y-3 py-3 border-y border-slate-100 text-xs text-slate-700">
+          <div class="bg-slate-50 p-3 rounded-xl border border-slate-100">
+            <span class="text-[10px] font-bold text-slate-400 uppercase tracking-wider block" data-i18n="modal_project_label">Projeto Vinculado</span>
+            <span id="modal-project" class="text-xs font-bold text-brand-navy block mt-0.5">Nome do Projeto</span>
+          </div>
+          <div class="bg-slate-50 p-3 rounded-xl border border-slate-100">
+            <span class="text-[10px] font-bold text-slate-400 uppercase tracking-wider block" data-i18n="modal_axis_label">Eixo de Atuação</span>
+            <span id="modal-axis" class="text-xs font-medium text-slate-700 block mt-0.5">Eixo Temático</span>
+          </div>
         </div>
-        <div class="bg-slate-50 p-3 rounded-xl border border-slate-100">
-          <span class="text-[10px] font-bold text-slate-400 uppercase tracking-wider block" data-i18n="modal_axis_label">Eixo de Atuação</span>
-          <span id="modal-axis" class="text-xs font-medium text-slate-700 block mt-0.5">Eixo Temático</span>
-        </div>
-      </div>
 
-      <div class="mt-5 flex items-center justify-between text-xs">
-        <span class="text-slate-400 text-[11px]" data-i18n="modal_footer_label">LIFE Lab · UFCSPA</span>
-        <div class="flex items-center gap-2">
-          <a id="modal-lattes" href="#" target="_blank" rel="noopener noreferrer" class="hidden font-bold text-brand-slate hover:text-brand-lilac bg-slate-100 px-3 py-1.5 rounded-full transition-colors">
-            Currículo Lattes ↗
-          </a>
-          <a id="modal-orcid" href="#" target="_blank" rel="noopener noreferrer" class="hidden font-bold text-brand-lilac hover:text-brand-lilac-hover bg-brand-lilac-light px-3 py-1.5 rounded-full transition-colors">
-            ORCID ↗
-          </a>
+        <div class="mt-5 flex items-center justify-between text-xs">
+          <span class="text-slate-400 text-[11px]" data-i18n="modal_footer_label">LIFE Lab · UFCSPA</span>
+          <div class="flex items-center gap-2">
+            <a id="modal-lattes" href="#" target="_blank" rel="noopener noreferrer" class="hidden font-bold text-brand-slate hover:text-brand-lilac bg-slate-100 px-3 py-1.5 rounded-full transition-colors">
+              Currículo Lattes ↗
+            </a>
+            <a id="modal-orcid" href="#" target="_blank" rel="noopener noreferrer" class="hidden font-bold text-brand-lilac hover:text-brand-lilac-hover bg-brand-lilac-light px-3 py-1.5 rounded-full transition-colors">
+              ORCID ↗
+            </a>
+          </div>
         </div>
       </div>
 
     </div>
   </div>
 
-
-  <!-- ========================================================================= -->
-  <!-- JAVASCRIPT                                                                -->
-  <!-- ========================================================================= -->
   <script>
-    // =========================================================================
-    // DADOS DE PUBLICAÇÕES & EVENTOS (EDITE AQUI PARA ADICIONAR NOVOS ITENS)
-    // =========================================================================
     const publicationsData = [
       {
         year: "2026",
@@ -894,93 +872,486 @@
 
     const eventsData = [
       {
-        date: "2026",
-        badge_pt: "Congresso Brasileiro",
-        badge_en: "Brazilian Congress",
-        title_pt: "Congresso Brasileiro de Psiquiatria (CBP)",
-        title_en: "Brazilian Congress of Psychiatry (CBP)",
-        location: "Brasil",
-        desc_pt: "Apresentação de trabalhos científicos nas linhas de Fenótipos Comportamentais, TDAH, Suicídio e Impactos de Eventos Climáticos Extremos.",
-        desc_en: "Presentation of scientific works across Behavioral Phenotypes, ADHD, Suicide, and Extreme Climate Events research lines."
+        "date": "2026",
+        "badge_pt": "Congresso Brasileiro de Psiquiatria · Aceito",
+        "badge_en": "Congresso Brasileiro de Psiquiatria · Aceito",
+        "title_pt": "Congresso Brasileiro de Psiquiatria (2026)",
+        "title_en": "Congresso Brasileiro de Psiquiatria (2026)",
+        "location": "UFCSPA / Brasil",
+        "desc_pt": "Mapeamento do atendimento prestado no SAMU de Porto Alegre no período de 2013 a 2022: implicações para a assistência pré-hospitalar em saúde mental — Autores: Antônio Rogério Proença Tavares Crespo; Arthur Canhada de Albuquerque; Flávio Milman Shansis. Modalidade: Pôster.",
+        "desc_en": "Mapeamento do atendimento prestado no SAMU de Porto Alegre no período de 2013 a 2022: implicações para a assistência pré-hospitalar em saúde mental — Authors: Antônio Rogério Proença Tavares Crespo; Arthur Canhada de Albuquerque; Flávio Milman Shansis. Modality: Pôster."
       },
       {
-        date: "2026",
-        badge_pt: "Mostra Científica",
-        badge_en: "Scientific Showcase",
-        title_pt: "Mostra de Pesquisa & Pós-Graduação da UFCSPA",
-        title_en: "UFCSPA Research & Graduate Showcase",
-        location: "Porto Alegre / RS",
-        desc_pt: "Comunicações orais e pôsteres dos projetos de Iniciação Científica, Mestrado e Doutorado vinculados ao PPGCS.",
-        desc_en: "Oral communications and posters from Undergraduate, Master's, and PhD projects affiliated with PPGCS."
+        "date": "2026",
+        "badge_pt": "Congresso Brasileiro de Psiquiatria · Aceito",
+        "badge_en": "Congresso Brasileiro de Psiquiatria · Aceito",
+        "title_pt": "Congresso Brasileiro de Psiquiatria (2026)",
+        "title_en": "Congresso Brasileiro de Psiquiatria (2026)",
+        "location": "UFCSPA / Brasil",
+        "desc_pt": "Perfil epidemiológico das notificações por intoxicação por paracetamol registradas no CIT-RS no período de 2015 a 2024: análise de letalidade e disparidades regionais — Autores: Alana Castro Panzenhagen; Arthur Canhada de Albuquerque; Flávio Milman Shansis. Modalidade: Pôster.",
+        "desc_en": "Perfil epidemiológico das notificações por intoxicação por paracetamol registradas no CIT-RS no período de 2015 a 2024: análise de letalidade e disparidades regionais — Authors: Alana Castro Panzenhagen; Arthur Canhada de Albuquerque; Flávio Milman Shansis. Modality: Pôster."
       },
       {
-        date: "2026",
-        badge_pt: "Educação Médica",
-        badge_en: "Medical Education",
-        title_pt: "Congresso Brasileiro de Educação Médica (COBEM)",
-        title_en: "Brazilian Congress of Medical Education (COBEM)",
-        location: "Brasil",
-        desc_pt: "Relatos de experiência e resultados preliminares do Eixo de Educação Médica, Simulação Realística e Projeto AVATAR.",
-        desc_en: "Experience reports and preliminary findings from the Medical Education Axis, Realistic Simulation, and AVATAR Project."
+        "date": "2026",
+        "badge_pt": "Congresso Brasileiro de Psiquiatria · Aceito",
+        "badge_en": "Congresso Brasileiro de Psiquiatria · Aceito",
+        "title_pt": "Congresso Brasileiro de Psiquiatria (2026)",
+        "title_en": "Congresso Brasileiro de Psiquiatria (2026)",
+        "location": "UFCSPA / Brasil",
+        "desc_pt": "Associação entre padrões dietéticos e comportamentos suicidas: uma revisão de escopo abrangendo mais de 1,2 milhão de participantes em 35 estudos — Autores: Alana Castro Panzenhagen; Arthur Canhada de Albuquerque; Flávio Milman Shansis. Modalidade: Pôster.",
+        "desc_en": "Associação entre padrões dietéticos e comportamentos suicidas: uma revisão de escopo abrangendo mais de 1,2 milhão de participantes em 35 estudos — Authors: Alana Castro Panzenhagen; Arthur Canhada de Albuquerque; Flávio Milman Shansis. Modality: Pôster."
       },
       {
-        date: "2026",
-        badge_pt: "Simpósio Temático",
-        badge_en: "Thematic Symposium",
-        title_pt: "Jornada Sul-Brasileira de Psiquiatria",
-        title_en: "Southern Brazilian Symposium of Psychiatry",
-        location: "Região Sul / Brasil",
-        desc_pt: "Participação do corpo científico em mesas-redondas e discussões translacionais sobre saúde mental e epidemiologia.",
-        desc_en: "Participation of scientific staff in roundtables and translational discussions on mental health and epidemiology."
+        "date": "2026",
+        "badge_pt": "Congresso Brasileiro de Psiquiatria · Aceito",
+        "badge_en": "Congresso Brasileiro de Psiquiatria · Aceito",
+        "title_pt": "Congresso Brasileiro de Psiquiatria (2026)",
+        "title_en": "Congresso Brasileiro de Psiquiatria (2026)",
+        "location": "UFCSPA / Brasil",
+        "desc_pt": "O papel da aliança terapêutica na adesão ao tratamento de indivíduos com TDAH: uma revisão de escopo — Autores: Pedro Dytz; Gabriel Rocha; Arthur Canhada de Albuquerque; Flávio Milman Shansis. Modalidade: Pôster.",
+        "desc_en": "O papel da aliança terapêutica na adesão ao tratamento de indivíduos com TDAH: uma revisão de escopo — Authors: Pedro Dytz; Gabriel Rocha; Arthur Canhada de Albuquerque; Flávio Milman Shansis. Modality: Pôster."
+      },
+      {
+        "date": "2026",
+        "badge_pt": "Congresso Brasileiro de Psiquiatria · Aceito",
+        "badge_en": "Congresso Brasileiro de Psiquiatria · Aceito",
+        "title_pt": "Congresso Brasileiro de Psiquiatria (2026)",
+        "title_en": "Congresso Brasileiro de Psiquiatria (2026)",
+        "location": "UFCSPA / Brasil",
+        "desc_pt": "Avaliação dos desdobramentos em saúde mental de indivíduos afetados por eventos hidrológicos no Rio Grande do Sul: um protocolo de revisão de escopo — Autores: Daniel Dallavalle; Ítalo Abrão; Guilherme Escobar; Arthur Canhada de Albuquerque; Flávio Milman Shansis. Modalidade: Pôster.",
+        "desc_en": "Avaliação dos desdobramentos em saúde mental de indivíduos afetados por eventos hidrológicos no Rio Grande do Sul: um protocolo de revisão de escopo — Authors: Daniel Dallavalle; Ítalo Abrão; Guilherme Escobar; Arthur Canhada de Albuquerque; Flávio Milman Shansis. Modality: Pôster."
+      },
+      {
+        "date": "2026",
+        "badge_pt": "Congresso Brasileiro de Psiquiatria · Aceito",
+        "badge_en": "Congresso Brasileiro de Psiquiatria · Aceito",
+        "title_pt": "Congresso Brasileiro de Psiquiatria (2026)",
+        "title_en": "Congresso Brasileiro de Psiquiatria (2026)",
+        "location": "UFCSPA / Brasil",
+        "desc_pt": "Influência do ambiente construído na expressão fenotípica em adultos com transtornos do neurodesenvolvimento: um protocolo de revisão de escopo — Autores: Arthur Canhada de Albuquerque; Alana Castro Panzenhagen; Flávio Milman Shansis. Modalidade: Pôster.",
+        "desc_en": "Influência do ambiente construído na expressão fenotípica em adultos com transtornos do neurodesenvolvimento: um protocolo de revisão de escopo — Authors: Arthur Canhada de Albuquerque; Alana Castro Panzenhagen; Flávio Milman Shansis. Modality: Pôster."
+      },
+      {
+        "date": "2026",
+        "badge_pt": "Congresso Brasileiro de Psiquiatria · Aceito",
+        "badge_en": "Congresso Brasileiro de Psiquiatria · Aceito",
+        "title_pt": "Congresso Brasileiro de Psiquiatria (2026)",
+        "title_en": "Congresso Brasileiro de Psiquiatria (2026)",
+        "location": "UFCSPA / Brasil",
+        "desc_pt": "Impactos na saúde mental e reações de estresse agudo e TEPT em vítimas das enchentes no Rio Grande do Sul — Autores: Marcos Cima; David Nusbaum; Guilherme Andary; Arthur Canhada de Albuquerque; Flávio Milman Shansis. Modalidade: Pôster.",
+        "desc_en": "Impactos na saúde mental e reações de estresse agudo e TEPT em vítimas das enchentes no Rio Grande do Sul — Authors: Marcos Cima; David Nusbaum; Guilherme Andary; Arthur Canhada de Albuquerque; Flávio Milman Shansis. Modality: Pôster."
+      },
+      {
+        "date": "2026",
+        "badge_pt": "Congresso Brasileiro de Psiquiatria · Aceito",
+        "badge_en": "Congresso Brasileiro de Psiquiatria · Aceito",
+        "title_pt": "Congresso Brasileiro de Psiquiatria (2026)",
+        "title_en": "Congresso Brasileiro de Psiquiatria (2026)",
+        "location": "UFCSPA / Brasil",
+        "desc_pt": "Associação entre TDAH e comportamento suicida: uma análise epidemiológica e clínica no Rio Grande do Sul — Autores: Gabriel Rocha; Pedro Dytz; Enrico Villeti; Arthur Canhada de Albuquerque; Flávio Milman Shansis. Modalidade: Pôster.",
+        "desc_en": "Associação entre TDAH e comportamento suicida: uma análise epidemiológica e clínica no Rio Grande do Sul — Authors: Gabriel Rocha; Pedro Dytz; Enrico Villeti; Arthur Canhada de Albuquerque; Flávio Milman Shansis. Modality: Pôster."
+      },
+      {
+        "date": "2026",
+        "badge_pt": "Congresso Brasileiro de Psiquiatria · Aceito",
+        "badge_en": "Congresso Brasileiro de Psiquiatria · Aceito",
+        "title_pt": "Congresso Brasileiro de Psiquiatria (2026)",
+        "title_en": "Congresso Brasileiro de Psiquiatria (2026)",
+        "location": "UFCSPA / Brasil",
+        "desc_pt": "Validação de escalas para avaliação de competência clínica e empatia em estudantes de medicina no contexto do projeto AVATAR — Autores: Daniel Pasini; Cristiane Mondadori; Arthur Canhada de Albuquerque; Flávio Milman Shansis. Modalidade: Pôster.",
+        "desc_en": "Validação de escalas para avaliação de competência clínica e empatia em estudantes de medicina no contexto do projeto AVATAR — Authors: Daniel Pasini; Cristiane Mondadori; Arthur Canhada de Albuquerque; Flávio Milman Shansis. Modality: Pôster."
+      },
+      {
+        "date": "2026",
+        "badge_pt": "Congresso Brasileiro de Psiquiatria · Aceito",
+        "badge_en": "Congresso Brasileiro de Psiquiatria · Aceito",
+        "title_pt": "Congresso Brasileiro de Psiquiatria (2026)",
+        "title_en": "Congresso Brasileiro de Psiquiatria (2026)",
+        "location": "UFCSPA / Brasil",
+        "desc_pt": "Ambientes virtuais interativos aplicados ao treinamento em entrevistas clínicas e semiologia psiquiátrica no projeto AVATAR — Autores: Vinicius Soares; Bruno Costa; Nicholas Storch; Arthur Canhada de Albuquerque; Flávio Milman Shansis. Modalidade: Pôster.",
+        "desc_en": "Ambientes virtuais interativos aplicados ao treinamento em entrevistas clínicas e semiologia psiquiátrica no projeto AVATAR — Authors: Vinicius Soares; Bruno Costa; Nicholas Storch; Arthur Canhada de Albuquerque; Flávio Milman Shansis. Modality: Pôster."
+      },
+      {
+        "date": "2026",
+        "badge_pt": "Congresso Brasileiro de Psiquiatria · Aceito",
+        "badge_en": "Congresso Brasileiro de Psiquiatria · Aceito",
+        "title_pt": "Congresso Brasileiro de Psiquiatria (2026)",
+        "title_en": "Congresso Brasileiro de Psiquiatria (2026)",
+        "location": "UFCSPA / Brasil",
+        "desc_pt": "Simulação realística no ensino da semiologia psiquiátrica e exame do estado mental para estudantes de graduação — Autores: Vitório Serafim; Luiza Schaefer; Gabriel Felipi; Arthur Canhada de Albuquerque; Flávio Milman Shansis. Modalidade: Pôster.",
+        "desc_en": "Simulação realística no ensino da semiologia psiquiátrica e exame do estado mental para estudantes de graduação — Authors: Vitório Serafim; Luiza Schaefer; Gabriel Felipi; Arthur Canhada de Albuquerque; Flávio Milman Shansis. Modality: Pôster."
+      },
+      {
+        "date": "2026",
+        "badge_pt": "Congresso Brasileiro de Psiquiatria · Aceito",
+        "badge_en": "Congresso Brasileiro de Psiquiatria · Aceito",
+        "title_pt": "Congresso Brasileiro de Psiquiatria (2026)",
+        "title_en": "Congresso Brasileiro de Psiquiatria (2026)",
+        "location": "UFCSPA / Brasil",
+        "desc_pt": "Saúde mental, estresse ocupacional e estratégias de enfrentamento em médicos infectologistas — Autores: Carolina Marolli; Ana Laura; Arthur Canhada de Albuquerque; Flávio Milman Shansis. Modalidade: Pôster.",
+        "desc_en": "Saúde mental, estresse ocupacional e estratégias de enfrentamento em médicos infectologistas — Authors: Carolina Marolli; Ana Laura; Arthur Canhada de Albuquerque; Flávio Milman Shansis. Modality: Pôster."
+      },
+      {
+        "date": "2026",
+        "badge_pt": "Congresso Brasileiro de Psiquiatria · Aceito",
+        "badge_en": "Congresso Brasileiro de Psiquiatria · Aceito",
+        "title_pt": "Congresso Brasileiro de Psiquiatria (2026)",
+        "title_en": "Congresso Brasileiro de Psiquiatria (2026)",
+        "location": "UFCSPA / Brasil",
+        "desc_pt": "Prevenção do suicídio e intervenções precoces no âmbito comunitário: experiências do Projeto Vale a Vida — Autores: Luiza Prolla; Arthur Canhada de Albuquerque; Flávio Milman Shansis. Modalidade: Pôster.",
+        "desc_en": "Prevenção do suicídio e intervenções precoces no âmbito comunitário: experiências do Projeto Vale a Vida — Authors: Luiza Prolla; Arthur Canhada de Albuquerque; Flávio Milman Shansis. Modality: Pôster."
+      },
+      {
+        "date": "2026",
+        "badge_pt": "Congresso Brasileiro de Psiquiatria · Aceito",
+        "badge_en": "Congresso Brasileiro de Psiquiatria · Aceito",
+        "title_pt": "Congresso Brasileiro de Psiquiatria (2026)",
+        "title_en": "Congresso Brasileiro de Psiquiatria (2026)",
+        "location": "UFCSPA / Brasil",
+        "desc_pt": "Modulação fenotípica e desfechos psiquiátricos em pacientes submetidos à terapia hormonal no contexto do TDAH — Autores: Marcelo Bizzi; Arthur Canhada de Albuquerque; Flávio Milman Shansis. Modalidade: Pôster.",
+        "desc_en": "Modulação fenotípica e desfechos psiquiátricos em pacientes submetidos à terapia hormonal no contexto do TDAH — Authors: Marcelo Bizzi; Arthur Canhada de Albuquerque; Flávio Milman Shansis. Modality: Pôster."
+      },
+      {
+        "date": "2026",
+        "badge_pt": "Mostra UFCSPA · Aceito · Menção Honrosa",
+        "badge_en": "Mostra UFCSPA · Aceito · Menção Honrosa",
+        "title_pt": "Mostra UFCSPA (2026)",
+        "title_en": "Mostra UFCSPA (2026)",
+        "location": "UFCSPA / Brasil",
+        "desc_pt": "Desenvolvimento de protótipo de apoio à triagem em urgência e emergência baseado no escore NEWS2 no PET-Saúde Digital — Autores: Karina Bastos; Matheus Meine; Arthur Canhada de Albuquerque; Flávio Milman Shansis. Modalidade: Apresentação Oral.",
+        "desc_en": "Desenvolvimento de protótipo de apoio à triagem em urgência e emergência baseado no escore NEWS2 no PET-Saúde Digital — Authors: Karina Bastos; Matheus Meine; Arthur Canhada de Albuquerque; Flávio Milman Shansis. Modality: Apresentação Oral."
+      },
+      {
+        "date": "2027",
+        "badge_pt": "COBEM · Pendente",
+        "badge_en": "COBEM · Pendente",
+        "title_pt": "COBEM (2027)",
+        "title_en": "COBEM (2027)",
+        "location": "UFCSPA / Brasil",
+        "desc_pt": "Integração de simulação realística e ambientes virtuais imersivos na formação em semiologia psiquiátrica — Autores: Daniel Pasini; Vitório Serafim; Arthur Canhada de Albuquerque; Flávio Milman Shansis.",
+        "desc_en": "Integração de simulação realística e ambientes virtuais imersivos na formação em semiologia psiquiátrica — Authors: Daniel Pasini; Vitório Serafim; Arthur Canhada de Albuquerque; Flávio Milman Shansis."
+      },
+      {
+        "date": "2027",
+        "badge_pt": "CBP · Pendente",
+        "badge_en": "CBP · Pendente",
+        "title_pt": "CBP (2027)",
+        "title_en": "CBP (2027)",
+        "location": "UFCSPA / Brasil",
+        "desc_pt": "Resultados preliminares da revisão de escopo sobre o ambiente construído em adultos com transtornos do neurodesenvolvimento — Autores: Arthur Canhada de Albuquerque; Alana Castro Panzenhagen; Flávio Milman Shansis.",
+        "desc_en": "Resultados preliminares da revisão de escopo sobre o ambiente construído em adultos com transtornos do neurodesenvolvimento — Authors: Arthur Canhada de Albuquerque; Alana Castro Panzenhagen; Flávio Milman Shansis."
+      },
+      {
+        "date": "2027",
+        "badge_pt": "Congresso Brasileiro de Epidemiologia · Pendente",
+        "badge_en": "Congresso Brasileiro de Epidemiologia · Pendente",
+        "title_pt": "Congresso Brasileiro de Epidemiologia (2027)",
+        "title_en": "Congresso Brasileiro de Epidemiologia (2027)",
+        "location": "UFCSPA / Brasil",
+        "desc_pt": "Análise epidemiológica multicêntrica dos desfechos em saúde mental após eventos climáticos extremos no Sul do Brasil — Autores: Daniel Dallavalle; Marcos Cima; Arthur Canhada de Albuquerque; Flávio Milman Shansis.",
+        "desc_en": "Análise epidemiológica multicêntrica dos desfechos em saúde mental após eventos climáticos extremos no Sul do Brasil — Authors: Daniel Dallavalle; Marcos Cima; Arthur Canhada de Albuquerque; Flávio Milman Shansis."
       }
     ];
 
     const teamMembers = [
       {
-        name: "Prof. Dr. Flávio Milman Shansis",
-        role: "Principal Investigator / Supervisão",
-        category: "lideranca",
-        project: "Direção Geral & Pesquisa em Psiquiatria",
-        axis: "Direção Geral & Supervisão Geral",
-        lattes: "http://lattes.cnpq.br/7296283284342040",
-        orcid: "https://orcid.org/0000-0003-0423-6291"
+        name: "Ana Laura Claraz de Souza Ferreira",
+        role: "IC voluntária · UFCSPA",
+        category: "ic",
+        lattes: "https://lattes.cnpq.br/8944768793965654",
+        orcid: "",
+        photo: "./fotos/ana-ferreira.jpg"
       },
-      { name: "Felipe Passos", role: "Dirigente de Pesquisa", category: "lideranca", project: "Coordenação Geral & Eixo TDAH", axis: "Coordenação Geral de Pesquisa", lattes: "", orcid: "" },
-      { name: "Vinicius Soares", role: "Doutorando", category: "pos", project: "Eixo Educação Médica (Ambientes Virtuais)", axis: "Eixo 01 · Educação Médica", lattes: "", orcid: "" },
-      { name: "Daniel Pasini", role: "Mestrando", category: "pos", project: "Eixo Educação Médica (Validação de Escala)", axis: "Eixo 01 · Educação Médica", lattes: "", orcid: "" },
-      { name: "Daniel Dallavalle", role: "Mestrando", category: "pos", project: "Eixo Eventos Climáticos Extremos (TEPT)", axis: "Eixo 02 · Eventos Climáticos Extremos", lattes: "", orcid: "" },
-      { name: "Marcos Cima", role: "Doutorando", category: "pos", project: "Eixo Eventos Climáticos Extremos (Impacto RS)", axis: "Eixo 02 · Eventos Climáticos Extremos", lattes: "", orcid: "" },
-      { name: "Gabriel Rocha", role: "Mestrando", category: "pos", project: "Eixo TDAH (TDAH e Suicídio)", axis: "Eixo 03 · TDAH & Fenótipos Comportamentais", lattes: "", orcid: "" },
+      {
+        name: "Ana Paula Bellini",
+        role: "PID voluntário · UFCSPA",
+        category: "ic",
+        lattes: "http://lattes.cnpq.br/8845018028099266",
+        orcid: "",
+        photo: "./fotos/ana-bellini.jpg"
+      },
       {
         name: "Arthur Canhada de Albuquerque",
-        role: "Mestrando",
+        role: "Mestrando · UFCSPA",
         category: "pos",
-        project: "Eixo TDAH (Ambientes Construídos)",
-        axis: "Eixo 03 · TDAH & Fenótipos Comportamentais",
         lattes: "http://lattes.cnpq.br/8050934335808561",
-        orcid: "https://orcid.org/0009-0008-4332-7747"
+        orcid: "https://orcid.org/0009-0008-4332-7747",
+        photo: "./fotos/arthur-albuquerque.jpg"
       },
-      { name: "Carolina Marolli", role: "Mestranda", category: "pos", project: "Saúde Mental dos Infectologistas", axis: "Eixo 05 · Outros Projetos & Saúde Transversal", lattes: "", orcid: "" },
-      { name: "Cristiane Mondadori", role: "Doutoranda", category: "pos", project: "Projeto AVATAR (Ambientes Virtuais)", axis: "Eixo 01 · Educação Médica", lattes: "", orcid: "" },
-      { name: "Marcelo Bizzi", role: "Pesquisador Associado", category: "associados", project: "Eixo TDAH (TDAH e TH & Climma)", axis: "Eixo 03 · TDAH & Fenótipos Comportamentais", lattes: "", orcid: "" },
-      { name: "Guilherme Andary", role: "Pesquisador Associado", category: "associados", project: "Eixo Eventos Climáticos Extremos", axis: "Eixo 02 · Eventos Climáticos Extremos", lattes: "", orcid: "" },
-      { name: "Vitório Serafim", role: "IC Voluntário / PIBID", category: "ic", project: "Simulação Realística (Ensino Médico)", axis: "Eixo 01 · Educação Médica", lattes: "", orcid: "" },
-      { name: "Luiza Schiroky", role: "IC Voluntário", category: "ic", project: "Simulação Realística (Ensino Médico)", axis: "Eixo 01 · Educação Médica", lattes: "", orcid: "" },
-      { name: "Gabriel Guilioti", role: "IC Voluntário", category: "ic", project: "Simulação Realística (Ensino Médico)", axis: "Eixo 01 · Educação Médica", lattes: "", orcid: "" },
-      { name: "Italo Abrão", role: "IC Voluntário", category: "ic", project: "Eventos Climáticos (TEPT RS)", axis: "Eixo 02 · Eventos Climáticos Extremos", lattes: "", orcid: "" },
-      { name: "Guilherme Escobar", role: "IC Voluntário", category: "ic", project: "Eventos Climáticos (TEPT RS)", axis: "Eixo 02 · Eventos Climáticos Extremos", lattes: "", orcid: "" },
-      { name: "David Nusbaum", role: "IC Voluntário", category: "ic", project: "Eventos Climáticos Extremos", axis: "Eixo 02 · Eventos Climáticos Extremos", lattes: "", orcid: "" },
-      { name: "Pedro Dytz", role: "IC Voluntário", category: "ic", project: "Eixo TDAH e Suicídio (Coorte RS)", axis: "Eixo 03 · TDAH & Fenótipos Comportamentais", lattes: "", orcid: "" },
-      { name: "Enrico Villeti", role: "IC Voluntário", category: "ic", project: "Eixo TDAH e Suicídio", axis: "Eixo 03 · TDAH & Fenótipos Comportamentais", lattes: "", orcid: "" },
-      { name: "Ana Paula", role: "IC Voluntário", category: "ic", project: "Eixo TDAH (Ambientes Construídos)", axis: "Eixo 03 · TDAH & Fenótipos Comportamentais", lattes: "", orcid: "" },
-      { name: "Luiza Prolla", role: "IC Voluntário", category: "ic", project: "Eixo Suicídio (Projeto Vale a Vida)", axis: "Eixo 04 · Suicídio & Prevenção", lattes: "", orcid: "" },
-      { name: "Ana Laura", role: "IC Voluntário", category: "ic", project: "Saúde Mental dos Infectologistas", axis: "Eixo 05 · Outros Projetos & Saúde Transversal", lattes: "", orcid: "" },
-      { name: "Karina Bastos", role: "IC Voluntário", category: "ic", project: "PROPESTH (Suporte Analítico)", axis: "Eixo 05 · Outros Projetos & Saúde Transversal", lattes: "", orcid: "" },
-      { name: "Matheus Otten", role: "IC Voluntário", category: "ic", project: "PROPESTH (Suporte Analítico)", axis: "Eixo 05 · Outros Projetos & Saúde Transversal", lattes: "", orcid: "" },
-      { name: "Bruno Costa", role: "Bolsista PIBIT", category: "ic", project: "Projeto AVATAR (Ambientes Virtuais)", axis: "Eixo 01 · Educação Médica", lattes: "", orcid: "" },
-      { name: "Nicholas Storch", role: "Bolsista PIBIC", category: "ic", project: "Projeto AVATAR (Ambientes Virtuais)", axis: "Eixo 01 · Educação Médica", lattes: "", orcid: "" }
-    ];
-
+      {
+        name: "Carolina de Moura Marolli",
+        role: "Mestrando · UFCSPA",
+        category: "pos",
+        lattes: "http://lattes.cnpq.br/0282109000236500",
+        orcid: "https://orcid.org/0000-0001-6824-5213",
+        photo: "./fotos/carolina-marolli.jpg"
+      },
+      {
+        name: "Christian Silva dos Santos",
+        role: "PIBIT · UFCSPA",
+        category: "ic",
+        lattes: "",
+        orcid: "",
+        photo: "./fotos/christian-santos.jpg"
+      },
+      {
+        name: "Cristiane Mondadori",
+        role: "Doutorando · UFCSPA",
+        category: "pos",
+        lattes: "http://lattes.cnpq.br/3811778831896022",
+        orcid: "https://orcid.org/0009-0008-9329-3549",
+        photo: "./fotos/cristiane-mondadori.jpg"
+      },
+      {
+        name: "Daniel Nascimento Dallavalle",
+        role: "Mestrando · UFCSPA",
+        category: "pos",
+        lattes: "https://lattes.cnpq.br/9570567253017492",
+        orcid: "https://orcid.org/0000-0002-9319-5227",
+        photo: "./fotos/daniel-dallavalle.jpg"
+      },
+      {
+        name: "Daniel Pasini Gonçalves",
+        role: "Mestrando · UFCSPA",
+        category: "pos",
+        lattes: "https://lattes.cnpq.br/6331002460536883",
+        orcid: "https://orcid.org/0009-0007-1825-6986",
+        photo: "./fotos/daniel-goncalves.jpg"
+      },
+      {
+        name: "David Nusbaum",
+        role: "IC Voluntário · UFCSPA",
+        category: "ic",
+        lattes: "http://lattes.cnpq.br/3861741393098505",
+        orcid: "https://orcid.org/0009-0000-5718-5286",
+        photo: "./fotos/david-nusbaum.jpg"
+      },
+      {
+        name: "Enrico Sousa Villetti",
+        role: "IC Voluntário · PUCRS",
+        category: "ic",
+        lattes: "",
+        orcid: "https://orcid.org/0009-0004-0372-0449",
+        photo: "./fotos/enrico-villetti.jpg"
+      },
+      {
+        name: "Felipe Francisco de Castro Passos",
+        role: "Dirigente de Pesquisa, PIBIC e doutorado · UFRGS",
+        category: "lideranca",
+        lattes: "http://lattes.cnpq.br/4651669439780707",
+        orcid: "https://orcid.org/0009-0003-1490-043X",
+        photo: "./fotos/felipe-passos.jpg"
+      },
+      {
+        name: "Flávio Milman Shansis",
+        role: "Coordenador · UFCSPA",
+        category: "lideranca",
+        lattes: "http://lattes.cnpq.br/7296283284342040",
+        orcid: "",
+        photo: "./fotos/flavio-shansis.jpg"
+      },
+      {
+        name: "Gabriel Antônio Flores Chies",
+        role: "Doutorando · UFCSPA",
+        category: "pos",
+        lattes: "http://lattes.cnpq.br/0711809341578969",
+        orcid: "https://orcid.org/0009-0007-1320-0043",
+        photo: "./fotos/gabriel-chies.jpg"
+      },
+      {
+        name: "Gabriel Felipi de Fontes Guilioti",
+        role: "PID Voluntário · UFCSPA",
+        category: "ic",
+        lattes: "https://lattes.cnpq.br/7079174248302352",
+        orcid: "https://orcid.org/0009-0005-7860-4415",
+        photo: "./fotos/gabriel-guilioti.jpg"
+      },
+      {
+        name: "Gabriel Henrique Bigliardi Brites",
+        role: "IC Voluntário · UFCSPA",
+        category: "ic",
+        lattes: "https://lattes.cnpq.br/7547281155864173",
+        orcid: "https://orcid.org/0009-0007-6219-0195",
+        photo: "./fotos/gabriel-brites.jpg"
+      },
+      {
+        name: "Gabriel Netto Ferreira",
+        role: "IC voluntário · UFCSPA",
+        category: "ic",
+        lattes: "http://lattes.cnpq.br/4522011694295738",
+        orcid: "",
+        photo: "./fotos/gabriel-ferreira.jpg"
+      },
+      {
+        name: "Gabriel Rocha",
+        role: "Mestrando · UFCSPA",
+        category: "pos",
+        lattes: "https://lattes.cnpq.br/9657223294743476",
+        orcid: "https://orcid.org/0009-0005-1437-8674",
+        photo: "./fotos/gabriel-rocha.jpg"
+      },
+      {
+        name: "Gisele Teixeira de Souza",
+        role: "IC Voluntário · UFCSPA",
+        category: "ic",
+        lattes: "http://lattes.cnpq.br/0504435722351504",
+        orcid: "",
+        photo: "./fotos/gisele-souza.jpg"
+      },
+      {
+        name: "Guilherme Andary Riethmüller",
+        role: "Pesquisador Voluntário",
+        category: "associados",
+        lattes: "http://lattes.cnpq.br/6710395552387030",
+        orcid: "",
+        photo: "./fotos/guilherme-riethmuller.jpg"
+      },
+      {
+        name: "Guilherme Callegari Escobar",
+        role: "IC Voluntário · UFCSPA",
+        category: "ic",
+        lattes: "http://lattes.cnpq.br/8925719596148916",
+        orcid: "",
+        photo: "./fotos/guilherme-escobar.jpg"
+      },
+      {
+        name: "Gustavo Kessler Antunes",
+        role: "Pesquisador voluntário · HPSP/ISCMPA",
+        category: "associados",
+        lattes: "",
+        orcid: "",
+        photo: "./fotos/gustavo-antunes.jpg"
+      },
+      {
+        name: "Italo Abrão Biasuz",
+        role: "IC Voluntário / Candidato mestrado · UFCSPA",
+        category: "ic",
+        lattes: "https://lattes.cnpq.br/9497687566551297",
+        orcid: "",
+        photo: "./fotos/italo-biasuz.jpg"
+      },
+      {
+        name: "Karina Castilhos Bastos",
+        role: "IC Voluntária · UFCSPA",
+        category: "ic",
+        lattes: "https://lattes.cnpq.br/0402181659255394",
+        orcid: "https://orcid.org/0000-0002-8439-7230",
+        photo: "./fotos/karina-bastos.jpg"
+      },
+      {
+        name: "Leonardo Daudt Wolffenbuttel",
+        role: "IC Voluntário",
+        category: "ic",
+        lattes: "http://lattes.cnpq.br/7560296134418606",
+        orcid: "",
+        photo: "./fotos/leonardo-wolffenbuttel.jpg"
+      },
+      {
+        name: "Lucas Gabriel Duarte Garcia",
+        role: "IC voluntário",
+        category: "ic",
+        lattes: "http://lattes.cnpq.br/2268500480420184",
+        orcid: "",
+        photo: "./fotos/lucas-garcia.jpg"
+      },
+      {
+        name: "Luiza Schaefer Schiroky",
+        role: "PID Voluntário · UFCSPA",
+        category: "ic",
+        lattes: "https://lattes.cnpq.br/5759509671628338",
+        orcid: "https://orcid.org/0009-0006-0836-234X",
+        photo: "./fotos/luiza-schiroky.jpg"
+      },
+      {
+        name: "Marcelo Zimerman Bizzi",
+        role: "Pesquisador Voluntário · FUMM",
+        category: "associados",
+        lattes: "http://lattes.cnpq.br/5613676161279512",
+        orcid: "https://orcid.org/0009-0007-7117-1551",
+        photo: "./fotos/marcelo-bizzi.jpg"
+      },
+      {
+        name: "Marcos da Silveira Cima",
+        role: "Doutorando · UFCSPA",
+        category: "pos",
+        lattes: "http://lattes.cnpq.br/4793629050454437",
+        orcid: "https://orcid.org/0000-0001-6242-3664",
+        photo: "./fotos/marcos-cima.jpg"
+      },
+      {
+        name: "Matheus Meine Otten",
+        role: "IC voluntário · UFCSPA",
+        category: "ic",
+        lattes: "https://lattes.cnpq.br/1509347088820391",
+        orcid: "https://orcid.org/0009-0000-4808-4379",
+        photo: "./fotos/matheus-otten.jpg"
+      },
+      {
+        name: "Matheus Toledo de Oliveira",
+        role: "Pesquisador Voluntário · UFCSPA",
+        category: "associados",
+        lattes: "https://lattes.cnpq.br/9514862785372717",
+        orcid: "https://orcid.org/0009-0002-3696-9051",
+        photo: "./fotos/matheus-oliveira.jpg"
+      },
+      {
+        name: "Natália Sobierayski Esnaola",
+        role: "IC Voluntário",
+        category: "ic",
+        lattes: "http://lattes.cnpq.br/5684955923429944",
+        orcid: "",
+        photo: "./fotos/natalia-esnaola.jpg"
+      },
+      {
+        name: "Nicholas Emanuel Storch",
+        role: "PIBIC · UNIVATES/UFCSPA",
+        category: "ic",
+        lattes: "http://lattes.cnpq.br/5522046186785173",
+        orcid: "https://orcid.org/0009-0003-0388-8543",
+        photo: "./fotos/nicholas-storch.jpg"
+      },
+      {
+        name: "Pedro de Brito Prestes Júnior",
+        role: "IC Voluntário · UFCSPA",
+        category: "ic",
+        lattes: "https://lattes.cnpq.br/1777077171542860",
+        orcid: "https://orcid.org/0009-0003-0257-6513",
+        photo: "./fotos/pedro-junior.jpg"
+      },
+      {
+        name: "Pedro Dytz Marin",
+        role: "IC Voluntário · UFCSPA",
+        category: "ic",
+        lattes: "http://lattes.cnpq.br/4320330847480635",
+        orcid: "https://orcid.org/0009-0006-3983-6552",
+        photo: "./fotos/pedro-marin.jpg"
+      },
+      {
+        name: "Tiago Gehrke de Carvalho",
+        role: "IC Voluntário · UFCSPA",
+        category: "ic",
+        lattes: "http://lattes.cnpq.br/2559348335124387",
+        orcid: "",
+        photo: "./fotos/tiago-carvalho.jpg"
+      },
+      {
+        name: "Vinícius Vicente Soares",
+        role: "Doutorando · UFCSPA",
+        category: "pos",
+        lattes: "https://lattes.cnpq.br/7547504820935924",
+        orcid: "https://orcid.org/0000-0002-6752-3848",
+        photo: "./fotos/vinicius-soares.jpg"
+      },
+      {
+        name: "Vitório Serafim",
+        role: "PID bolsista e IC Voluntário · UFCSPA",
+        category: "ic",
+        lattes: "http://lattes.cnpq.br/3470251519132287",
+        orcid: "https://orcid.org/0009-0002-6920-731",
+        photo: "./fotos/vitorio-serafim.jpg"
+      }
+  ];
+    
     const translations = {
       pt: {
         nav_about: "Sobre",
@@ -989,57 +1360,44 @@
         nav_team: "Equipe",
         nav_location: "Localização",
         nav_contact: "Contato",
-        
         hero_subtitle_tag: "UNIVERSIDADE FEDERAL DE CIÊNCIAS DA SAÚDE DE PORTO ALEGRE",
         hero_tagline: "Onde a pesquisa encontra a prática clínica.",
         hero_lead: "Reunimos pesquisadores dedicados a investigar a intersecção entre biologia, ambiente e expressão comportamental, unindo psiquiatria computacional, modelagem preditiva e investigações epidemiológicas de grande impacto populacional.",
         hero_btn_axes: "Explorar Eixos de Pesquisa",
         hero_btn_prod: "Publicações & Eventos",
-        
         stat_axes: "Eixos Temáticos",
         stat_team: "Integrantes Ativos",
         stat_translational: "Pesquisa Translacional",
         stat_location: "Porto Alegre / RS",
-        
         about_tag: "01 · Sobre o Laboratório",
         about_title: "Investigação translacional em saúde mental e comportamento.",
         about_p1: "O LIFE Lab está sediado na Universidade Federal de Ciências da Saúde de Porto Alegre (UFCSPA) e reúne pesquisadores dedicados a investigar a intersecção complexa entre biologia, ambiente e expressão comportamental.",
         about_p2: "Sob a supervisão principal do Prof. Dr. Flávio Milman Shansis, nosso grupo desenvolve investigações translacionais de ponta, unindo revisões sistemáticas, psiquiatria computacional, modelagem de dados, triagem digital baseada em protocolos e estudos epidemiológicos de grande impacto em saúde mental.",
-        
         leader1_tag: "Supervisão Principal · PI",
         leader1_role: "Direção Geral & Pesquisa em Psiquiatria",
-        
         axes_tag: "02 · Eixos de Pesquisa",
         axes_footer_note: "NOSSA ATUAÇÃO EM PESQUISA É MULTIDISCIPLINAR E CONJUNTA",
-        
         axis1_name: "EDUCAÇÃO MÉDICA",
         axis2_name: "EVENTOS CLIMÁTICOS EXTREMOS",
         axis3_name: "TDAH & FENÓTIPOS COMPORTAMENTAIS",
         axis4_name: "SUICÍDIO & PREVENÇÃO",
         axis5_name: "OUTROS PROJETOS & SAÚDE MENTAL TRANSVERSAL",
-        
         axis_proj_label: "Projeto Vigente",
-        
         axis1_focus_desc: "Inovações metodológicas, validação de instrumentos psicométricos e simulação realística aplicada ao ensino médico e à formação em saúde.",
         axis1_p1_desc: "Validação de escalas psicométricas e desenvolvimento de ambientes virtuais aplicados à prática clínica.",
         axis1_p2_desc: "Implementação e avaliação de cenários imersivos no ensino médico e semiologia psiquiátrica.",
-        
         axis2_focus_desc: "Avaliação epidemiológica rigorosa dos impactos de desastres hidrológicos e climáticos na saúde mental da população, com ênfase em transtorno de estresse pós-traumático (TEPT).",
         axis2_p1_desc: "Investigação dos desdobramentos psiquiátricos pós-desastres no Rio Grande do Sul.",
         axis2_p2_desc: "Análise populacional aprofundada de vulnerabilidades e repercussões psicológicas.",
-        
         axis3_focus_desc: "Investigação aprofundada do Transtorno do Déficit de Atenção com Hiperatividade (TDAH), ideação suicida, influência do ambiente construído e terapia hormonal.",
         axis3_p1_desc: "Estudo correlacional de coorte investigando o risco e a intersecção fenotípica.",
         axis3_p2_desc: "Impacto do design arquitetônico e ambiente sensorial em adultos com TDAH.",
         axis3_p3_desc: "Investigação sobre terapia hormonal e modulações fenotípicas.",
-        
         axis4_focus_desc: "Estudos epidemiológicos e intervenções voltadas à prevenção do suicídio e suporte comunitário.",
         axis4_p1_desc: "Iniciativa focada em estratégias de mitigação de risco e intervenção precoce.",
-        
         axis5_focus_desc: "Investigação do bem-estar psiquiátrico em populações específicas de profissionais de saúde e desenvolvimento de protótipos digitais.",
         axis5_p1_desc: "Avaliação do esgotamento e resiliência em médicos de linha de frente.",
         axis5_p2_desc: "Estudos especiais em saúde mental e suporte analítico de dados.",
-
         prod_tag: "03 · Produção & Difusão Científica",
         prod_title: "PUBLICAÇÕES & EVENTOS",
         tab_publications: "Publicações",
@@ -1050,7 +1408,6 @@
         evt_box_title: "Congressos, Simpósios & Apresentações Científicas",
         evt_box_subtitle: "Comunicações orais, pôsteres, mesas-redondas e prêmios conquistados pelos membros do laboratório.",
         evt_badge: "Agenda & Histórico",
-        
         team_tag: "04 · Corpo Científico",
         team_title: "PESQUISADORES",
         team_click_hint: "Toque em qualquer integrante para abrir o perfil acadêmico e projetos.",
@@ -1059,16 +1416,14 @@
         filter_grad: "Pós-Graduação",
         filter_assoc: "Associados",
         filter_undergrad: "IC & Bolsistas",
-        search_placeholder: "Filtrar por nome ou projeto...",
+        search_placeholder: "Filtrar por nome ou vínculo...",
         search_no_results: "Nenhum integrante encontrado para os termos buscados.",
-        
         location_tag: "05 · Localização & Contato",
         location_title: "ONDE ESTAMOS",
         location_card_badge: "Sede Institucional",
         location_desc: "O LIFE Lab está vinculado ao Programa de Pós-Graduação em Ciências da Saúde da UFCSPA, no Centro Histórico de Porto Alegre.",
         btn_email: "Enviar E-mail",
         footer_top: "Voltar ao Topo ↑",
-        
         modal_project_label: "Projeto Vinculado",
         modal_axis_label: "Eixo de Atuação",
         modal_footer_label: "LIFE Lab · UFCSPA"
@@ -1080,57 +1435,44 @@
         nav_team: "Team",
         nav_location: "Location",
         nav_contact: "Contact",
-        
         hero_subtitle_tag: "FEDERAL UNIVERSITY OF HEALTH SCIENCES OF PORTO ALEGRE",
         hero_tagline: "Where research meets clinical practice.",
         hero_lead: "Gathering researchers dedicated to investigating the intersection between biology, environment, and behavioral expression through computational psychiatry, predictive modeling, and population-level epidemiological studies.",
         hero_btn_axes: "Explore Research Axes",
         hero_btn_prod: "Publications & Events",
-        
         stat_axes: "Research Axes",
         stat_team: "Active Members",
         stat_translational: "Translational Science",
         stat_location: "Porto Alegre / RS, Brazil",
-        
         about_tag: "01 · About the Laboratory",
         about_title: "Translational investigation in mental health and behavior.",
         about_p1: "The LIFE Lab is based at the Federal University of Health Sciences of Porto Alegre (UFCSPA) and gathers researchers dedicated to investigating the intricate interplay between biology, environment, and behavioral phenotype expression.",
         about_p2: "Under the principal supervision of Prof. Dr. Flávio Milman Shansis, our group conducts leading-edge translational research, combining systematic reviews, computational psychiatry, data modeling, protocol-based digital screening, and high-impact epidemiological cohorts in mental health.",
-        
         leader1_tag: "Principal Investigator · PI",
         leader1_role: "General Direction & Psychiatry Research",
-        
         axes_tag: "02 · Research Axes",
         axes_footer_note: "OUR RESEARCH IS MULTIDISCIPLINARY AND COLLABORATIVE",
-        
         axis1_name: "MEDICAL EDUCATION",
         axis2_name: "EXTREME CLIMATE EVENTS",
         axis3_name: "ADHD & BEHAVIORAL PHENOTYPES",
         axis4_name: "SUICIDE & PREVENTION",
         axis5_name: "SPECIAL PROJECTS & CROSS-CUTTING HEALTH",
-        
         axis_proj_label: "Active Project",
-        
         axis1_focus_desc: "Methodological innovations, psychometric scale validation, and realistic clinical simulation applied to medical training and health education.",
         axis1_p1_desc: "Psychometric scale validation and development of virtual environments applied to clinical practice.",
         axis1_p2_desc: "Implementation and evaluation of immersive scenarios in medical training and psychiatric semiology.",
-        
         axis2_focus_desc: "Rigorous epidemiological assessment of the psychological aftermath of climate disasters, focusing on post-traumatic stress disorder (PTSD).",
         axis2_p1_desc: "Investigation of psychiatric outcomes and post-disaster trauma in Rio Grande do Sul.",
         axis2_p2_desc: "In-depth population analysis of biopsychosocial vulnerabilities.",
-        
         axis3_focus_desc: "In-depth investigation of Attention Deficit Hyperactivity Disorder (ADHD), suicidal ideation, built-environment sensory design, and hormone therapy.",
         axis3_p1_desc: "Correlational cohort study analyzing risk and phenotypic intersection.",
         axis3_p2_desc: "Impact of architectural design and sensory environment on adults with ADHD.",
         axis3_p3_desc: "Cross-sectional study on hormone therapy and phenotypic modulations.",
-        
         axis4_focus_desc: "Translational epidemiological studies and evidence-based interventions aimed at early risk detection, suicide prevention, and community support.",
         axis4_p1_desc: "Initiative focused on risk mitigation strategies and early clinical intervention.",
-        
         axis5_focus_desc: "Investigation of psychiatric well-being in frontline medical professionals, digital screening prototypes, and multi-institutional data analytics.",
         axis5_p1_desc: "Burnout, resilience, and stress assessment in frontline physicians.",
         axis5_p2_desc: "Special studies in mental health and data analytical support.",
-
         prod_tag: "03 · Scientific Output & Outreach",
         prod_title: "PUBLICATIONS & EVENTS",
         tab_publications: "Publications",
@@ -1141,7 +1483,6 @@
         evt_box_title: "Congresses, Symposia & Scientific Presentations",
         evt_box_subtitle: "Oral communications, posters, roundtables, and academic participation by lab members.",
         evt_badge: "Schedule & History",
-        
         team_tag: "04 · Scientific Staff",
         team_title: "RESEARCHERS",
         team_click_hint: "Click any member to open their academic profile and projects.",
@@ -1150,16 +1491,14 @@
         filter_grad: "Graduate",
         filter_assoc: "Associates",
         filter_undergrad: "Undergraduate",
-        search_placeholder: "Filter by name or project...",
+        search_placeholder: "Filter by name or vínculo...",
         search_no_results: "No team members found matching your search.",
-        
         location_tag: "05 · Location & Contact",
         location_title: "WHERE WE ARE",
         location_card_badge: "Institutional Campus",
         location_desc: "The LIFE Lab is affiliated with the Graduate Program in Health Sciences at UFCSPA, in the Historic Center of Porto Alegre, RS, Brazil.",
         btn_email: "Send E-mail",
         footer_top: "Back to Top ↑",
-        
         modal_project_label: "Assigned Project",
         modal_axis_label: "Research Axis",
         modal_footer_label: "LIFE Lab · UFCSPA"
@@ -1279,7 +1618,6 @@
     }
 
     document.addEventListener('DOMContentLoaded', () => {
-      // Fallback do logotipo no hero
       (function () {
         const logoImg = document.getElementById('hero-logo-img');
         const logoFallback = document.getElementById('hero-logo-fallback');
@@ -1298,7 +1636,6 @@
         });
       })();
 
-      // Fallback resiliente da imagem do professor
       (function () {
         const img = document.getElementById('prof-flavio-img');
         const fallback = document.getElementById('prof-flavio-fallback');
@@ -1328,10 +1665,8 @@
         });
       })();
 
-      // Renderiza listas de Publicações & Eventos
       renderProductionLists();
 
-      // Controle das abas clicáveis (Publicações / Participação em Eventos)
       const tabBtns = document.querySelectorAll('.prod-tab-btn');
       const tabPanels = document.querySelectorAll('.prod-tab-panel');
 
@@ -1426,14 +1761,6 @@
       let currentCategory = 'all';
       let currentQuery = '';
 
-      function getInitials(name) {
-        const parts = name.replace('Prof. Dr. ', '').trim().split(' ');
-        if (parts.length >= 2) {
-          return (parts[0][0] + parts[parts.length - 1][0]).toUpperCase();
-        }
-        return name.substring(0, 2).toUpperCase();
-      }
-
       function renderTeam() {
         if (!teamGrid) return;
         teamGrid.innerHTML = '';
@@ -1444,28 +1771,22 @@
         teamMembers.forEach((member, index) => {
           const matchesCategory = (currentCategory === 'all' || member.category === currentCategory);
           const nameNorm = normalizeStr(member.name);
-          const projNorm = normalizeStr(member.project);
           const roleNorm = normalizeStr(member.role);
-          const matchesQuery = (!q || nameNorm.includes(q) || projNorm.includes(q) || roleNorm.includes(q));
+          const matchesQuery = (!q || nameNorm.includes(q) || roleNorm.includes(q));
 
           if (matchesCategory && matchesQuery) {
             visibleCount++;
 
             const card = document.createElement('div');
-            card.className = "group bg-white rounded-2xl p-4 border border-slate-200 shadow-sm hover:shadow-md hover:border-brand-navy transition-all cursor-pointer flex items-center justify-between";
+            card.className = "group bg-white rounded-2xl p-4 border border-slate-200 shadow-sm hover:shadow-md hover:border-brand-navy transition-all cursor-pointer flex items-center justify-between gap-3";
             card.setAttribute('data-index', index);
 
             card.innerHTML = `
-              <div class="flex items-center gap-3.5 overflow-hidden">
-                <div class="w-10 h-10 rounded-xl bg-brand-surface text-brand-lilac font-bold text-xs flex items-center justify-center shrink-0 shadow-inner">
-                  ${getInitials(member.name)}
-                </div>
-                <div class="overflow-hidden">
-                  <h4 class="text-xs font-bold text-brand-navy truncate group-hover:text-brand-lilac transition-colors">${member.name}</h4>
-                  <p class="text-[11px] text-slate-500 truncate">${member.role}</p>
-                </div>
+              <div class="overflow-hidden">
+                <h4 class="text-xs sm:text-sm font-bold text-brand-navy truncate group-hover:text-brand-lilac transition-colors">${member.name}</h4>
+                <p class="text-[11px] text-slate-500 truncate mt-0.5">${member.role}</p>
               </div>
-              <div class="w-6 h-6 rounded-full bg-slate-50 group-hover:bg-brand-navy group-hover:text-white text-slate-400 flex items-center justify-center text-xs shrink-0 transition-colors">
+              <div class="w-7 h-7 rounded-full bg-slate-50 group-hover:bg-brand-navy group-hover:text-white text-slate-400 flex items-center justify-center text-xs shrink-0 transition-colors">
                 ↗
               </div>
             `;
@@ -1509,7 +1830,9 @@
 
       const modal = document.getElementById('member-modal');
       const modalCloseBtn = document.getElementById('modal-close-btn');
-      const modalAvatar = document.getElementById('modal-avatar');
+      const modalPhoto = document.getElementById('modal-photo');
+      const modalPhotoFallback = document.getElementById('modal-photo-fallback');
+      const modalPhotoPath = document.getElementById('modal-photo-path');
       const modalName = document.getElementById('modal-name');
       const modalRoleBadge = document.getElementById('modal-role-badge');
       const modalProject = document.getElementById('modal-project');
@@ -1531,11 +1854,24 @@
 
       function openMemberModal(member) {
         if (!modal) return;
-        modalAvatar.textContent = getInitials(member.name);
         modalName.textContent = member.name;
         modalRoleBadge.textContent = member.role;
         modalProject.textContent = member.project;
         modalAxis.textContent = member.axis;
+
+        if (modalPhoto && modalPhotoFallback) {
+          modalPhotoFallback.classList.add('hidden');
+          modalPhotoFallback.classList.remove('flex');
+          modalPhoto.classList.remove('hidden');
+          modalPhoto.alt = `Retrato em preto e branco de ${member.name}`;
+          modalPhoto.onerror = function () {
+            modalPhoto.classList.add('hidden');
+            modalPhotoFallback.classList.remove('hidden');
+            modalPhotoFallback.classList.add('flex');
+            if (modalPhotoPath) modalPhotoPath.textContent = member.photo || '';
+          };
+          modalPhoto.src = member.photo || '';
+        }
 
         configureExternalLink(modalLattes, member.lattes);
         configureExternalLink(modalOrcid, member.orcid);
