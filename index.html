@@ -759,7 +759,7 @@
               <p class="flex flex-wrap items-center gap-2">
                 <strong class="font-semibold text-brand-navy" data-i18n="label_email">E-mail:</strong>
                 <a href="mailto:lifelab@ufcspa.edu.br" class="text-brand-lilac hover:underline font-bold">lifelab@ufcspa.edu.br</a>
-                <button type="button" id="btn-copy-email" class="text-[11px] font-bold text-slate-600 hover:text-brand-navy bg-slate-100 hover:bg-slate-200 px-2.5 py-0.5 rounded-full transition-colors">
+                <button type="button" id="btn-copy-email" data-i18n="btn_copy" class="text-[11px] font-bold text-slate-600 hover:text-brand-navy bg-slate-100 hover:bg-slate-200 px-2.5 py-0.5 rounded-full transition-colors">
                   Copiar
                 </button>
               </p>
@@ -952,7 +952,7 @@
         role_en: "PhD Student · UFCSPA",
         category: "doutorado",
         tier: 3,
-        lattes: "https://lattes.cnpq.br/7547504820935924",
+        lattes: "http://lattes.cnpq.br/7547504820935924",
         orcid: "https://orcid.org/0000-0002-6752-3848",
         photo: "./fotos/vinicius-soares.jpg"
       },
@@ -1004,7 +1004,7 @@
         role_en: "Master's Student · UFCSPA",
         category: "mestrado",
         tier: 4,
-        lattes: "https://lattes.cnpq.br/9657223294743476",
+        lattes: "http://lattes.cnpq.br/9657223294743476",
         orcid: "https://orcid.org/0009-0005-1437-8674",
         photo: "./fotos/gabriel-rocha.jpg"
       },
@@ -1359,6 +1359,8 @@
         location_desc: "O LIFE Lab está vinculado ao Programa de Pós-Graduação em Ciências da Saúde da UFCSPA, no Centro Histórico de Porto Alegre.",
         label_address: "Endereço:",
         label_email: "E-mail:",
+        btn_copy: "Copiar",
+        btn_copied: "Copiado!",
         btn_email: "Enviar E-mail",
         btn_portal: "Portal UFCSPA",
         footer_supervision: "Supervisão",
@@ -1445,6 +1447,8 @@
         location_desc: "The LIFE Lab is affiliated with the Graduate Program in Health Sciences at UFCSPA, in the Historic Center of Porto Alegre, RS, Brazil.",
         label_address: "Address:",
         label_email: "E-mail:",
+        btn_copy: "Copy",
+        btn_copied: "Copied!",
         btn_email: "Send E-mail",
         btn_portal: "UFCSPA Portal",
         footer_supervision: "Supervision",
@@ -1653,11 +1657,14 @@
       const copyEmailBtn = document.getElementById('btn-copy-email');
       if (copyEmailBtn) {
         copyEmailBtn.addEventListener('click', async () => {
+          const dict = translations[currentLang] || translations.pt;
           try {
             await navigator.clipboard.writeText('lifelab@ufcspa.edu.br');
-            const prev = copyEmailBtn.textContent;
-            copyEmailBtn.textContent = currentLang === 'en' ? 'Copied!' : 'Copiado!';
-            setTimeout(() => { copyEmailBtn.textContent = prev; }, 1600);
+            copyEmailBtn.textContent = dict.btn_copied;
+            setTimeout(() => {
+              const latestDict = translations[currentLang] || translations.pt;
+              copyEmailBtn.textContent = latestDict.btn_copy;
+            }, 1600);
           } catch (_) {}
         });
       }
