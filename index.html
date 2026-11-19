@@ -5,16 +5,22 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>LIFE Lab | Laboratório Integrado de Fenótipos Comportamentais — UFCSPA</title>
   <meta name="description" content="Laboratório Integrado de Fenótipos Comportamentais da UFCSPA. Pesquisas translacionais em psiquiatria, educação médica, eventos climáticos e fenótipos comportamentais.">
-  
+
+  <!-- Open Graph / Compartilhamento -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="LIFE Lab | Laboratório Integrado de Fenótipos Comportamentais — UFCSPA">
+  <meta property="og:description" content="Onde a pesquisa encontra a prática clínica. Psiquiatria computacional, modelagem de dados, epidemiologia e saúde mental na UFCSPA.">
+  <meta property="og:image" content="./logotipo-fundoescuro.png">
+
   <!-- Favicon -->
   <link rel="icon" type="image/png" href="./logo-colour.png">
   <link rel="apple-touch-icon" href="./logo-colour.png">
-  
+
   <!-- FONTE INTER -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-  
+
   <!-- Tailwind CSS via CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
@@ -49,7 +55,7 @@
     * {
       font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif !important;
     }
-    
+
     ::selection {
       background-color: #7D70AE;
       color: #ffffff;
@@ -60,6 +66,11 @@
       backdrop-filter: blur(16px);
       -webkit-backdrop-filter: blur(16px);
       border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .nav-link.active-nav {
+      color: #ffffff;
+      background-color: rgba(125, 112, 174, 0.28);
     }
 
     /* ===================================================================== */
@@ -204,27 +215,35 @@
 
   <header class="fixed top-0 left-0 right-0 z-50 transition-all duration-300" id="main-header">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-4 pb-2">
-      <nav class="glass-nav rounded-full px-6 py-3 flex items-center justify-between shadow-2xl transition-all duration-300">
-        
+      <nav class="glass-nav rounded-full px-5 sm:px-6 py-3 flex items-center justify-between shadow-2xl transition-all duration-300">
+
         <a href="#inicio" class="flex items-center gap-2.5 group focus:outline-none" aria-label="LIFE Lab Início">
           <img src="./logo-white.png" alt="LIFE Lab" class="h-8 w-auto object-contain transition-transform group-hover:scale-105 duration-200" onerror="this.onerror=null;this.src='./logo-main.png';">
         </a>
 
-        <div class="hidden md:flex items-center gap-1 lg:gap-2">
-          <a href="#sobre" data-i18n="nav_about" class="text-xs font-medium text-slate-300 hover:text-white px-3.5 py-1.5 rounded-full hover:bg-white/10 transition-all">Sobre</a>
-          <a href="#eixos" data-i18n="nav_axes" class="text-xs font-medium text-slate-300 hover:text-white px-3.5 py-1.5 rounded-full hover:bg-white/10 transition-all">Eixos de Pesquisa</a>
-          <a href="#producao" data-i18n="nav_production" class="text-xs font-medium text-slate-300 hover:text-white px-3.5 py-1.5 rounded-full hover:bg-white/10 transition-all">Publicações & Eventos</a>
-          <a href="#equipe" data-i18n="nav_team" class="text-xs font-medium text-slate-300 hover:text-white px-3.5 py-1.5 rounded-full hover:bg-white/10 transition-all">Equipe</a>
-          <a href="#onde-estamos" data-i18n="nav_location" class="text-xs font-medium text-slate-300 hover:text-white px-3.5 py-1.5 rounded-full hover:bg-white/10 transition-all">Localização</a>
+        <div class="hidden md:flex items-center gap-1 lg:gap-1.5">
+          <a href="#sobre" data-section="sobre" data-i18n="nav_about" class="nav-link text-xs font-medium text-slate-300 hover:text-white px-3.5 py-1.5 rounded-full hover:bg-white/10 transition-all">Sobre</a>
+          <a href="#eixos" data-section="eixos" data-i18n="nav_axes" class="nav-link text-xs font-medium text-slate-300 hover:text-white px-3.5 py-1.5 rounded-full hover:bg-white/10 transition-all">Eixos de Pesquisa</a>
+          <a href="#producao" data-section="producao" data-i18n="nav_production" class="nav-link text-xs font-medium text-slate-300 hover:text-white px-3.5 py-1.5 rounded-full hover:bg-white/10 transition-all">Publicações &amp; Eventos</a>
+          <a href="#equipe" data-section="equipe" data-i18n="nav_team" class="nav-link text-xs font-medium text-slate-300 hover:text-white px-3.5 py-1.5 rounded-full hover:bg-white/10 transition-all">Equipe</a>
+          <a href="#onde-estamos" data-section="onde-estamos" data-i18n="nav_location" class="nav-link text-xs font-medium text-slate-300 hover:text-white px-3.5 py-1.5 rounded-full hover:bg-white/10 transition-all">Localização</a>
         </div>
 
-        <div class="flex items-center gap-3">
+        <div class="flex items-center gap-2.5">
+          <a href="https://www.instagram.com/lifelab.ufcspa/" target="_blank" rel="noopener noreferrer" aria-label="Instagram @lifelab.ufcspa" title="Instagram @lifelab.ufcspa" class="hidden sm:inline-flex items-center justify-center w-8 h-8 rounded-full bg-white/10 hover:bg-brand-lilac text-slate-200 hover:text-white border border-white/15 transition-all">
+            <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <rect x="2.5" y="2.5" width="19" height="19" rx="5" ry="5"></rect>
+              <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+              <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+            </svg>
+          </a>
+
           <div class="flex items-center bg-white/10 p-0.5 rounded-full border border-white/15 text-[11px] font-semibold" id="lang-switch-container">
             <button id="btn-lang-pt" type="button" class="px-3 py-1 rounded-full bg-brand-lilac text-white font-bold shadow-sm transition-all" aria-label="Português">PT</button>
             <button id="btn-lang-en" type="button" class="px-3 py-1 rounded-full text-slate-300 hover:text-white font-medium transition-all" aria-label="English">EN</button>
           </div>
 
-          <a href="#contato" data-i18n="nav_contact" class="hidden sm:inline-flex items-center gap-1.5 bg-brand-lilac hover:bg-brand-lilac-hover text-white font-bold text-xs px-5 py-2.5 rounded-full transition-all shadow-sm">
+          <a href="#contato" data-i18n="nav_contact" class="hidden sm:inline-flex items-center gap-1.5 bg-brand-lilac hover:bg-brand-lilac-hover text-white font-bold text-xs px-4 py-2 rounded-full transition-all shadow-sm">
             <span>Contato</span>
             <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
@@ -246,9 +265,13 @@
       <div id="mobile-menu" class="hidden md:hidden mt-2 glass-nav rounded-2xl p-4 shadow-xl border border-white/10 flex flex-col gap-2 text-left">
         <a href="#sobre" data-i18n="nav_about" class="text-xs font-semibold text-slate-200 hover:text-brand-lilac py-2 border-b border-white/5">Sobre</a>
         <a href="#eixos" data-i18n="nav_axes" class="text-xs font-semibold text-slate-200 hover:text-brand-lilac py-2 border-b border-white/5">Eixos de Pesquisa</a>
-        <a href="#producao" data-i18n="nav_production" class="text-xs font-semibold text-slate-200 hover:text-brand-lilac py-2 border-b border-white/5">Publicações & Eventos</a>
+        <a href="#producao" data-i18n="nav_production" class="text-xs font-semibold text-slate-200 hover:text-brand-lilac py-2 border-b border-white/5">Publicações &amp; Eventos</a>
         <a href="#equipe" data-i18n="nav_team" class="text-xs font-semibold text-slate-200 hover:text-brand-lilac py-2 border-b border-white/5">Equipe</a>
         <a href="#onde-estamos" data-i18n="nav_location" class="text-xs font-semibold text-slate-200 hover:text-brand-lilac py-2 border-b border-white/5">Localização</a>
+        <a href="https://www.instagram.com/lifelab.ufcspa/" target="_blank" rel="noopener noreferrer" class="text-xs font-semibold text-brand-lilac py-2 border-b border-white/5 flex items-center justify-between">
+          <span>Instagram · @lifelab.ufcspa</span>
+          <span>↗</span>
+        </a>
         <a href="#contato" data-i18n="nav_contact" class="text-xs font-bold text-white bg-brand-lilac text-center py-2.5 rounded-full mt-2">Contato</a>
       </div>
     </div>
@@ -256,7 +279,7 @@
 
   <section id="inicio" class="relative hero-gradient text-white pt-28 pb-24 lg:pt-32 lg:pb-32 border-b border-white/10">
     <div class="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-      
+
       <p class="text-xs font-bold tracking-widest text-brand-lilac uppercase mb-5" data-i18n="hero_subtitle_tag">
         UNIVERSIDADE FEDERAL DE CIÊNCIAS DA SAÚDE DE PORTO ALEGRE
       </p>
@@ -287,7 +310,7 @@
           <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 14l-7 7m0 0l-7-7m7 7V3"/></svg>
         </a>
         <a href="#producao" class="inline-flex items-center gap-2 bg-white/10 hover:bg-white/15 text-white font-semibold text-xs sm:text-sm px-6 py-3.5 rounded-full border border-white/20 transition-all">
-          <span data-i18n="hero_btn_prod">Publicações & Eventos</span>
+          <span data-i18n="hero_btn_prod">Publicações &amp; Eventos</span>
         </a>
       </div>
 
@@ -315,9 +338,9 @@
 
   <section id="sobre" class="py-24 bg-brand-cream border-b border-slate-200">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      
+
       <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-stretch">
-        
+
         <div class="lg:col-span-5 flex">
           <div class="relative w-full min-h-[320px] sm:min-h-[360px] lg:h-full rounded-3xl overflow-hidden shadow-2xl bg-brand-navy border border-slate-200 group">
             <img
@@ -336,11 +359,11 @@
               <span class="text-xs text-slate-400">Arquivo <code class="text-slate-200">profflavio.png</code> não encontrado na pasta</span>
             </div>
 
-            <div class="pointer-events-none absolute inset-0 bg-gradient-to-t from-brand-navy/90 via-brand-navy/25 to-transparent"></div>
+            <div class="pointer-events-none absolute inset-x-0 bottom-0 h-36 bg-gradient-to-t from-brand-navy/95 via-brand-navy/60 to-transparent"></div>
             <div class="pointer-events-none absolute bottom-5 left-5 right-5 text-white text-left">
               <span class="text-[10px] font-extrabold uppercase tracking-wider text-brand-lilac block" data-i18n="leader1_tag">Supervisão Principal · PI</span>
               <span class="text-base font-black block">Prof. Dr. Flávio Milman Shansis</span>
-              <span class="text-xs text-slate-300 block" data-i18n="leader1_role">Direção Geral & Pesquisa em Psiquiatria</span>
+              <span class="text-xs text-slate-300 block" data-i18n="leader1_role">Direção Geral &amp; Pesquisa em Psiquiatria</span>
             </div>
           </div>
         </div>
@@ -390,7 +413,7 @@
         <div class="grid" style="grid-template-columns: auto 1fr;">
 
           <div class="flex items-center justify-center px-6 py-10 sm:px-10" style="border-right: 1px solid rgba(7,13,24,0.2);">
-            <span class="vertical-label select-none">EIXOS DE<br>PESQUISA</span>
+            <span class="vertical-label select-none" data-i18n="axes_vertical_label">EIXOS DE PESQUISA</span>
           </div>
 
           <div class="flex flex-col">
@@ -404,9 +427,9 @@
                 </svg>
               </div>
               <p class="text-base sm:text-lg font-normal leading-snug" style="color:#070D18;">
-                O LIFE LAB ESTÁ<br>ORGANIZADO EM
-                <strong class="font-black" style="color:#070D18;"> CINCO<br>EIXOS</strong>
-                DE PESQUISA
+                <span data-i18n="axes_poster_prefix">O LIFE LAB ESTÁ ORGANIZADO EM</span>
+                <strong class="font-black" style="color:#070D18;" data-i18n="axes_poster_highlight"> CINCO EIXOS </strong>
+                <span data-i18n="axes_poster_suffix">DE PESQUISA</span>
               </p>
             </div>
 
@@ -414,27 +437,27 @@
               <div id="poster-axis-list">
                 <button type="button" class="poster-axis-btn" data-axis="0">
                   <span class="text-base sm:text-lg font-black uppercase italic tracking-tight" style="color:white;">
-                    <span class="axis-plus" style="color:#070D18; font-weight:900;">+&nbsp;</span>EDUCAÇÃO MÉDICA
+                    <span class="axis-plus" style="color:#070D18; font-weight:900;">+&nbsp;</span><span data-i18n="axis1_name">EDUCAÇÃO MÉDICA</span>
                   </span>
                 </button>
                 <button type="button" class="poster-axis-btn" data-axis="1">
                   <span class="text-base sm:text-lg font-black uppercase tracking-tight" style="color:white;">
-                    <span class="axis-plus" style="color:#070D18; font-weight:900;">+&nbsp;</span>EVENTOS CLIMÁTICOS EXTREMOS
+                    <span class="axis-plus" style="color:#070D18; font-weight:900;">+&nbsp;</span><span data-i18n="axis2_name">EVENTOS CLIMÁTICOS EXTREMOS</span>
                   </span>
                 </button>
                 <button type="button" class="poster-axis-btn" data-axis="2">
                   <span class="text-base sm:text-lg font-black uppercase italic tracking-tight" style="color:white;">
-                    <span class="axis-plus" style="color:#070D18; font-weight:900;">+&nbsp;</span>TDAH
+                    <span class="axis-plus" style="color:#070D18; font-weight:900;">+&nbsp;</span><span data-i18n="axis3_poster_name">TDAH</span>
                   </span>
                 </button>
                 <button type="button" class="poster-axis-btn" data-axis="3">
                   <span class="text-base sm:text-lg font-black uppercase italic tracking-tight" style="color:white;">
-                    <span class="axis-plus" style="color:#070D18; font-weight:900;">+&nbsp;</span>SUICÍDIO
+                    <span class="axis-plus" style="color:#070D18; font-weight:900;">+&nbsp;</span><span data-i18n="axis4_poster_name">SUICÍDIO</span>
                   </span>
                 </button>
                 <button type="button" class="poster-axis-btn" data-axis="4">
                   <span class="text-base sm:text-lg font-black uppercase italic tracking-tight" style="color:white;">
-                    <span class="axis-plus" style="color:#070D18; font-weight:900;">+&nbsp;</span>OUTROS
+                    <span class="axis-plus" style="color:#070D18; font-weight:900;">+&nbsp;</span><span data-i18n="axis5_poster_name">OUTROS</span>
                   </span>
                 </button>
               </div>
@@ -578,10 +601,10 @@
       <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-10 text-left">
         <div>
           <span class="text-xs font-bold tracking-widest text-brand-slate uppercase block mb-2" data-i18n="prod_tag">
-            03 · Produção & Difusão Científica
+            03 · Produção &amp; Difusão Científica
           </span>
           <h2 class="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-brand-navy tracking-tight uppercase leading-tight" data-i18n="prod_title">
-            PUBLICAÇÕES & EVENTOS
+            PUBLICAÇÕES &amp; EVENTOS
           </h2>
         </div>
 
@@ -619,7 +642,7 @@
           <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 pb-6 mb-6 border-b border-slate-100">
             <div>
               <h3 class="text-base sm:text-lg font-black text-brand-navy uppercase tracking-tight" data-i18n="pub_box_title">
-                Artigos, Revisões & Protocolos Pré-Registrados
+                Artigos, Revisões &amp; Protocolos Pré-Registrados
               </h3>
               <p class="text-xs text-slate-500 mt-0.5" data-i18n="pub_box_subtitle">
                 Produção bibliográfica e protocolos científicos vinculados às linhas de pesquisa do LIFE Lab.
@@ -639,14 +662,14 @@
           <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 pb-6 mb-6 border-b border-slate-100">
             <div>
               <h3 class="text-base sm:text-lg font-black text-brand-navy uppercase tracking-tight" data-i18n="evt_box_title">
-                Congressos, Simpósios & Apresentações Científicas
+                Congressos, Simpósios &amp; Apresentações Científicas
               </h3>
               <p class="text-xs text-slate-500 mt-0.5" data-i18n="evt_box_subtitle">
                 Comunicações orais, pôsteres, mesas-redondas e prêmios conquistados pelos membros do laboratório.
               </p>
             </div>
             <span class="inline-flex items-center gap-1.5 text-[11px] font-bold text-brand-slate bg-brand-blue-light px-3.5 py-1.5 rounded-full self-start sm:self-auto" data-i18n="evt_badge">
-              Agenda & Histórico
+              Agenda &amp; Histórico
             </span>
           </div>
 
@@ -659,7 +682,7 @@
 
   <section id="equipe" class="py-24 bg-brand-cream border-b border-slate-200">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      
+
       <div class="flex flex-col sm:flex-row sm:items-end justify-between mb-10 text-left">
         <div>
           <span class="text-xs font-bold tracking-widest text-brand-slate uppercase block mb-2" data-i18n="team_tag">
@@ -677,10 +700,10 @@
       <div class="flex flex-col sm:flex-row gap-4 items-stretch sm:items-center justify-between mb-8">
         <div class="flex flex-wrap items-center gap-2 text-xs font-semibold" id="team-filters">
           <button data-filter="all" class="filter-btn active bg-brand-surface text-white px-4 py-2 rounded-full transition-all" data-i18n="filter_all">Todos</button>
-          <button data-filter="lideranca" class="filter-btn bg-white hover:bg-slate-100 text-slate-700 px-4 py-2 rounded-full border border-slate-200 transition-all" data-i18n="filter_lead">Liderança</button>
-          <button data-filter="pos" class="filter-btn bg-white hover:bg-slate-100 text-slate-700 px-4 py-2 rounded-full border border-slate-200 transition-all" data-i18n="filter_grad">Pós-Graduação</button>
-          <button data-filter="associados" class="filter-btn bg-white hover:bg-slate-100 text-slate-700 px-4 py-2 rounded-full border border-slate-200 transition-all" data-i18n="filter_assoc">Associados</button>
-          <button data-filter="ic" class="filter-btn bg-white hover:bg-slate-100 text-slate-700 px-4 py-2 rounded-full border border-slate-200 transition-all" data-i18n="filter_undergrad">IC & Bolsistas</button>
+          <button data-filter="lideranca" class="filter-btn bg-white hover:bg-slate-100 text-slate-700 px-4 py-2 rounded-full border border-slate-200 transition-all" data-i18n="filter_lead">Liderança &amp; Coordenação</button>
+          <button data-filter="doutorado" class="filter-btn bg-white hover:bg-slate-100 text-slate-700 px-4 py-2 rounded-full border border-slate-200 transition-all" data-i18n="filter_doc">Doutorado</button>
+          <button data-filter="mestrado" class="filter-btn bg-white hover:bg-slate-100 text-slate-700 px-4 py-2 rounded-full border border-slate-200 transition-all" data-i18n="filter_master">Mestrado</button>
+          <button data-filter="contribuidores" class="filter-btn bg-white hover:bg-slate-100 text-slate-700 px-4 py-2 rounded-full border border-slate-200 transition-all" data-i18n="filter_contrib">Estudantes &amp; Contribuidores</button>
         </div>
 
         <div class="relative w-full sm:w-72">
@@ -703,10 +726,10 @@
   <section id="onde-estamos" class="py-20 bg-brand-cream-dark border-b border-slate-200">
     <div id="contato" class="scroll-mt-20"></div>
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      
+
       <div class="bg-white rounded-3xl p-8 sm:p-10 border border-slate-200 shadow-sm">
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center text-left">
-          
+
           <div class="lg:col-span-5 relative rounded-2xl overflow-hidden aspect-[4/3] bg-brand-surface shadow-inner group">
             <img src="./img-UFCSPA-ochre.jpg" alt="Campus UFCSPA" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" onerror="this.onerror=null;this.src='./img-UFCSPA.jpg';">
             <div class="absolute inset-0 bg-gradient-to-t from-brand-surface/90 via-transparent to-transparent"></div>
@@ -720,7 +743,7 @@
           <div class="lg:col-span-7 space-y-5">
             <div>
               <span class="text-xs font-bold tracking-widest text-brand-slate uppercase block mb-1" data-i18n="location_tag">
-                05 · Localização & Contato
+                05 · Localização &amp; Contato
               </span>
               <h3 class="text-2xl sm:text-3xl font-black text-brand-navy tracking-tight uppercase" data-i18n="location_title">
                 ONDE ESTAMOS
@@ -732,8 +755,18 @@
             </p>
 
             <div class="pt-2 space-y-1.5 text-xs sm:text-sm text-slate-700 font-medium">
-              <p><strong class="font-semibold text-brand-navy">Endereço:</strong> Rua Sarmento Leite, 245 — CEP 90050-170, Porto Alegre/RS</p>
-              <p><strong class="font-semibold text-brand-navy">E-mail:</strong> <a href="mailto:lifelab@ufcspa.edu.br" class="text-brand-lilac hover:underline font-bold">lifelab@ufcspa.edu.br</a></p>
+              <p><strong class="font-semibold text-brand-navy" data-i18n="label_address">Endereço:</strong> Rua Sarmento Leite, 245 — CEP 90050-170, Porto Alegre/RS</p>
+              <p class="flex flex-wrap items-center gap-2">
+                <strong class="font-semibold text-brand-navy" data-i18n="label_email">E-mail:</strong>
+                <a href="mailto:lifelab@ufcspa.edu.br" class="text-brand-lilac hover:underline font-bold">lifelab@ufcspa.edu.br</a>
+                <button type="button" id="btn-copy-email" class="text-[11px] font-bold text-slate-600 hover:text-brand-navy bg-slate-100 hover:bg-slate-200 px-2.5 py-0.5 rounded-full transition-colors">
+                  Copiar
+                </button>
+              </p>
+              <p>
+                <strong class="font-semibold text-brand-navy">Instagram:</strong>
+                <a href="https://www.instagram.com/lifelab.ufcspa/" target="_blank" rel="noopener noreferrer" class="text-brand-lilac hover:underline font-bold">@lifelab.ufcspa</a>
+              </p>
             </div>
 
             <div class="pt-3 flex flex-wrap gap-3">
@@ -741,8 +774,12 @@
                 <span data-i18n="btn_email">Enviar E-mail</span>
                 <span>↗</span>
               </a>
+              <a href="https://www.instagram.com/lifelab.ufcspa/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 bg-brand-lilac hover:bg-brand-lilac-hover text-white text-xs sm:text-sm font-bold px-5 py-2.5 rounded-full transition-all">
+                <span>@lifelab.ufcspa</span>
+                <span>↗</span>
+              </a>
               <a href="https://www.ufcspa.edu.br" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 bg-slate-100 text-slate-700 text-xs sm:text-sm font-semibold px-5 py-2.5 rounded-full hover:bg-slate-200 transition-all">
-                <span>Portal UFCSPA</span>
+                <span data-i18n="btn_portal">Portal UFCSPA</span>
                 <span>↗</span>
               </a>
             </div>
@@ -760,8 +797,11 @@
         <div class="flex items-center gap-3">
           <img src="./logo-white.png" alt="LIFE Lab" class="h-7 w-auto" onerror="this.onerror=null;this.src='./logo-main.png';">
         </div>
-        <div class="text-xs text-slate-400">
-          Supervisão: <strong>Prof. Dr. Flávio Milman Shansis</strong>
+        <div class="flex flex-wrap items-center gap-4 text-xs text-slate-400">
+          <span><span data-i18n="footer_supervision">Supervisão</span>: <strong>Prof. Dr. Flávio Milman Shansis</strong></span>
+          <a href="https://www.instagram.com/lifelab.ufcspa/" target="_blank" rel="noopener noreferrer" class="text-brand-lilac hover:underline font-semibold">
+            Instagram · @lifelab.ufcspa ↗
+          </a>
         </div>
       </div>
 
@@ -777,7 +817,7 @@
   <!-- MODAL DE PERFIL COM FOTO P&B GRANULADA -->
   <div id="member-modal" class="modal-backdrop fixed inset-0 z-50 flex items-center justify-center p-4 bg-brand-navy/70 backdrop-blur-sm" role="dialog" aria-modal="true">
     <div class="modal-box bg-white rounded-3xl overflow-hidden max-w-lg w-full shadow-2xl border border-slate-200 text-left relative">
-      
+
       <button type="button" id="modal-close-btn" class="absolute top-4 right-4 z-10 w-8 h-8 rounded-full bg-brand-navy/80 hover:bg-brand-navy text-white flex items-center justify-center font-bold text-sm focus:outline-none" aria-label="Fechar">
         ✕
       </button>
@@ -848,75 +888,149 @@
       },
     ];
 
+    // Ordem hierárquica: 1. PI -> 2. Coordenação -> 3. Doutorandos -> 4. Mestrandos -> 5. Estudantes e Contribuidores
+    // Mantendo ordem alfabética estrita dentro de cada nível.
     const teamMembers = [
+      // 1. PI
       {
-        name: "Ana Laura Claraz de Souza Ferreira",
-        role: "IC voluntária · UFCSPA",
-        category: "ic",
-        lattes: "https://lattes.cnpq.br/8944768793965654",
-        orcid: "",
-        photo: "./fotos/ana-ferreira.jpg"
+        name: "Flávio Milman Shansis",
+        role: "Principal Investigator (PI) · Coordenador · UFCSPA",
+        category: "lideranca",
+        tier: 1,
+        lattes: "http://lattes.cnpq.br/7296283284342040",
+        orcid: "https://orcid.org/0000-0003-0423-6291",
+        photo: "./fotos/flavio-shansis.jpg"
+      },
+
+      // 2. Coordenação
+      {
+        name: "Felipe Francisco de Castro Passos",
+        role: "Coordenação de Pesquisa · PIBIC e Doutorado · UFRGS",
+        category: "lideranca",
+        tier: 2,
+        lattes: "http://lattes.cnpq.br/4651669439780707",
+        orcid: "https://orcid.org/0009-0003-1490-043X",
+        photo: "./fotos/felipe-passos.jpg"
+      },
+
+      // 3. Doutorandos (ordem alfabética)
+      {
+        name: "Cristiane Mondadori",
+        role: "Doutoranda · UFCSPA",
+        category: "doutorado",
+        tier: 3,
+        lattes: "http://lattes.cnpq.br/3811778831896022",
+        orcid: "https://orcid.org/0009-0008-9329-3549",
+        photo: "./fotos/cristiane-mondadori.jpg"
       },
       {
-        name: "Ana Paula Bellini",
-        role: "PID voluntário · UFCSPA",
-        category: "ic",
-        lattes: "http://lattes.cnpq.br/8845018028099266",
-        orcid: "",
-        photo: "./fotos/ana-bellini.jpg"
+        name: "Gabriel Antônio Flores Chies",
+        role: "Doutorando · UFCSPA",
+        category: "doutorado",
+        tier: 3,
+        lattes: "http://lattes.cnpq.br/0711809341578969",
+        orcid: "https://orcid.org/0009-0007-1320-0043",
+        photo: "./fotos/gabriel-chies.jpg"
       },
+      {
+        name: "Marcos da Silveira Cima",
+        role: "Doutorando · UFCSPA",
+        category: "doutorado",
+        tier: 3,
+        lattes: "http://lattes.cnpq.br/4793629050454437",
+        orcid: "https://orcid.org/0000-0001-6242-3664",
+        photo: "./fotos/marcos-cima.jpg"
+      },
+      {
+        name: "Vinícius Vicente Soares",
+        role: "Doutorando · UFCSPA",
+        category: "doutorado",
+        tier: 3,
+        lattes: "https://lattes.cnpq.br/7547504820935924",
+        orcid: "https://orcid.org/0000-0002-6752-3848",
+        photo: "./fotos/vinicius-soares.jpg"
+      },
+
+      // 4. Mestrandos (ordem alfabética)
       {
         name: "Arthur Canhada de Albuquerque",
         role: "Mestrando · UFCSPA",
-        category: "pos",
+        category: "mestrado",
+        tier: 4,
         lattes: "http://lattes.cnpq.br/8050934335808561",
         orcid: "https://orcid.org/0009-0008-4332-7747",
         photo: "./fotos/arthur-albuquerque.jpg"
       },
       {
         name: "Carolina de Moura Marolli",
-        role: "Mestrando · UFCSPA",
-        category: "pos",
+        role: "Mestranda · UFCSPA",
+        category: "mestrado",
+        tier: 4,
         lattes: "http://lattes.cnpq.br/0282109000236500",
         orcid: "https://orcid.org/0000-0001-6824-5213",
         photo: "./fotos/carolina-marolli.jpg"
       },
       {
-        name: "Christian Silva dos Santos",
-        role: "PIBIT · UFCSPA",
-        category: "ic",
-        lattes: "",
-        orcid: "",
-        photo: "./fotos/christian-santos.jpg"
-      },
-      {
-        name: "Cristiane Mondadori",
-        role: "Doutorando · UFCSPA",
-        category: "pos",
-        lattes: "http://lattes.cnpq.br/3811778831896022",
-        orcid: "https://orcid.org/0009-0008-9329-3549",
-        photo: "./fotos/cristiane-mondadori.jpg"
-      },
-      {
         name: "Daniel Nascimento Dallavalle",
         role: "Mestrando · UFCSPA",
-        category: "pos",
-        lattes: "https://lattes.cnpq.br/9570567253017492",
+        category: "mestrado",
+        tier: 4,
+        lattes: "http://lattes.cnpq.br/9570567253017492",
         orcid: "https://orcid.org/0000-0002-9319-5227",
         photo: "./fotos/daniel-dallavalle.jpg"
       },
       {
         name: "Daniel Pasini Gonçalves",
         role: "Mestrando · UFCSPA",
-        category: "pos",
-        lattes: "https://lattes.cnpq.br/6331002460536883",
+        category: "mestrado",
+        tier: 4,
+        lattes: "http://lattes.cnpq.br/6331002460536883",
         orcid: "https://orcid.org/0009-0007-1825-6986",
         photo: "./fotos/daniel-goncalves.jpg"
       },
       {
+        name: "Gabriel Rocha",
+        role: "Mestrando · UFCSPA",
+        category: "mestrado",
+        tier: 4,
+        lattes: "https://lattes.cnpq.br/9657223294743476",
+        orcid: "https://orcid.org/0009-0005-1437-8674",
+        photo: "./fotos/gabriel-rocha.jpg"
+      },
+
+      // 5. Estudantes e Contribuidores (ordem alfabética)
+      {
+        name: "Ana Laura Claraz de Souza Ferreira",
+        role: "IC Voluntária · UFCSPA",
+        category: "contribuidores",
+        tier: 5,
+        lattes: "https://lattes.cnpq.br/8944768793965654",
+        orcid: "",
+        photo: "./fotos/ana-ferreira.jpg"
+      },
+      {
+        name: "Ana Paula Bellini",
+        role: "PID Voluntária · UFCSPA",
+        category: "contribuidores",
+        tier: 5,
+        lattes: "http://lattes.cnpq.br/8845018028099266",
+        orcid: "",
+        photo: "./fotos/ana-bellini.jpg"
+      },
+      {
+        name: "Christian Silva dos Santos",
+        role: "PIBIT · UFCSPA",
+        category: "contribuidores",
+        tier: 5,
+        lattes: "",
+        orcid: "",
+        photo: "./fotos/christian-santos.jpg"
+      },
+      {
         name: "David Nusbaum",
         role: "IC Voluntário · UFCSPA",
-        category: "ic",
+        category: "contribuidores",
+        tier: 5,
         lattes: "http://lattes.cnpq.br/3861741393098505",
         orcid: "https://orcid.org/0009-0000-5718-5286",
         photo: "./fotos/david-nusbaum.jpg"
@@ -924,39 +1038,17 @@
       {
         name: "Enrico Sousa Villetti",
         role: "IC Voluntário · PUCRS",
-        category: "ic",
+        category: "contribuidores",
+        tier: 5,
         lattes: "",
         orcid: "https://orcid.org/0009-0004-0372-0449",
         photo: "./fotos/enrico-villetti.jpg"
       },
       {
-        name: "Felipe Francisco de Castro Passos",
-        role: "Dirigente de Pesquisa, PIBIC e doutorado · UFRGS",
-        category: "lideranca",
-        lattes: "http://lattes.cnpq.br/4651669439780707",
-        orcid: "https://orcid.org/0009-0003-1490-043X",
-        photo: "./fotos/felipe-passos.jpg"
-      },
-      {
-        name: "Flávio Milman Shansis",
-        role: "Coordenador · UFCSPA",
-        category: "lideranca",
-        lattes: "http://lattes.cnpq.br/7296283284342040",
-        orcid: "",
-        photo: "./fotos/flavio-shansis.jpg"
-      },
-      {
-        name: "Gabriel Antônio Flores Chies",
-        role: "Doutorando · UFCSPA",
-        category: "pos",
-        lattes: "http://lattes.cnpq.br/0711809341578969",
-        orcid: "https://orcid.org/0009-0007-1320-0043",
-        photo: "./fotos/gabriel-chies.jpg"
-      },
-      {
         name: "Gabriel Felipi de Fontes Guilioti",
         role: "PID Voluntário · UFCSPA",
-        category: "ic",
+        category: "contribuidores",
+        tier: 5,
         lattes: "https://lattes.cnpq.br/7079174248302352",
         orcid: "https://orcid.org/0009-0005-7860-4415",
         photo: "./fotos/gabriel-guilioti.jpg"
@@ -964,31 +1056,26 @@
       {
         name: "Gabriel Henrique Bigliardi Brites",
         role: "IC Voluntário · UFCSPA",
-        category: "ic",
+        category: "contribuidores",
+        tier: 5,
         lattes: "https://lattes.cnpq.br/7547281155864173",
         orcid: "https://orcid.org/0009-0007-6219-0195",
         photo: "./fotos/gabriel-brites.jpg"
       },
       {
         name: "Gabriel Netto Ferreira",
-        role: "IC voluntário · UFCSPA",
-        category: "ic",
+        role: "IC Voluntário · UFCSPA",
+        category: "contribuidores",
+        tier: 5,
         lattes: "http://lattes.cnpq.br/4522011694295738",
         orcid: "",
         photo: "./fotos/gabriel-ferreira.jpg"
       },
       {
-        name: "Gabriel Rocha",
-        role: "Mestrando · UFCSPA",
-        category: "pos",
-        lattes: "https://lattes.cnpq.br/9657223294743476",
-        orcid: "https://orcid.org/0009-0005-1437-8674",
-        photo: "./fotos/gabriel-rocha.jpg"
-      },
-      {
         name: "Gisele Teixeira de Souza",
         role: "IC Voluntário · UFCSPA",
-        category: "ic",
+        category: "contribuidores",
+        tier: 5,
         lattes: "http://lattes.cnpq.br/0504435722351504",
         orcid: "",
         photo: "./fotos/gisele-souza.jpg"
@@ -996,7 +1083,8 @@
       {
         name: "Guilherme Andary Riethmüller",
         role: "Pesquisador Voluntário",
-        category: "associados",
+        category: "contribuidores",
+        tier: 5,
         lattes: "http://lattes.cnpq.br/6710395552387030",
         orcid: "",
         photo: "./fotos/guilherme-riethmuller.jpg"
@@ -1004,23 +1092,26 @@
       {
         name: "Guilherme Callegari Escobar",
         role: "IC Voluntário · UFCSPA",
-        category: "ic",
+        category: "contribuidores",
+        tier: 5,
         lattes: "http://lattes.cnpq.br/8925719596148916",
         orcid: "",
         photo: "./fotos/guilherme-escobar.jpg"
       },
       {
         name: "Gustavo Kessler Antunes",
-        role: "Pesquisador voluntário · HPSP/ISCMPA",
-        category: "associados",
+        role: "Pesquisador Voluntário · HPSP/ISCMPA",
+        category: "contribuidores",
+        tier: 5,
         lattes: "",
         orcid: "",
         photo: "./fotos/gustavo-antunes.jpg"
       },
       {
         name: "Italo Abrão Biasuz",
-        role: "IC Voluntário / Candidato mestrado · UFCSPA",
-        category: "ic",
+        role: "IC Voluntário / Candidato Mestrado · UFCSPA",
+        category: "contribuidores",
+        tier: 5,
         lattes: "https://lattes.cnpq.br/9497687566551297",
         orcid: "",
         photo: "./fotos/italo-biasuz.jpg"
@@ -1028,7 +1119,8 @@
       {
         name: "Karina Castilhos Bastos",
         role: "IC Voluntária · UFCSPA",
-        category: "ic",
+        category: "contribuidores",
+        tier: 5,
         lattes: "https://lattes.cnpq.br/0402181659255394",
         orcid: "https://orcid.org/0000-0002-8439-7230",
         photo: "./fotos/karina-bastos.jpg"
@@ -1036,15 +1128,17 @@
       {
         name: "Leonardo Daudt Wolffenbuttel",
         role: "IC Voluntário",
-        category: "ic",
+        category: "contribuidores",
+        tier: 5,
         lattes: "http://lattes.cnpq.br/7560296134418606",
         orcid: "",
         photo: "./fotos/leonardo-wolffenbuttel.jpg"
       },
       {
         name: "Lucas Gabriel Duarte Garcia",
-        role: "IC voluntário",
-        category: "ic",
+        role: "IC Voluntário",
+        category: "contribuidores",
+        tier: 5,
         lattes: "http://lattes.cnpq.br/2268500480420184",
         orcid: "",
         photo: "./fotos/lucas-garcia.jpg"
@@ -1052,7 +1146,8 @@
       {
         name: "Luiza Schaefer Schiroky",
         role: "PID Voluntário · UFCSPA",
-        category: "ic",
+        category: "contribuidores",
+        tier: 5,
         lattes: "https://lattes.cnpq.br/5759509671628338",
         orcid: "https://orcid.org/0009-0006-0836-234X",
         photo: "./fotos/luiza-schiroky.jpg"
@@ -1060,23 +1155,17 @@
       {
         name: "Marcelo Zimerman Bizzi",
         role: "Pesquisador Voluntário · FUMM",
-        category: "associados",
+        category: "contribuidores",
+        tier: 5,
         lattes: "http://lattes.cnpq.br/5613676161279512",
         orcid: "https://orcid.org/0009-0007-7117-1551",
         photo: "./fotos/marcelo-bizzi.jpg"
       },
       {
-        name: "Marcos da Silveira Cima",
-        role: "Doutorando · UFCSPA",
-        category: "pos",
-        lattes: "http://lattes.cnpq.br/4793629050454437",
-        orcid: "https://orcid.org/0000-0001-6242-3664",
-        photo: "./fotos/marcos-cima.jpg"
-      },
-      {
         name: "Matheus Meine Otten",
-        role: "IC voluntário · UFCSPA",
-        category: "ic",
+        role: "IC Voluntário · UFCSPA",
+        category: "contribuidores",
+        tier: 5,
         lattes: "https://lattes.cnpq.br/1509347088820391",
         orcid: "https://orcid.org/0009-0000-4808-4379",
         photo: "./fotos/matheus-otten.jpg"
@@ -1084,7 +1173,8 @@
       {
         name: "Matheus Toledo de Oliveira",
         role: "Pesquisador Voluntário · UFCSPA",
-        category: "associados",
+        category: "contribuidores",
+        tier: 5,
         lattes: "https://lattes.cnpq.br/9514862785372717",
         orcid: "https://orcid.org/0009-0002-3696-9051",
         photo: "./fotos/matheus-oliveira.jpg"
@@ -1092,7 +1182,8 @@
       {
         name: "Natália Sobierayski Esnaola",
         role: "IC Voluntário",
-        category: "ic",
+        category: "contribuidores",
+        tier: 5,
         lattes: "http://lattes.cnpq.br/5684955923429944",
         orcid: "",
         photo: "./fotos/natalia-esnaola.jpg"
@@ -1100,7 +1191,8 @@
       {
         name: "Nicholas Emanuel Storch",
         role: "PIBIC · UNIVATES/UFCSPA",
-        category: "ic",
+        category: "contribuidores",
+        tier: 5,
         lattes: "http://lattes.cnpq.br/5522046186785173",
         orcid: "https://orcid.org/0009-0003-0388-8543",
         photo: "./fotos/nicholas-storch.jpg"
@@ -1108,7 +1200,8 @@
       {
         name: "Pedro de Brito Prestes Júnior",
         role: "IC Voluntário · UFCSPA",
-        category: "ic",
+        category: "contribuidores",
+        tier: 5,
         lattes: "https://lattes.cnpq.br/1777077171542860",
         orcid: "https://orcid.org/0009-0003-0257-6513",
         photo: "./fotos/pedro-junior.jpg"
@@ -1116,7 +1209,8 @@
       {
         name: "Pedro Dytz Marin",
         role: "IC Voluntário · UFCSPA",
-        category: "ic",
+        category: "contribuidores",
+        tier: 5,
         lattes: "http://lattes.cnpq.br/4320330847480635",
         orcid: "https://orcid.org/0009-0006-3983-6552",
         photo: "./fotos/pedro-marin.jpg"
@@ -1124,29 +1218,26 @@
       {
         name: "Tiago Gehrke de Carvalho",
         role: "IC Voluntário · UFCSPA",
-        category: "ic",
+        category: "contribuidores",
+        tier: 5,
         lattes: "http://lattes.cnpq.br/2559348335124387",
         orcid: "",
         photo: "./fotos/tiago-carvalho.jpg"
       },
       {
-        name: "Vinícius Vicente Soares",
-        role: "Doutorando · UFCSPA",
-        category: "pos",
-        lattes: "https://lattes.cnpq.br/7547504820935924",
-        orcid: "https://orcid.org/0000-0002-6752-3848",
-        photo: "./fotos/vinicius-soares.jpg"
-      },
-      {
         name: "Vitório Serafim",
-        role: "PID bolsista e IC Voluntário · UFCSPA",
-        category: "ic",
+        role: "PID Bolsista e IC Voluntário · UFCSPA",
+        category: "contribuidores",
+        tier: 5,
         lattes: "http://lattes.cnpq.br/3470251519132287",
         orcid: "https://orcid.org/0009-0002-6920-731",
         photo: "./fotos/vitorio-serafim.jpg"
       }
-    ];
-    
+    ].sort((a, b) => {
+      if (a.tier !== b.tier) return a.tier - b.tier;
+      return a.name.localeCompare(b.name, 'pt-BR', { sensitivity: 'base' });
+    });
+
     const translations = {
       pt: {
         nav_about: "Sobre",
@@ -1171,11 +1262,18 @@
         leader1_tag: "Supervisão Principal · PI",
         leader1_role: "Direção Geral & Pesquisa em Psiquiatria",
         axes_tag: "02 · Eixos de Pesquisa",
+        axes_vertical_label: "EIXOS DE PESQUISA",
+        axes_poster_prefix: "O LIFE LAB ESTÁ ORGANIZADO EM",
+        axes_poster_highlight: " CINCO EIXOS ",
+        axes_poster_suffix: "DE PESQUISA",
         axes_footer_note: "NOSSA ATUAÇÃO EM PESQUISA É MULTIDISCIPLINAR E CONJUNTA",
         axis1_name: "EDUCAÇÃO MÉDICA",
         axis2_name: "EVENTOS CLIMÁTICOS EXTREMOS",
+        axis3_poster_name: "TDAH",
         axis3_name: "TDAH & FENÓTIPOS COMPORTAMENTAIS",
+        axis4_poster_name: "SUICÍDIO",
         axis4_name: "SUICÍDIO & PREVENÇÃO",
+        axis5_poster_name: "OUTROS",
         axis5_name: "OUTROS PROJETOS & SAÚDE MENTAL TRANSVERSAL",
         axis_proj_label: "Projeto Vigente",
         axis1_focus_desc: "Inovações metodológicas, validação de instrumentos psicométricos e simulação realística aplicada ao ensino médico e à formação em saúde.",
@@ -1200,6 +1298,9 @@
         pub_box_title: "Artigos, Revisões & Protocolos Pré-Registrados",
         pub_box_subtitle: "Produção bibliográfica e protocolos científicos vinculados às linhas de pesquisa do LIFE Lab.",
         pub_badge: "Repositório Científico",
+        pub_access: "Acessar registro ↗",
+        pub_copy_cite: "Copiar citação",
+        pub_copied: "Copiada!",
         evt_box_title: "Congressos, Simpósios & Apresentações Científicas",
         evt_box_subtitle: "Comunicações orais, pôsteres, mesas-redondas e prêmios conquistados pelos membros do laboratório.",
         evt_badge: "Agenda & Histórico",
@@ -1207,17 +1308,21 @@
         team_title: "PESQUISADORES",
         team_click_hint: "Toque em qualquer integrante para abrir o perfil acadêmico.",
         filter_all: "Todos",
-        filter_lead: "Liderança",
-        filter_grad: "Pós-Graduação",
-        filter_assoc: "Associados",
-        filter_undergrad: "IC & Bolsistas",
+        filter_lead: "Liderança & Coordenação",
+        filter_doc: "Doutorado",
+        filter_master: "Mestrado",
+        filter_contrib: "Estudantes & Contribuidores",
         search_placeholder: "Filtrar por nome ou vínculo...",
         search_no_results: "Nenhum integrante encontrado para os termos buscados.",
         location_tag: "05 · Localização & Contato",
         location_title: "ONDE ESTAMOS",
         location_card_badge: "Sede Institucional",
         location_desc: "O LIFE Lab está vinculado ao Programa de Pós-Graduação em Ciências da Saúde da UFCSPA, no Centro Histórico de Porto Alegre.",
+        label_address: "Endereço:",
+        label_email: "E-mail:",
         btn_email: "Enviar E-mail",
+        btn_portal: "Portal UFCSPA",
+        footer_supervision: "Supervisão",
         footer_top: "Voltar ao Topo ↑",
         modal_footer_label: "LIFE Lab · UFCSPA"
       },
@@ -1244,11 +1349,18 @@
         leader1_tag: "Principal Investigator · PI",
         leader1_role: "General Direction & Psychiatry Research",
         axes_tag: "02 · Research Axes",
+        axes_vertical_label: "RESEARCH AXES",
+        axes_poster_prefix: "LIFE LAB IS ORGANIZED INTO",
+        axes_poster_highlight: " FIVE RESEARCH ",
+        axes_poster_suffix: "AXES",
         axes_footer_note: "OUR RESEARCH IS MULTIDISCIPLINARY AND COLLABORATIVE",
         axis1_name: "MEDICAL EDUCATION",
         axis2_name: "EXTREME CLIMATE EVENTS",
+        axis3_poster_name: "ADHD",
         axis3_name: "ADHD & BEHAVIORAL PHENOTYPES",
+        axis4_poster_name: "SUICIDE",
         axis4_name: "SUICIDE & PREVENTION",
+        axis5_poster_name: "OTHER",
         axis5_name: "SPECIAL PROJECTS & CROSS-CUTTING HEALTH",
         axis_proj_label: "Active Project",
         axis1_focus_desc: "Methodological innovations, psychometric scale validation, and realistic clinical simulation applied to medical training and health education.",
@@ -1273,6 +1385,9 @@
         pub_box_title: "Articles, Reviews & Pre-Registered Protocols",
         pub_box_subtitle: "Bibliographic output and scientific protocols linked to LIFE Lab research lines.",
         pub_badge: "Scientific Repository",
+        pub_access: "Open record ↗",
+        pub_copy_cite: "Copy citation",
+        pub_copied: "Copied!",
         evt_box_title: "Congresses, Symposia & Scientific Presentations",
         evt_box_subtitle: "Oral communications, posters, roundtables, and academic participation by lab members.",
         evt_badge: "Schedule & History",
@@ -1280,17 +1395,21 @@
         team_title: "RESEARCHERS",
         team_click_hint: "Click any member to open their academic profile.",
         filter_all: "All",
-        filter_lead: "Leadership",
-        filter_grad: "Graduate",
-        filter_assoc: "Associates",
-        filter_undergrad: "Undergraduate",
-        search_placeholder: "Filter by name or vínculo...",
+        filter_lead: "Leadership & Coordination",
+        filter_doc: "PhD / Doctoral",
+        filter_master: "Master's",
+        filter_contrib: "Students & Contributors",
+        search_placeholder: "Filter by name or role...",
         search_no_results: "No team members found matching your search.",
         location_tag: "05 · Location & Contact",
         location_title: "WHERE WE ARE",
         location_card_badge: "Institutional Campus",
         location_desc: "The LIFE Lab is affiliated with the Graduate Program in Health Sciences at UFCSPA, in the Historic Center of Porto Alegre, RS, Brazil.",
+        label_address: "Address:",
+        label_email: "E-mail:",
         btn_email: "Send E-mail",
+        btn_portal: "UFCSPA Portal",
+        footer_supervision: "Supervision",
         footer_top: "Back to Top ↑",
         modal_footer_label: "LIFE Lab · UFCSPA"
       }
@@ -1301,13 +1420,15 @@
     function renderProductionLists() {
       const pubContainer = document.getElementById('publications-list');
       const evtContainer = document.getElementById('events-list');
+      const dict = translations[currentLang] || translations.pt;
 
       if (pubContainer) {
-        pubContainer.innerHTML = publicationsData.map(item => {
+        pubContainer.innerHTML = publicationsData.map((item, idx) => {
           const title = currentLang === 'en' ? item.title_en : item.title_pt;
           const type = currentLang === 'en' ? item.type_en : item.type_pt;
           const axis = currentLang === 'en' ? item.axis_en : item.axis_pt;
           const hasLink = item.link && item.link !== '#';
+          const citation = `${item.authors} (${item.year}). ${title}. ${item.venue}.${hasLink ? ' ' + item.link : ''}`;
 
           return `
             <article class="group p-5 rounded-2xl bg-brand-cream hover:bg-white border border-slate-200/80 hover:border-brand-lilac/50 transition-all">
@@ -1322,11 +1443,28 @@
               <p class="text-xs text-slate-600 mt-2 font-medium">${item.authors}</p>
               <div class="flex flex-wrap items-center justify-between gap-2 mt-3 pt-3 border-t border-slate-200/60">
                 <span class="text-[11px] text-slate-500 italic">${item.venue}</span>
-                ${hasLink ? `<a href="${item.link}" target="_blank" rel="noopener noreferrer" class="text-[11px] font-bold text-brand-lilac hover:underline">Acessar registro ↗</a>` : ''}
+                <div class="flex items-center gap-3">
+                  <button type="button" data-cite-idx="${idx}" data-citation="${encodeURIComponent(citation)}" class="copy-cite-btn text-[11px] font-semibold text-slate-600 hover:text-brand-navy transition-colors">
+                    ${dict.pub_copy_cite}
+                  </button>
+                  ${hasLink ? `<a href="${item.link}" target="_blank" rel="noopener noreferrer" class="text-[11px] font-bold text-brand-lilac hover:underline">${dict.pub_access}</a>` : ''}
+                </div>
               </div>
             </article>
           `;
         }).join('');
+
+        pubContainer.querySelectorAll('.copy-cite-btn').forEach(btn => {
+          btn.addEventListener('click', async () => {
+            const text = decodeURIComponent(btn.getAttribute('data-citation') || '');
+            try {
+              await navigator.clipboard.writeText(text);
+              const original = btn.textContent;
+              btn.textContent = dict.pub_copied;
+              setTimeout(() => { btn.textContent = original; }, 1600);
+            } catch (_) {}
+          });
+        });
       }
 
       if (evtContainer) {
@@ -1367,7 +1505,7 @@
     function setLanguage(lang) {
       currentLang = lang;
       const dict = translations[lang] || translations.pt;
-      
+
       document.querySelectorAll('[data-i18n]').forEach(el => {
         const key = el.getAttribute('data-i18n');
         if (dict[key]) {
@@ -1455,6 +1593,40 @@
           }
         });
       })();
+
+      // Botão copiar e-mail
+      const copyEmailBtn = document.getElementById('btn-copy-email');
+      if (copyEmailBtn) {
+        copyEmailBtn.addEventListener('click', async () => {
+          try {
+            await navigator.clipboard.writeText('lifelab@ufcspa.edu.br');
+            const prev = copyEmailBtn.textContent;
+            copyEmailBtn.textContent = currentLang === 'en' ? 'Copied!' : 'Copiado!';
+            setTimeout(() => { copyEmailBtn.textContent = prev; }, 1600);
+          } catch (_) {}
+        });
+      }
+
+      // ScrollSpy para destacar seção ativa na navbar
+      const navLinks = document.querySelectorAll('.nav-link[data-section]');
+      const trackedSections = ['sobre', 'eixos', 'producao', 'equipe', 'onde-estamos']
+        .map(id => document.getElementById(id))
+        .filter(Boolean);
+
+      if ('IntersectionObserver' in window && trackedSections.length) {
+        const observer = new IntersectionObserver((entries) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              const activeId = entry.target.id;
+              navLinks.forEach(link => {
+                link.classList.toggle('active-nav', link.getAttribute('data-section') === activeId);
+              });
+            }
+          });
+        }, { rootMargin: '-25% 0px -60% 0px', threshold: 0.05 });
+
+        trackedSections.forEach(sec => observer.observe(sec));
+      }
 
       renderProductionLists();
 
