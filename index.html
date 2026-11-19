@@ -413,7 +413,7 @@
         <div class="grid" style="grid-template-columns: auto 1fr;">
 
           <div class="flex items-center justify-center px-6 py-10 sm:px-10" style="border-right: 1px solid rgba(7,13,24,0.2);">
-            <span class="vertical-label select-none" data-i18n="axes_vertical_label">EIXOS DE PESQUISA</span>
+            <span class="vertical-label select-none" data-i18n-html="axes_vertical_label">EIXOS DE<br>PESQUISA</span>
           </div>
 
           <div class="flex flex-col">
@@ -426,10 +426,10 @@
                   <path d="M4 4L24 24M24 24V10M24 24H10" stroke="#070D18" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
                 </svg>
               </div>
-              <p class="text-base sm:text-lg font-normal leading-snug" style="color:#070D18;">
-                <span data-i18n="axes_poster_prefix">O LIFE LAB ESTÁ ORGANIZADO EM</span>
-                <strong class="font-black" style="color:#070D18;" data-i18n="axes_poster_highlight"> CINCO EIXOS </strong>
-                <span data-i18n="axes_poster_suffix">DE PESQUISA</span>
+              <p class="text-base sm:text-lg font-normal leading-snug" style="color:#070D18;" data-i18n-html="axes_poster_headline">
+                O LIFE LAB ESTÁ<br>ORGANIZADO EM
+                <strong class="font-black" style="color:#070D18;"> CINCO<br>EIXOS</strong>
+                DE PESQUISA
               </p>
             </div>
 
@@ -838,7 +838,7 @@
           <h3 id="modal-name" class="text-lg sm:text-xl font-black text-brand-navy leading-tight">
             Nome do Pesquisador
           </h3>
-          <p id="modal-dept" class="text-xs text-slate-500 mt-0.5">
+          <p id="modal-dept" data-i18n="modal_dept" class="text-xs text-slate-500 mt-0.5">
             Universidade Federal de Ciências da Saúde de Porto Alegre
           </p>
         </div>
@@ -879,12 +879,12 @@
       {
         "date": "2026",
         "badge_pt": "Congresso Brasileiro de Psiquiatria · Aceito",
-        "badge_en": "Congresso Brasileiro de Psiquiatria · Aceito",
+        "badge_en": "Brazilian Congress of Psychiatry · Accepted",
         "title_pt": "Congresso Brasileiro de Psiquiatria (2026)",
-        "title_en": "Congresso Brasileiro de Psiquiatria (2026)",
+        "title_en": "Brazilian Congress of Psychiatry (2026)",
         "location": "UFCSPA / Brasil",
         "desc_pt": "Associação entre padrões dietéticos e comportamentos suicidas: uma revisão de escopo abrangendo mais de 1,2 milhão de participantes em 35 estudos — Autores: Alana Castro Panzenhagen; Arthur Canhada de Albuquerque; Flávio Milman Shansis. Modalidade: Pôster.",
-        "desc_en": "Associação entre padrões dietéticos e comportamentos suicidas: uma revisão de escopo abrangendo mais de 1,2 milhão de participantes em 35 estudos — Authors: Alana Castro Panzenhagen; Arthur Canhada de Albuquerque; Flávio Milman Shansis. Modality: Pôster."
+        "desc_en": "Association between dietary patterns and suicidal behaviors: a scoping review encompassing over 1.2 million participants across 35 studies — Authors: Alana Castro Panzenhagen; Arthur Canhada de Albuquerque; Flávio Milman Shansis. Modality: Poster."
       },
     ];
 
@@ -894,7 +894,8 @@
       // 1. PI
       {
         name: "Flávio Milman Shansis",
-        role: "Principal Investigator (PI) · Coordenador · UFCSPA",
+        role_pt: "Principal Investigator (PI) · Coordenador · UFCSPA",
+        role_en: "Principal Investigator (PI) · Coordinator · UFCSPA",
         category: "lideranca",
         tier: 1,
         lattes: "http://lattes.cnpq.br/7296283284342040",
@@ -905,7 +906,8 @@
       // 2. Coordenação
       {
         name: "Felipe Francisco de Castro Passos",
-        role: "Coordenação de Pesquisa · PIBIC e Doutorado · UFRGS",
+        role_pt: "Coordenação de Pesquisa · PIBIC e Doutorado · UFRGS",
+        role_en: "Research Coordination · PIBIC & PhD Student · UFRGS",
         category: "lideranca",
         tier: 2,
         lattes: "http://lattes.cnpq.br/4651669439780707",
@@ -916,7 +918,8 @@
       // 3. Doutorandos (ordem alfabética)
       {
         name: "Cristiane Mondadori",
-        role: "Doutoranda · UFCSPA",
+        role_pt: "Doutoranda · UFCSPA",
+        role_en: "PhD Student · UFCSPA",
         category: "doutorado",
         tier: 3,
         lattes: "http://lattes.cnpq.br/3811778831896022",
@@ -925,7 +928,8 @@
       },
       {
         name: "Gabriel Antônio Flores Chies",
-        role: "Doutorando · UFCSPA",
+        role_pt: "Doutorando · UFCSPA",
+        role_en: "PhD Student · UFCSPA",
         category: "doutorado",
         tier: 3,
         lattes: "http://lattes.cnpq.br/0711809341578969",
@@ -934,7 +938,8 @@
       },
       {
         name: "Marcos da Silveira Cima",
-        role: "Doutorando · UFCSPA",
+        role_pt: "Doutorando · UFCSPA",
+        role_en: "PhD Student · UFCSPA",
         category: "doutorado",
         tier: 3,
         lattes: "http://lattes.cnpq.br/4793629050454437",
@@ -943,7 +948,8 @@
       },
       {
         name: "Vinícius Vicente Soares",
-        role: "Doutorando · UFCSPA",
+        role_pt: "Doutorando · UFCSPA",
+        role_en: "PhD Student · UFCSPA",
         category: "doutorado",
         tier: 3,
         lattes: "https://lattes.cnpq.br/7547504820935924",
@@ -954,7 +960,8 @@
       // 4. Mestrandos (ordem alfabética)
       {
         name: "Arthur Canhada de Albuquerque",
-        role: "Mestrando · UFCSPA",
+        role_pt: "Mestrando · UFCSPA",
+        role_en: "Master's Student · UFCSPA",
         category: "mestrado",
         tier: 4,
         lattes: "http://lattes.cnpq.br/8050934335808561",
@@ -963,7 +970,8 @@
       },
       {
         name: "Carolina de Moura Marolli",
-        role: "Mestranda · UFCSPA",
+        role_pt: "Mestranda · UFCSPA",
+        role_en: "Master's Student · UFCSPA",
         category: "mestrado",
         tier: 4,
         lattes: "http://lattes.cnpq.br/0282109000236500",
@@ -972,7 +980,8 @@
       },
       {
         name: "Daniel Nascimento Dallavalle",
-        role: "Mestrando · UFCSPA",
+        role_pt: "Mestrando · UFCSPA",
+        role_en: "Master's Student · UFCSPA",
         category: "mestrado",
         tier: 4,
         lattes: "http://lattes.cnpq.br/9570567253017492",
@@ -981,7 +990,8 @@
       },
       {
         name: "Daniel Pasini Gonçalves",
-        role: "Mestrando · UFCSPA",
+        role_pt: "Mestrando · UFCSPA",
+        role_en: "Master's Student · UFCSPA",
         category: "mestrado",
         tier: 4,
         lattes: "http://lattes.cnpq.br/6331002460536883",
@@ -990,7 +1000,8 @@
       },
       {
         name: "Gabriel Rocha",
-        role: "Mestrando · UFCSPA",
+        role_pt: "Mestrando · UFCSPA",
+        role_en: "Master's Student · UFCSPA",
         category: "mestrado",
         tier: 4,
         lattes: "https://lattes.cnpq.br/9657223294743476",
@@ -1001,7 +1012,8 @@
       // 5. Estudantes e Contribuidores (ordem alfabética)
       {
         name: "Ana Laura Claraz de Souza Ferreira",
-        role: "IC Voluntária · UFCSPA",
+        role_pt: "IC Voluntária · UFCSPA",
+        role_en: "Volunteer Undergraduate Researcher · UFCSPA",
         category: "contribuidores",
         tier: 5,
         lattes: "https://lattes.cnpq.br/8944768793965654",
@@ -1010,7 +1022,8 @@
       },
       {
         name: "Ana Paula Bellini",
-        role: "PID Voluntária · UFCSPA",
+        role_pt: "PID Voluntária · UFCSPA",
+        role_en: "Volunteer Teaching Fellow (PID) · UFCSPA",
         category: "contribuidores",
         tier: 5,
         lattes: "http://lattes.cnpq.br/8845018028099266",
@@ -1019,7 +1032,8 @@
       },
       {
         name: "Christian Silva dos Santos",
-        role: "PIBIT · UFCSPA",
+        role_pt: "PIBIT · UFCSPA",
+        role_en: "PIBIT Fellow · UFCSPA",
         category: "contribuidores",
         tier: 5,
         lattes: "",
@@ -1028,7 +1042,8 @@
       },
       {
         name: "David Nusbaum",
-        role: "IC Voluntário · UFCSPA",
+        role_pt: "IC Voluntário · UFCSPA",
+        role_en: "Volunteer Undergraduate Researcher · UFCSPA",
         category: "contribuidores",
         tier: 5,
         lattes: "http://lattes.cnpq.br/3861741393098505",
@@ -1037,7 +1052,8 @@
       },
       {
         name: "Enrico Sousa Villetti",
-        role: "IC Voluntário · PUCRS",
+        role_pt: "IC Voluntário · PUCRS",
+        role_en: "Volunteer Undergraduate Researcher · PUCRS",
         category: "contribuidores",
         tier: 5,
         lattes: "",
@@ -1046,7 +1062,8 @@
       },
       {
         name: "Gabriel Felipi de Fontes Guilioti",
-        role: "PID Voluntário · UFCSPA",
+        role_pt: "PID Voluntário · UFCSPA",
+        role_en: "Volunteer Teaching Fellow (PID) · UFCSPA",
         category: "contribuidores",
         tier: 5,
         lattes: "https://lattes.cnpq.br/7079174248302352",
@@ -1055,7 +1072,8 @@
       },
       {
         name: "Gabriel Henrique Bigliardi Brites",
-        role: "IC Voluntário · UFCSPA",
+        role_pt: "IC Voluntário · UFCSPA",
+        role_en: "Volunteer Undergraduate Researcher · UFCSPA",
         category: "contribuidores",
         tier: 5,
         lattes: "https://lattes.cnpq.br/7547281155864173",
@@ -1064,7 +1082,8 @@
       },
       {
         name: "Gabriel Netto Ferreira",
-        role: "IC Voluntário · UFCSPA",
+        role_pt: "IC Voluntário · UFCSPA",
+        role_en: "Volunteer Undergraduate Researcher · UFCSPA",
         category: "contribuidores",
         tier: 5,
         lattes: "http://lattes.cnpq.br/4522011694295738",
@@ -1073,7 +1092,8 @@
       },
       {
         name: "Gisele Teixeira de Souza",
-        role: "IC Voluntário · UFCSPA",
+        role_pt: "IC Voluntário · UFCSPA",
+        role_en: "Volunteer Undergraduate Researcher · UFCSPA",
         category: "contribuidores",
         tier: 5,
         lattes: "http://lattes.cnpq.br/0504435722351504",
@@ -1082,7 +1102,8 @@
       },
       {
         name: "Guilherme Andary Riethmüller",
-        role: "Pesquisador Voluntário",
+        role_pt: "Pesquisador Voluntário",
+        role_en: "Volunteer Researcher",
         category: "contribuidores",
         tier: 5,
         lattes: "http://lattes.cnpq.br/6710395552387030",
@@ -1091,7 +1112,8 @@
       },
       {
         name: "Guilherme Callegari Escobar",
-        role: "IC Voluntário · UFCSPA",
+        role_pt: "IC Voluntário · UFCSPA",
+        role_en: "Volunteer Undergraduate Researcher · UFCSPA",
         category: "contribuidores",
         tier: 5,
         lattes: "http://lattes.cnpq.br/8925719596148916",
@@ -1100,7 +1122,8 @@
       },
       {
         name: "Gustavo Kessler Antunes",
-        role: "Pesquisador Voluntário · HPSP/ISCMPA",
+        role_pt: "Pesquisador Voluntário · HPSP/ISCMPA",
+        role_en: "Volunteer Researcher · HPSP/ISCMPA",
         category: "contribuidores",
         tier: 5,
         lattes: "",
@@ -1109,7 +1132,8 @@
       },
       {
         name: "Italo Abrão Biasuz",
-        role: "IC Voluntário / Candidato Mestrado · UFCSPA",
+        role_pt: "IC Voluntário / Candidato Mestrado · UFCSPA",
+        role_en: "Volunteer Undergraduate Researcher / Master's Applicant · UFCSPA",
         category: "contribuidores",
         tier: 5,
         lattes: "https://lattes.cnpq.br/9497687566551297",
@@ -1118,7 +1142,8 @@
       },
       {
         name: "Karina Castilhos Bastos",
-        role: "IC Voluntária · UFCSPA",
+        role_pt: "IC Voluntária · UFCSPA",
+        role_en: "Volunteer Undergraduate Researcher · UFCSPA",
         category: "contribuidores",
         tier: 5,
         lattes: "https://lattes.cnpq.br/0402181659255394",
@@ -1127,7 +1152,8 @@
       },
       {
         name: "Leonardo Daudt Wolffenbuttel",
-        role: "IC Voluntário",
+        role_pt: "IC Voluntário",
+        role_en: "Volunteer Undergraduate Researcher",
         category: "contribuidores",
         tier: 5,
         lattes: "http://lattes.cnpq.br/7560296134418606",
@@ -1136,7 +1162,8 @@
       },
       {
         name: "Lucas Gabriel Duarte Garcia",
-        role: "IC Voluntário",
+        role_pt: "IC Voluntário",
+        role_en: "Volunteer Undergraduate Researcher",
         category: "contribuidores",
         tier: 5,
         lattes: "http://lattes.cnpq.br/2268500480420184",
@@ -1145,7 +1172,8 @@
       },
       {
         name: "Luiza Schaefer Schiroky",
-        role: "PID Voluntário · UFCSPA",
+        role_pt: "PID Voluntário · UFCSPA",
+        role_en: "Volunteer Teaching Fellow (PID) · UFCSPA",
         category: "contribuidores",
         tier: 5,
         lattes: "https://lattes.cnpq.br/5759509671628338",
@@ -1154,7 +1182,8 @@
       },
       {
         name: "Marcelo Zimerman Bizzi",
-        role: "Pesquisador Voluntário · FUMM",
+        role_pt: "Pesquisador Voluntário · FUMM",
+        role_en: "Volunteer Researcher · FUMM",
         category: "contribuidores",
         tier: 5,
         lattes: "http://lattes.cnpq.br/5613676161279512",
@@ -1163,7 +1192,8 @@
       },
       {
         name: "Matheus Meine Otten",
-        role: "IC Voluntário · UFCSPA",
+        role_pt: "IC Voluntário · UFCSPA",
+        role_en: "Volunteer Undergraduate Researcher · UFCSPA",
         category: "contribuidores",
         tier: 5,
         lattes: "https://lattes.cnpq.br/1509347088820391",
@@ -1172,7 +1202,8 @@
       },
       {
         name: "Matheus Toledo de Oliveira",
-        role: "Pesquisador Voluntário · UFCSPA",
+        role_pt: "Pesquisador Voluntário · UFCSPA",
+        role_en: "Volunteer Researcher · UFCSPA",
         category: "contribuidores",
         tier: 5,
         lattes: "https://lattes.cnpq.br/9514862785372717",
@@ -1181,7 +1212,8 @@
       },
       {
         name: "Natália Sobierayski Esnaola",
-        role: "IC Voluntário",
+        role_pt: "IC Voluntário",
+        role_en: "Volunteer Undergraduate Researcher",
         category: "contribuidores",
         tier: 5,
         lattes: "http://lattes.cnpq.br/5684955923429944",
@@ -1190,7 +1222,8 @@
       },
       {
         name: "Nicholas Emanuel Storch",
-        role: "PIBIC · UNIVATES/UFCSPA",
+        role_pt: "PIBIC · UNIVATES/UFCSPA",
+        role_en: "PIBIC Fellow · UNIVATES/UFCSPA",
         category: "contribuidores",
         tier: 5,
         lattes: "http://lattes.cnpq.br/5522046186785173",
@@ -1199,7 +1232,8 @@
       },
       {
         name: "Pedro de Brito Prestes Júnior",
-        role: "IC Voluntário · UFCSPA",
+        role_pt: "IC Voluntário · UFCSPA",
+        role_en: "Volunteer Undergraduate Researcher · UFCSPA",
         category: "contribuidores",
         tier: 5,
         lattes: "https://lattes.cnpq.br/1777077171542860",
@@ -1208,7 +1242,8 @@
       },
       {
         name: "Pedro Dytz Marin",
-        role: "IC Voluntário · UFCSPA",
+        role_pt: "IC Voluntário · UFCSPA",
+        role_en: "Volunteer Undergraduate Researcher · UFCSPA",
         category: "contribuidores",
         tier: 5,
         lattes: "http://lattes.cnpq.br/4320330847480635",
@@ -1217,7 +1252,8 @@
       },
       {
         name: "Tiago Gehrke de Carvalho",
-        role: "IC Voluntário · UFCSPA",
+        role_pt: "IC Voluntário · UFCSPA",
+        role_en: "Volunteer Undergraduate Researcher · UFCSPA",
         category: "contribuidores",
         tier: 5,
         lattes: "http://lattes.cnpq.br/2559348335124387",
@@ -1226,7 +1262,8 @@
       },
       {
         name: "Vitório Serafim",
-        role: "PID Bolsista e IC Voluntário · UFCSPA",
+        role_pt: "PID Bolsista e IC Voluntário · UFCSPA",
+        role_en: "PID Fellow & Volunteer Undergraduate Researcher · UFCSPA",
         category: "contribuidores",
         tier: 5,
         lattes: "http://lattes.cnpq.br/3470251519132287",
@@ -1237,6 +1274,10 @@
       if (a.tier !== b.tier) return a.tier - b.tier;
       return a.name.localeCompare(b.name, 'pt-BR', { sensitivity: 'base' });
     });
+
+    function getMemberRole(member, lang = currentLang) {
+      return lang === 'en' ? (member.role_en || member.role_pt) : (member.role_pt || member.role_en);
+    }
 
     const translations = {
       pt: {
@@ -1262,10 +1303,8 @@
         leader1_tag: "Supervisão Principal · PI",
         leader1_role: "Direção Geral & Pesquisa em Psiquiatria",
         axes_tag: "02 · Eixos de Pesquisa",
-        axes_vertical_label: "EIXOS DE PESQUISA",
-        axes_poster_prefix: "O LIFE LAB ESTÁ ORGANIZADO EM",
-        axes_poster_highlight: " CINCO EIXOS ",
-        axes_poster_suffix: "DE PESQUISA",
+        axes_vertical_label: "EIXOS DE<br>PESQUISA",
+        axes_poster_headline: "O LIFE LAB ESTÁ<br>ORGANIZADO EM<br><strong class=\"font-black\" style=\"color:#070D18;\"> CINCO<br>EIXOS</strong><br>DE PESQUISA",
         axes_footer_note: "NOSSA ATUAÇÃO EM PESQUISA É MULTIDISCIPLINAR E CONJUNTA",
         axis1_name: "EDUCAÇÃO MÉDICA",
         axis2_name: "EVENTOS CLIMÁTICOS EXTREMOS",
@@ -1324,6 +1363,7 @@
         btn_portal: "Portal UFCSPA",
         footer_supervision: "Supervisão",
         footer_top: "Voltar ao Topo ↑",
+        modal_dept: "Universidade Federal de Ciências da Saúde de Porto Alegre",
         modal_footer_label: "LIFE Lab · UFCSPA"
       },
       en: {
@@ -1349,10 +1389,8 @@
         leader1_tag: "Principal Investigator · PI",
         leader1_role: "General Direction & Psychiatry Research",
         axes_tag: "02 · Research Axes",
-        axes_vertical_label: "RESEARCH AXES",
-        axes_poster_prefix: "LIFE LAB IS ORGANIZED INTO",
-        axes_poster_highlight: " FIVE RESEARCH ",
-        axes_poster_suffix: "AXES",
+        axes_vertical_label: "RESEARCH<br>AXES",
+        axes_poster_headline: "LIFE LAB IS<br>ORGANIZED INTO<br><strong class=\"font-black\" style=\"color:#070D18;\"> FIVE<br>RESEARCH</strong><br>AXES",
         axes_footer_note: "OUR RESEARCH IS MULTIDISCIPLINARY AND COLLABORATIVE",
         axis1_name: "MEDICAL EDUCATION",
         axis2_name: "EXTREME CLIMATE EVENTS",
@@ -1411,11 +1449,14 @@
         btn_portal: "UFCSPA Portal",
         footer_supervision: "Supervision",
         footer_top: "Back to Top ↑",
+        modal_dept: "Federal University of Health Sciences of Porto Alegre",
         modal_footer_label: "LIFE Lab · UFCSPA"
       }
     };
 
     let currentLang = 'pt';
+    let activeModalMember = null;
+    let renderTeamFn = null;
 
     function renderProductionLists() {
       const pubContainer = document.getElementById('publications-list');
@@ -1513,6 +1554,13 @@
         }
       });
 
+      document.querySelectorAll('[data-i18n-html]').forEach(el => {
+        const key = el.getAttribute('data-i18n-html');
+        if (dict[key]) {
+          el.innerHTML = dict[key];
+        }
+      });
+
       document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
         const key = el.getAttribute('data-i18n-placeholder');
         if (dict[key]) {
@@ -1536,6 +1584,14 @@
       }
 
       renderProductionLists();
+      if (typeof renderTeamFn === 'function') {
+        renderTeamFn();
+      }
+      if (activeModalMember) {
+        const roleBadge = document.getElementById('modal-role-badge');
+        if (roleBadge) roleBadge.textContent = getMemberRole(activeModalMember, lang);
+      }
+
       localStorage.setItem('lifelab_lang', lang);
     }
 
@@ -1594,7 +1650,6 @@
         });
       })();
 
-      // Botão copiar e-mail
       const copyEmailBtn = document.getElementById('btn-copy-email');
       if (copyEmailBtn) {
         copyEmailBtn.addEventListener('click', async () => {
@@ -1607,7 +1662,6 @@
         });
       }
 
-      // ScrollSpy para destacar seção ativa na navbar
       const navLinks = document.querySelectorAll('.nav-link[data-section]');
       const trackedSections = ['sobre', 'eixos', 'producao', 'equipe', 'onde-estamos']
         .map(id => document.getElementById(id))
@@ -1733,8 +1787,9 @@
 
         teamMembers.forEach((member, index) => {
           const matchesCategory = (currentCategory === 'all' || member.category === currentCategory);
+          const displayRole = getMemberRole(member, currentLang);
           const nameNorm = normalizeStr(member.name);
-          const roleNorm = normalizeStr(member.role);
+          const roleNorm = normalizeStr(`${member.role_pt || ''} ${member.role_en || ''}`);
           const matchesQuery = (!q || nameNorm.includes(q) || roleNorm.includes(q));
 
           if (matchesCategory && matchesQuery) {
@@ -1747,7 +1802,7 @@
             card.innerHTML = `
               <div class="overflow-hidden">
                 <h4 class="text-xs sm:text-sm font-bold text-brand-navy truncate group-hover:text-brand-lilac transition-colors">${member.name}</h4>
-                <p class="text-[11px] text-slate-500 truncate mt-0.5">${member.role}</p>
+                <p class="text-[11px] text-slate-500 truncate mt-0.5">${displayRole}</p>
               </div>
               <div class="w-7 h-7 rounded-full bg-slate-50 group-hover:bg-brand-navy group-hover:text-white text-slate-400 flex items-center justify-center text-xs shrink-0 transition-colors">
                 ↗
@@ -1767,6 +1822,8 @@
           }
         }
       }
+
+      renderTeamFn = renderTeam;
 
       filterBtns.forEach(btn => {
         btn.addEventListener('click', () => {
@@ -1815,8 +1872,9 @@
 
       function openMemberModal(member) {
         if (!modal) return;
+        activeModalMember = member;
         modalName.textContent = member.name;
-        modalRoleBadge.textContent = member.role;
+        modalRoleBadge.textContent = getMemberRole(member, currentLang);
 
         if (modalPhoto && modalPhotoFallback) {
           modalPhotoFallback.classList.add('hidden');
@@ -1840,6 +1898,7 @@
       }
 
       function closeModal() {
+        activeModalMember = null;
         if (modal) modal.classList.remove('open');
       }
 
