@@ -126,6 +126,26 @@
       opacity: 1;
     }
 
+    /* ABAS INTERATIVAS (PUBLICAÇÕES & EVENTOS) */
+    .prod-tab-panel {
+      display: none;
+      animation: fadeSlideUp 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .prod-tab-panel.active {
+      display: block;
+    }
+
+    @keyframes fadeSlideUp {
+      from {
+        opacity: 0;
+        transform: translateY(10px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
     .modal-backdrop {
       opacity: 0;
       pointer-events: none;
@@ -157,11 +177,12 @@
           <img src="./logo-white.png" alt="LIFE Lab" class="h-8 w-auto object-contain transition-transform group-hover:scale-105 duration-200" onerror="this.onerror=null;this.src='./logo-main.png';">
         </a>
 
-        <div class="hidden md:flex items-center gap-2">
-          <a href="#sobre" data-i18n="nav_about" class="text-xs font-medium text-slate-300 hover:text-white px-4 py-1.5 rounded-full hover:bg-white/10 transition-all">Sobre</a>
-          <a href="#eixos" data-i18n="nav_axes" class="text-xs font-medium text-slate-300 hover:text-white px-4 py-1.5 rounded-full hover:bg-white/10 transition-all">Eixos de Pesquisa</a>
-          <a href="#equipe" data-i18n="nav_team" class="text-xs font-medium text-slate-300 hover:text-white px-4 py-1.5 rounded-full hover:bg-white/10 transition-all">Equipe</a>
-          <a href="#onde-estamos" data-i18n="nav_location" class="text-xs font-medium text-slate-300 hover:text-white px-4 py-1.5 rounded-full hover:bg-white/10 transition-all">Localização</a>
+        <div class="hidden md:flex items-center gap-1 lg:gap-2">
+          <a href="#sobre" data-i18n="nav_about" class="text-xs font-medium text-slate-300 hover:text-white px-3.5 py-1.5 rounded-full hover:bg-white/10 transition-all">Sobre</a>
+          <a href="#eixos" data-i18n="nav_axes" class="text-xs font-medium text-slate-300 hover:text-white px-3.5 py-1.5 rounded-full hover:bg-white/10 transition-all">Eixos de Pesquisa</a>
+          <a href="#producao" data-i18n="nav_production" class="text-xs font-medium text-slate-300 hover:text-white px-3.5 py-1.5 rounded-full hover:bg-white/10 transition-all">Publicações & Eventos</a>
+          <a href="#equipe" data-i18n="nav_team" class="text-xs font-medium text-slate-300 hover:text-white px-3.5 py-1.5 rounded-full hover:bg-white/10 transition-all">Equipe</a>
+          <a href="#onde-estamos" data-i18n="nav_location" class="text-xs font-medium text-slate-300 hover:text-white px-3.5 py-1.5 rounded-full hover:bg-white/10 transition-all">Localização</a>
         </div>
 
         <div class="flex items-center gap-3">
@@ -192,6 +213,7 @@
       <div id="mobile-menu" class="hidden md:hidden mt-2 glass-nav rounded-2xl p-4 shadow-xl border border-white/10 flex flex-col gap-2 text-left">
         <a href="#sobre" data-i18n="nav_about" class="text-xs font-semibold text-slate-200 hover:text-brand-lilac py-2 border-b border-white/5">Sobre</a>
         <a href="#eixos" data-i18n="nav_axes" class="text-xs font-semibold text-slate-200 hover:text-brand-lilac py-2 border-b border-white/5">Eixos de Pesquisa</a>
+        <a href="#producao" data-i18n="nav_production" class="text-xs font-semibold text-slate-200 hover:text-brand-lilac py-2 border-b border-white/5">Publicações & Eventos</a>
         <a href="#equipe" data-i18n="nav_team" class="text-xs font-semibold text-slate-200 hover:text-brand-lilac py-2 border-b border-white/5">Equipe</a>
         <a href="#onde-estamos" data-i18n="nav_location" class="text-xs font-semibold text-slate-200 hover:text-brand-lilac py-2 border-b border-white/5">Localização</a>
         <a href="#contato" data-i18n="nav_contact" class="text-xs font-bold text-white bg-brand-lilac text-center py-2.5 rounded-full mt-2">Contato</a>
@@ -201,7 +223,7 @@
 
 
   <!-- ========================================================================= -->
-  <!-- HERO SECTION -->
+  <!-- HERO SECTION                                                              -->
   <!-- ========================================================================= -->
   <section id="inicio" class="relative hero-gradient text-white pt-40 pb-24 lg:pt-48 lg:pb-32 border-b border-white/10">
     <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
@@ -229,8 +251,8 @@
           <span data-i18n="hero_btn_axes">Explorar Eixos de Pesquisa</span>
           <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 14l-7 7m0 0l-7-7m7 7V3"/></svg>
         </a>
-        <a href="#equipe" class="inline-flex items-center gap-2 bg-white/10 hover:bg-white/15 text-white font-semibold text-xs sm:text-sm px-6 py-3.5 rounded-full border border-white/20 transition-all">
-          <span data-i18n="hero_btn_team">Ver Equipe</span>
+        <a href="#producao" class="inline-flex items-center gap-2 bg-white/10 hover:bg-white/15 text-white font-semibold text-xs sm:text-sm px-6 py-3.5 rounded-full border border-white/20 transition-all">
+          <span data-i18n="hero_btn_prod">Publicações & Eventos</span>
         </a>
       </div>
 
@@ -258,7 +280,7 @@
 
 
   <!-- ========================================================================= -->
-  <!-- SOBRE O LAB & LIDERANÇA -->
+  <!-- SOBRE O LAB & LIDERANÇA                                                   -->
   <!-- ========================================================================= -->
   <section id="sobre" class="py-24 bg-brand-cream border-b border-slate-200">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -324,7 +346,7 @@
 
 
   <!-- ========================================================================= -->
-  <!-- EIXOS DE PESQUISA -->
+  <!-- EIXOS DE PESQUISA                                                         -->
   <!-- ========================================================================= -->
   <section id="eixos" class="py-24 bg-brand-cream border-b border-slate-200">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -522,7 +544,99 @@
 
 
   <!-- ========================================================================= -->
-  <!-- CORPO CIENTÍFICO -->
+  <!-- PRODUÇÃO CIENTÍFICA (ABAS CLICÁVEIS: PUBLICAÇÕES & EVENTOS)               -->
+  <!-- ========================================================================= -->
+  <section id="producao" class="py-24 bg-brand-cream-dark border-b border-slate-200">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+      <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-10 text-left">
+        <div>
+          <span class="text-xs font-bold tracking-widest text-brand-slate uppercase block mb-2" data-i18n="prod_tag">
+            03 · Produção & Difusão Científica
+          </span>
+          <h2 class="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-brand-navy tracking-tight uppercase leading-tight" data-i18n="prod_title">
+            PUBLICAÇÕES & EVENTOS
+          </h2>
+        </div>
+
+        <!-- Seletor de Abas Clicáveis -->
+        <div class="inline-flex p-1.5 rounded-full bg-brand-navy shadow-lg self-start md:self-auto" role="tablist" aria-label="Produção Científica">
+          <button
+            type="button"
+            role="tab"
+            id="tab-btn-publicacoes"
+            aria-selected="true"
+            aria-controls="tab-panel-publicacoes"
+            data-tab="publicacoes"
+            class="prod-tab-btn px-5 sm:px-6 py-2.5 rounded-full text-xs font-bold uppercase tracking-wider bg-brand-lilac text-white shadow-sm transition-all flex items-center gap-2"
+          >
+            <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/></svg>
+            <span data-i18n="tab_publications">Publicações</span>
+          </button>
+
+          <button
+            type="button"
+            role="tab"
+            id="tab-btn-eventos"
+            aria-selected="false"
+            aria-controls="tab-panel-eventos"
+            data-tab="eventos"
+            class="prod-tab-btn px-5 sm:px-6 py-2.5 rounded-full text-xs font-bold uppercase tracking-wider text-slate-300 hover:text-white transition-all flex items-center gap-2"
+          >
+            <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+            <span data-i18n="tab_events">Participação em Eventos</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- ABA 1: PUBLICAÇÕES -->
+      <div id="tab-panel-publicacoes" role="tabpanel" aria-labelledby="tab-btn-publicacoes" class="prod-tab-panel active">
+        <div class="bg-white rounded-3xl p-6 sm:p-8 border border-slate-200 shadow-sm text-left">
+          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 pb-6 mb-6 border-b border-slate-100">
+            <div>
+              <h3 class="text-base sm:text-lg font-black text-brand-navy uppercase tracking-tight" data-i18n="pub_box_title">
+                Artigos, Revisões & Protocolos Pré-Registrados
+              </h3>
+              <p class="text-xs text-slate-500 mt-0.5" data-i18n="pub_box_subtitle">
+                Produção bibliográfica e protocolos científicos vinculados às linhas de pesquisa do LIFE Lab.
+              </p>
+            </div>
+            <span class="inline-flex items-center gap-1.5 text-[11px] font-bold text-brand-lilac bg-brand-lilac-light px-3.5 py-1.5 rounded-full self-start sm:self-auto" data-i18n="pub_badge">
+              Repositório Científico
+            </span>
+          </div>
+
+          <div id="publications-list" class="space-y-4"></div>
+        </div>
+      </div>
+
+      <!-- ABA 2: PARTICIPAÇÃO EM EVENTOS -->
+      <div id="tab-panel-eventos" role="tabpanel" aria-labelledby="tab-btn-eventos" class="prod-tab-panel">
+        <div class="bg-white rounded-3xl p-6 sm:p-8 border border-slate-200 shadow-sm text-left">
+          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 pb-6 mb-6 border-b border-slate-100">
+            <div>
+              <h3 class="text-base sm:text-lg font-black text-brand-navy uppercase tracking-tight" data-i18n="evt_box_title">
+                Congressos, Simpósios & Apresentações Científicas
+              </h3>
+              <p class="text-xs text-slate-500 mt-0.5" data-i18n="evt_box_subtitle">
+                Comunicações orais, pôsteres, mesas-redondas e prêmios conquistados pelos membros do laboratório.
+              </p>
+            </div>
+            <span class="inline-flex items-center gap-1.5 text-[11px] font-bold text-brand-slate bg-brand-blue-light px-3.5 py-1.5 rounded-full self-start sm:self-auto" data-i18n="evt_badge">
+              Agenda & Histórico
+            </span>
+          </div>
+
+          <div id="events-list" class="grid grid-cols-1 md:grid-cols-2 gap-4"></div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ========================================================================= -->
+  <!-- CORPO CIENTÍFICO                                                          -->
   <!-- ========================================================================= -->
   <section id="equipe" class="py-24 bg-brand-cream border-b border-slate-200">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -530,7 +644,7 @@
       <div class="flex flex-col sm:flex-row sm:items-end justify-between mb-10 text-left">
         <div>
           <span class="text-xs font-bold tracking-widest text-brand-slate uppercase block mb-2" data-i18n="team_tag">
-            03 · Corpo Científico
+            04 · Corpo Científico
           </span>
           <h2 class="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-brand-navy tracking-tight uppercase leading-tight" data-i18n="team_title">
             PESQUISADORES
@@ -569,7 +683,7 @@
 
 
   <!-- ========================================================================= -->
-  <!-- ONDE ESTAMOS & CONTATO -->
+  <!-- ONDE ESTAMOS & CONTATO                                                    -->
   <!-- ========================================================================= -->
   <section id="onde-estamos" class="py-20 bg-brand-cream-dark border-b border-slate-200">
     <div id="contato" class="scroll-mt-20"></div>
@@ -591,7 +705,7 @@
           <div class="lg:col-span-7 space-y-5">
             <div>
               <span class="text-xs font-bold tracking-widest text-brand-slate uppercase block mb-1" data-i18n="location_tag">
-                04 · Localização & Contato
+                05 · Localização & Contato
               </span>
               <h3 class="text-2xl sm:text-3xl font-black text-brand-navy tracking-tight uppercase" data-i18n="location_title">
                 ONDE ESTAMOS
@@ -627,7 +741,7 @@
 
 
   <!-- ========================================================================= -->
-  <!-- RODAPÉ -->
+  <!-- RODAPÉ                                                                    -->
   <!-- ========================================================================= -->
   <footer class="bg-brand-navy text-slate-400 py-12 text-left">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -651,7 +765,7 @@
 
 
   <!-- ========================================================================= -->
-  <!-- MODAL DE PERFIL -->
+  <!-- MODAL DE PERFIL                                                           -->
   <!-- ========================================================================= -->
   <div id="member-modal" class="modal-backdrop fixed inset-0 z-50 flex items-center justify-center p-4 bg-brand-navy/70 backdrop-blur-sm" role="dialog" aria-modal="true">
     <div class="modal-box bg-white rounded-3xl p-6 sm:p-8 max-w-lg w-full shadow-2xl border border-slate-200 text-left relative">
@@ -705,9 +819,94 @@
 
 
   <!-- ========================================================================= -->
-  <!-- JAVASCRIPT -->
+  <!-- JAVASCRIPT                                                                -->
   <!-- ========================================================================= -->
   <script>
+    // =========================================================================
+    // DADOS DE PUBLICAÇÕES & EVENTOS (EDITE AQUI PARA ADICIONAR NOVOS ITENS)
+    // =========================================================================
+    const publicationsData = [
+      {
+        year: "2026",
+        type_pt: "Protocolo Pré-Registrado · OSF",
+        type_en: "Pre-Registered Protocol · OSF",
+        axis_pt: "Eixo 03 · TDAH & Fenótipos Comportamentais",
+        axis_en: "Axis 03 · ADHD & Behavioral Phenotypes",
+        title_pt: "Influence of the Built Environment on Phenotypic Expression and Functionality in Adults with Neurodevelopmental Disorders: A Scoping Review Protocol",
+        title_en: "Influence of the Built Environment on Phenotypic Expression and Functionality in Adults with Neurodevelopmental Disorders: A Scoping Review Protocol",
+        authors: "Canhada, A.; Passos, F.; Panzenhagen, A. C.; Shansis, F. M.",
+        venue: "Open Science Framework (OSF) — PPGCS / UFCSPA",
+        link: "https://osf.io/"
+      },
+      {
+        year: "2026",
+        type_pt: "Artigo Original / Em Submissão",
+        type_en: "Original Article / In Submission",
+        axis_pt: "Eixo 02 · Eventos Climáticos Extremos",
+        axis_en: "Axis 02 · Extreme Climate Events",
+        title_pt: "Repercussões Psiquiátricas e Transtorno de Estresse Pós-Traumático (TEPT) Após Eventos Hidrológicos Extremos no Rio Grande do Sul",
+        title_en: "Psychiatric Outcomes and Post-Traumatic Stress Disorder (PTSD) Following Extreme Hydrological Events in Rio Grande do Sul",
+        authors: "Dallavalle, D.; Cima, M.; Abrão, I.; Escobar, G.; Shansis, F. M.",
+        venue: "LIFE Lab · Programa de Pós-Graduação em Ciências da Saúde — UFCSPA",
+        link: "#"
+      },
+      {
+        year: "2026",
+        type_pt: "Validação Psicométrica & Simulação",
+        type_en: "Psychometric Validation & Simulation",
+        axis_pt: "Eixo 01 · Educação Médica",
+        axis_en: "Axis 01 · Medical Education",
+        title_pt: "Projeto AVATAR e Simulação Realística no Ensino de Semiologia Psiquiátrica e Exame do Estado Mental",
+        title_en: "AVATAR Project and Realistic Simulation in Teaching Psychiatric Semiology and Mental Status Examination",
+        authors: "Pasini, D.; Soares, V.; Mondadori, C.; Serafim, V.; Shansis, F. M.",
+        venue: "LIFE Lab · UFCSPA",
+        link: "#"
+      }
+    ];
+
+    const eventsData = [
+      {
+        date: "2026",
+        badge_pt: "Congresso Brasileiro",
+        badge_en: "Brazilian Congress",
+        title_pt: "Congresso Brasileiro de Psiquiatria (CBP)",
+        title_en: "Brazilian Congress of Psychiatry (CBP)",
+        location: "Brasil",
+        desc_pt: "Apresentação de trabalhos científicos nas linhas de Fenótipos Comportamentais, TDAH, Suicídio e Impactos de Eventos Climáticos Extremos.",
+        desc_en: "Presentation of scientific works across Behavioral Phenotypes, ADHD, Suicide, and Extreme Climate Events research lines."
+      },
+      {
+        date: "2026",
+        badge_pt: "Mostra Científica",
+        badge_en: "Scientific Showcase",
+        title_pt: "Mostra de Pesquisa & Pós-Graduação da UFCSPA",
+        title_en: "UFCSPA Research & Graduate Showcase",
+        location: "Porto Alegre / RS",
+        desc_pt: "Comunicações orais e pôsteres dos projetos de Iniciação Científica, Mestrado e Doutorado vinculados ao PPGCS.",
+        desc_en: "Oral communications and posters from Undergraduate, Master's, and PhD projects affiliated with PPGCS."
+      },
+      {
+        date: "2026",
+        badge_pt: "Educação Médica",
+        badge_en: "Medical Education",
+        title_pt: "Congresso Brasileiro de Educação Médica (COBEM)",
+        title_en: "Brazilian Congress of Medical Education (COBEM)",
+        location: "Brasil",
+        desc_pt: "Relatos de experiência e resultados preliminares do Eixo de Educação Médica, Simulação Realística e Projeto AVATAR.",
+        desc_en: "Experience reports and preliminary findings from the Medical Education Axis, Realistic Simulation, and AVATAR Project."
+      },
+      {
+        date: "2026",
+        badge_pt: "Simpósio Temático",
+        badge_en: "Thematic Symposium",
+        title_pt: "Jornada Sul-Brasileira de Psiquiatria",
+        title_en: "Southern Brazilian Symposium of Psychiatry",
+        location: "Região Sul / Brasil",
+        desc_pt: "Participação do corpo científico em mesas-redondas e discussões translacionais sobre saúde mental e epidemiologia.",
+        desc_en: "Participation of scientific staff in roundtables and translational discussions on mental health and epidemiology."
+      }
+    ];
+
     const teamMembers = [
       { name: "Prof. Dr. Flávio Shansis", role: "Principal Investigator / Supervisão", category: "lideranca", project: "Direção Geral & Pesquisa em Psiquiatria", axis: "Direção Geral & Supervisão Geral" },
       { name: "Felipe Passos", role: "Dirigente de Pesquisa", category: "lideranca", project: "Coordenação Geral & Eixo TDAH", axis: "Coordenação Geral de Pesquisa" },
@@ -742,6 +941,7 @@
       pt: {
         nav_about: "Sobre",
         nav_axes: "Eixos de Pesquisa",
+        nav_production: "Publicações & Eventos",
         nav_team: "Equipe",
         nav_location: "Localização",
         nav_contact: "Contato",
@@ -753,7 +953,7 @@
         hero_tagline: "Onde a pesquisa encontra a prática clínica.",
         hero_lead: "Reunimos pesquisadores dedicados a investigar a intersecção entre biologia, ambiente e expressão comportamental, unindo psiquiatria computacional, modelagem preditiva e investigações epidemiológicas de grande impacto populacional.",
         hero_btn_axes: "Explorar Eixos de Pesquisa",
-        hero_btn_team: "Ver Equipe",
+        hero_btn_prod: "Publicações & Eventos",
         
         stat_axes: "Eixos Temáticos",
         stat_team: "Integrantes Ativos",
@@ -798,8 +998,19 @@
         axis5_focus_desc: "Investigação do bem-estar psiquiátrico em populações específicas de profissionais de saúde e desenvolvimento de protótipos digitais.",
         axis5_p1_desc: "Avaliação do esgotamento e resiliência em médicos de linha de frente.",
         axis5_p2_desc: "Estudos especiais em saúde mental e suporte analítico de dados.",
+
+        prod_tag: "03 · Produção & Difusão Científica",
+        prod_title: "PUBLICAÇÕES & EVENTOS",
+        tab_publications: "Publicações",
+        tab_events: "Participação em Eventos",
+        pub_box_title: "Artigos, Revisões & Protocolos Pré-Registrados",
+        pub_box_subtitle: "Produção bibliográfica e protocolos científicos vinculados às linhas de pesquisa do LIFE Lab.",
+        pub_badge: "Repositório Científico",
+        evt_box_title: "Congressos, Simpósios & Apresentações Científicas",
+        evt_box_subtitle: "Comunicações orais, pôsteres, mesas-redondas e participação científica dos membros do laboratório.",
+        evt_badge: "Agenda & Histórico",
         
-        team_tag: "03 · Corpo Científico",
+        team_tag: "04 · Corpo Científico",
         team_title: "PESQUISADORES",
         team_click_hint: "Toque em qualquer integrante para abrir o perfil acadêmico e projetos.",
         filter_all: "Todos",
@@ -810,7 +1021,7 @@
         search_placeholder: "Filtrar por nome ou projeto...",
         search_no_results: "Nenhum integrante encontrado para os termos buscados.",
         
-        location_tag: "04 · Localização & Contato",
+        location_tag: "05 · Localização & Contato",
         location_title: "ONDE ESTAMOS",
         location_card_badge: "Sede Institucional",
         location_desc: "O LIFE Lab está vinculado ao Programa de Pós-Graduação em Ciências da Saúde da UFCSPA, no Centro Histórico de Porto Alegre.",
@@ -824,6 +1035,7 @@
       en: {
         nav_about: "About",
         nav_axes: "Research Axes",
+        nav_production: "Publications & Events",
         nav_team: "Team",
         nav_location: "Location",
         nav_contact: "Contact",
@@ -835,7 +1047,7 @@
         hero_tagline: "Where research meets clinical practice.",
         hero_lead: "Gathering researchers dedicated to investigating the intersection between biology, environment, and behavioral expression through computational psychiatry, predictive modeling, and population-level epidemiological studies.",
         hero_btn_axes: "Explore Research Axes",
-        hero_btn_team: "View Team",
+        hero_btn_prod: "Publications & Events",
         
         stat_axes: "Research Axes",
         stat_team: "Active Members",
@@ -880,8 +1092,19 @@
         axis5_focus_desc: "Investigation of psychiatric well-being in frontline medical professionals, digital screening prototypes, and multi-institutional data analytics.",
         axis5_p1_desc: "Burnout, resilience, and stress assessment in frontline physicians.",
         axis5_p2_desc: "Special studies in mental health and data analytical support.",
+
+        prod_tag: "03 · Scientific Output & Outreach",
+        prod_title: "PUBLICATIONS & EVENTS",
+        tab_publications: "Publications",
+        tab_events: "Event Participation",
+        pub_box_title: "Articles, Reviews & Pre-Registered Protocols",
+        pub_box_subtitle: "Bibliographic output and scientific protocols linked to LIFE Lab research lines.",
+        pub_badge: "Scientific Repository",
+        evt_box_title: "Congresses, Symposia & Scientific Presentations",
+        evt_box_subtitle: "Oral communications, posters, roundtables, and academic participation by lab members.",
+        evt_badge: "Schedule & History",
         
-        team_tag: "03 · Scientific Staff",
+        team_tag: "04 · Scientific Staff",
         team_title: "RESEARCHERS",
         team_click_hint: "Click any member to open their academic profile and projects.",
         filter_all: "All",
@@ -892,7 +1115,7 @@
         search_placeholder: "Filter by name or project...",
         search_no_results: "No team members found matching your search.",
         
-        location_tag: "04 · Location & Contact",
+        location_tag: "05 · Location & Contact",
         location_title: "WHERE WE ARE",
         location_card_badge: "Institutional Campus",
         location_desc: "The LIFE Lab is affiliated with the Graduate Program in Health Sciences at UFCSPA, in the Historic Center of Porto Alegre, RS, Brazil.",
@@ -906,6 +1129,59 @@
     };
 
     let currentLang = 'pt';
+
+    function renderProductionLists() {
+      const pubContainer = document.getElementById('publications-list');
+      const evtContainer = document.getElementById('events-list');
+
+      if (pubContainer) {
+        pubContainer.innerHTML = publicationsData.map(item => {
+          const title = currentLang === 'en' ? item.title_en : item.title_pt;
+          const type = currentLang === 'en' ? item.type_en : item.type_pt;
+          const axis = currentLang === 'en' ? item.axis_en : item.axis_pt;
+          const hasLink = item.link && item.link !== '#';
+
+          return `
+            <article class="group p-5 rounded-2xl bg-brand-cream hover:bg-white border border-slate-200/80 hover:border-brand-lilac/50 transition-all">
+              <div class="flex flex-wrap items-center gap-2 mb-2">
+                <span class="px-2.5 py-0.5 rounded-full bg-brand-navy text-white text-[10px] font-extrabold tracking-wider">${item.year}</span>
+                <span class="px-2.5 py-0.5 rounded-full bg-brand-lilac/15 text-brand-lilac text-[10px] font-bold uppercase tracking-wider">${type}</span>
+                <span class="text-[11px] font-medium text-slate-500">${axis}</span>
+              </div>
+              <h4 class="text-sm sm:text-base font-bold text-brand-navy leading-snug group-hover:text-brand-lilac transition-colors">
+                ${title}
+              </h4>
+              <p class="text-xs text-slate-600 mt-2 font-medium">${item.authors}</p>
+              <div class="flex flex-wrap items-center justify-between gap-2 mt-3 pt-3 border-t border-slate-200/60">
+                <span class="text-[11px] text-slate-500 italic">${item.venue}</span>
+                ${hasLink ? `<a href="${item.link}" target="_blank" rel="noopener noreferrer" class="text-[11px] font-bold text-brand-lilac hover:underline">Acessar registro ↗</a>` : ''}
+              </div>
+            </article>
+          `;
+        }).join('');
+      }
+
+      if (evtContainer) {
+        evtContainer.innerHTML = eventsData.map(ev => {
+          const title = currentLang === 'en' ? ev.title_en : ev.title_pt;
+          const badge = currentLang === 'en' ? ev.badge_en : ev.badge_pt;
+          const desc = currentLang === 'en' ? ev.desc_en : ev.desc_pt;
+
+          return `
+            <article class="p-5 rounded-2xl bg-brand-cream border border-slate-200/80 hover:border-brand-slate/40 transition-all flex flex-col justify-between">
+              <div>
+                <div class="flex items-center justify-between gap-2 mb-3">
+                  <span class="px-2.5 py-0.5 rounded-full bg-brand-slate text-white text-[10px] font-bold uppercase tracking-wider">${badge}</span>
+                  <span class="text-xs font-extrabold text-brand-lilac">${ev.date} · ${ev.location}</span>
+                </div>
+                <h4 class="text-sm sm:text-base font-bold text-brand-navy leading-snug mb-2">${title}</h4>
+                <p class="text-xs text-slate-600 leading-relaxed">${desc}</p>
+              </div>
+            </article>
+          `;
+        }).join('');
+      }
+    }
 
     function setLanguage(lang) {
       currentLang = lang;
@@ -938,6 +1214,7 @@
         document.documentElement.lang = 'en';
       }
 
+      renderProductionLists();
       localStorage.setItem('lifelab_lang', lang);
     }
 
@@ -949,6 +1226,7 @@
     }
 
     document.addEventListener('DOMContentLoaded', () => {
+      // Fallback resiliente da imagem do professor
       (function () {
         const img = document.getElementById('prof-flavio-img');
         const fallback = document.getElementById('prof-flavio-fallback');
@@ -977,6 +1255,37 @@
           }
         });
       })();
+
+      // Renderiza listas de Publicações & Eventos
+      renderProductionLists();
+
+      // Controle das abas clicáveis (Publicações / Participação em Eventos)
+      const tabBtns = document.querySelectorAll('.prod-tab-btn');
+      const tabPanels = document.querySelectorAll('.prod-tab-panel');
+
+      tabBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+          const target = btn.getAttribute('data-tab');
+
+          tabBtns.forEach(b => {
+            b.setAttribute('aria-selected', 'false');
+            b.classList.remove('bg-brand-lilac', 'text-white', 'shadow-sm');
+            b.classList.add('text-slate-300', 'hover:text-white');
+          });
+
+          btn.setAttribute('aria-selected', 'true');
+          btn.classList.add('bg-brand-lilac', 'text-white', 'shadow-sm');
+          btn.classList.remove('text-slate-300', 'hover:text-white');
+
+          tabPanels.forEach(panel => {
+            if (panel.id === 'tab-panel-' + target) {
+              panel.classList.add('active');
+            } else {
+              panel.classList.remove('active');
+            }
+          });
+        });
+      });
 
       const btnPt = document.getElementById('btn-lang-pt');
       const btnEn = document.getElementById('btn-lang-en');
