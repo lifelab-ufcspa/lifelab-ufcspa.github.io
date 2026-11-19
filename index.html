@@ -670,7 +670,7 @@
           </h2>
         </div>
         <p class="text-xs text-slate-500 font-medium mt-2 sm:mt-0" data-i18n="team_click_hint">
-          Toque em qualquer integrante para abrir o perfil acadêmico e projetos.
+          Toque em qualquer integrante para abrir o perfil acadêmico.
         </p>
       </div>
 
@@ -782,7 +782,7 @@
         ✕
       </button>
 
-       <div class="bw-grainy-portrait w-full h-64 sm:h-72 flex items-center justify-center border-b border-slate-200">
+      <div class="bw-grainy-portrait w-full h-64 sm:h-72 flex items-center justify-center border-b border-slate-200">
         <img id="modal-photo" src="" alt="" class="w-full h-full object-cover" style="object-position: 50% 20%;">
         <div id="modal-photo-fallback" class="hidden w-full h-full flex-col items-center justify-center bg-gradient-to-br from-brand-surface via-brand-navy to-brand-slate text-white p-6 text-center">
           <span class="text-[11px] font-bold uppercase tracking-widest text-brand-lilac">Retrato P&amp;B · Arquivo pendente</span>
@@ -803,18 +803,7 @@
           </p>
         </div>
 
-        <div class="space-y-3 py-3 border-y border-slate-100 text-xs text-slate-700">
-          <div class="bg-slate-50 p-3 rounded-xl border border-slate-100">
-            <span class="text-[10px] font-bold text-slate-400 uppercase tracking-wider block" data-i18n="modal_project_label">Projeto Vinculado</span>
-            <span id="modal-project" class="text-xs font-bold text-brand-navy block mt-0.5">Nome do Projeto</span>
-          </div>
-          <div class="bg-slate-50 p-3 rounded-xl border border-slate-100">
-            <span class="text-[10px] font-bold text-slate-400 uppercase tracking-wider block" data-i18n="modal_axis_label">Eixo de Atuação</span>
-            <span id="modal-axis" class="text-xs font-medium text-slate-700 block mt-0.5">Eixo Temático</span>
-          </div>
-        </div>
-
-        <div class="mt-5 flex items-center justify-between text-xs">
+        <div class="pt-4 border-t border-slate-100 flex items-center justify-between text-xs">
           <span class="text-slate-400 text-[11px]" data-i18n="modal_footer_label">LIFE Lab · UFCSPA</span>
           <div class="flex items-center gap-2">
             <a id="modal-lattes" href="#" target="_blank" rel="noopener noreferrer" class="hidden font-bold text-brand-slate hover:text-brand-lilac bg-slate-100 px-3 py-1.5 rounded-full transition-colors">
@@ -1350,7 +1339,7 @@
         orcid: "https://orcid.org/0009-0002-6920-731",
         photo: "./fotos/vitorio-serafim.jpg"
       }
-  ];
+    ];
     
     const translations = {
       pt: {
@@ -1410,7 +1399,7 @@
         evt_badge: "Agenda & Histórico",
         team_tag: "04 · Corpo Científico",
         team_title: "PESQUISADORES",
-        team_click_hint: "Toque em qualquer integrante para abrir o perfil acadêmico e projetos.",
+        team_click_hint: "Toque em qualquer integrante para abrir o perfil acadêmico.",
         filter_all: "Todos",
         filter_lead: "Liderança",
         filter_grad: "Pós-Graduação",
@@ -1424,8 +1413,6 @@
         location_desc: "O LIFE Lab está vinculado ao Programa de Pós-Graduação em Ciências da Saúde da UFCSPA, no Centro Histórico de Porto Alegre.",
         btn_email: "Enviar E-mail",
         footer_top: "Voltar ao Topo ↑",
-        modal_project_label: "Projeto Vinculado",
-        modal_axis_label: "Eixo de Atuação",
         modal_footer_label: "LIFE Lab · UFCSPA"
       },
       en: {
@@ -1485,7 +1472,7 @@
         evt_badge: "Schedule & History",
         team_tag: "04 · Scientific Staff",
         team_title: "RESEARCHERS",
-        team_click_hint: "Click any member to open their academic profile and projects.",
+        team_click_hint: "Click any member to open their academic profile.",
         filter_all: "All",
         filter_lead: "Leadership",
         filter_grad: "Graduate",
@@ -1499,8 +1486,6 @@
         location_desc: "The LIFE Lab is affiliated with the Graduate Program in Health Sciences at UFCSPA, in the Historic Center of Porto Alegre, RS, Brazil.",
         btn_email: "Send E-mail",
         footer_top: "Back to Top ↑",
-        modal_project_label: "Assigned Project",
-        modal_axis_label: "Research Axis",
         modal_footer_label: "LIFE Lab · UFCSPA"
       }
     };
@@ -1835,8 +1820,6 @@
       const modalPhotoPath = document.getElementById('modal-photo-path');
       const modalName = document.getElementById('modal-name');
       const modalRoleBadge = document.getElementById('modal-role-badge');
-      const modalProject = document.getElementById('modal-project');
-      const modalAxis = document.getElementById('modal-axis');
       const modalLattes = document.getElementById('modal-lattes');
       const modalOrcid = document.getElementById('modal-orcid');
 
