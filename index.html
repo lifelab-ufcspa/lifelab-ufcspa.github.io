@@ -782,8 +782,8 @@
         ✕
       </button>
 
-      <div class="bw-grainy-portrait w-full h-56 flex items-center justify-center border-b border-slate-200">
-        <img id="modal-photo" src="" alt="" class="w-full h-full object-cover object-top">
+       <div class="bw-grainy-portrait w-full h-64 sm:h-72 flex items-center justify-center border-b border-slate-200">
+        <img id="modal-photo" src="" alt="" class="w-full h-full object-cover" style="object-position: 50% 20%;">
         <div id="modal-photo-fallback" class="hidden w-full h-full flex-col items-center justify-center bg-gradient-to-br from-brand-surface via-brand-navy to-brand-slate text-white p-6 text-center">
           <span class="text-[11px] font-bold uppercase tracking-widest text-brand-lilac">Retrato P&amp;B · Arquivo pendente</span>
           <span id="modal-photo-path" class="text-[11px] text-slate-400 mt-1"></span>
@@ -1856,13 +1856,12 @@
         if (!modal) return;
         modalName.textContent = member.name;
         modalRoleBadge.textContent = member.role;
-        modalProject.textContent = member.project;
-        modalAxis.textContent = member.axis;
 
         if (modalPhoto && modalPhotoFallback) {
           modalPhotoFallback.classList.add('hidden');
           modalPhotoFallback.classList.remove('flex');
           modalPhoto.classList.remove('hidden');
+          modalPhoto.style.objectPosition = member.focus || '50% 20%';
           modalPhoto.alt = `Retrato em preto e branco de ${member.name}`;
           modalPhoto.onerror = function () {
             modalPhoto.classList.add('hidden');
