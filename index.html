@@ -225,18 +225,24 @@
   <!-- ========================================================================= -->
   <!-- HERO SECTION                                                              -->
   <!-- ========================================================================= -->
-  <section id="inicio" class="relative hero-gradient text-white pt-40 pb-24 lg:pt-48 lg:pb-32 border-b border-white/10">
+  <section id="inicio" class="relative hero-gradient text-white pt-36 pb-24 lg:pt-44 lg:pb-32 border-b border-white/10">
     <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
       
-      <p class="text-xs font-bold tracking-widest text-brand-lilac uppercase mb-5" data-i18n="hero_subtitle_tag">
+      <p class="text-xs font-bold tracking-widest text-brand-lilac uppercase mb-7" data-i18n="hero_subtitle_tag">
         UNIVERSIDADE FEDERAL DE CIÊNCIAS DA SAÚDE DE PORTO ALEGRE
       </p>
 
-      <h1 class="text-3xl sm:text-5xl font-black tracking-tight text-white uppercase leading-[1.15] mb-6">
-        <span class="block" data-i18n="hero_title_line1">LIFE LAB</span>
-        <span class="block" data-i18n="hero_title_line2">LABORATÓRIO</span>
-        <span class="block" data-i18n="hero_title_line3">INTEGRADO DE FENÓTIPOS COMPORTAMENTAIS</span>
-      </h1>
+      <div class="flex justify-center mb-7">
+        <img
+          id="hero-logo-img"
+          src="./logotipo-fundoescuro.png"
+          alt="LIFE Lab — Laboratório Integrado de Fenótipos Comportamentais"
+          class="w-full max-w-[290px] sm:max-w-[350px] lg:max-w-[380px] h-auto object-contain select-none"
+        >
+        <h1 id="hero-logo-fallback" class="hidden text-3xl sm:text-5xl font-black tracking-tight text-white uppercase leading-[1.15]">
+          LIFE LAB — LABORATÓRIO INTEGRADO DE FENÓTIPOS COMPORTAMENTAIS
+        </h1>
+      </div>
 
       <p class="text-base sm:text-xl text-brand-blue font-medium tracking-tight mb-6" data-i18n="hero_tagline">
         Onde a pesquisa encontra a prática clínica.
@@ -947,9 +953,6 @@
         nav_contact: "Contato",
         
         hero_subtitle_tag: "UNIVERSIDADE FEDERAL DE CIÊNCIAS DA SAÚDE DE PORTO ALEGRE",
-        hero_title_line1: "LIFE LAB",
-        hero_title_line2: "LABORATÓRIO",
-        hero_title_line3: "INTEGRADO DE FENÓTIPOS COMPORTAMENTAIS",
         hero_tagline: "Onde a pesquisa encontra a prática clínica.",
         hero_lead: "Reunimos pesquisadores dedicados a investigar a intersecção entre biologia, ambiente e expressão comportamental, unindo psiquiatria computacional, modelagem preditiva e investigações epidemiológicas de grande impacto populacional.",
         hero_btn_axes: "Explorar Eixos de Pesquisa",
@@ -1007,7 +1010,7 @@
         pub_box_subtitle: "Produção bibliográfica e protocolos científicos vinculados às linhas de pesquisa do LIFE Lab.",
         pub_badge: "Repositório Científico",
         evt_box_title: "Congressos, Simpósios & Apresentações Científicas",
-        evt_box_subtitle: "Comunicações orais, pôsteres, mesas-redondas e participação científica dos membros do laboratório.",
+        evt_box_subtitle: "Comunicações orais, pôsteres, mesas-redondas e prêmios conquistados pelos membros do laboratório.",
         evt_badge: "Agenda & Histórico",
         
         team_tag: "04 · Corpo Científico",
@@ -1041,9 +1044,6 @@
         nav_contact: "Contact",
         
         hero_subtitle_tag: "FEDERAL UNIVERSITY OF HEALTH SCIENCES OF PORTO ALEGRE",
-        hero_title_line1: "LIFE LAB",
-        hero_title_line2: "INTEGRATED",
-        hero_title_line3: "LABORATORY OF BEHAVIORAL PHENOTYPES",
         hero_tagline: "Where research meets clinical practice.",
         hero_lead: "Gathering researchers dedicated to investigating the intersection between biology, environment, and behavioral expression through computational psychiatry, predictive modeling, and population-level epidemiological studies.",
         hero_btn_axes: "Explore Research Axes",
@@ -1226,6 +1226,20 @@
     }
 
     document.addEventListener('DOMContentLoaded', () => {
+      // Fallback do logotipo-fundoescuro.png no hero
+      (function () {
+        const logoImg = document.getElementById('hero-logo-img');
+        const logoFallback = document.getElementById('hero-logo-fallback');
+        if (!logoImg) return;
+
+        logoImg.addEventListener('error', function () {
+          logoImg.classList.add('hidden');
+          if (logoFallback) {
+            logoFallback.classList.remove('hidden');
+          }
+        });
+      })();
+
       // Fallback resiliente da imagem do professor
       (function () {
         const img = document.getElementById('prof-flavio-img');
